@@ -15,20 +15,24 @@ import { ContactCTASection } from "@/components/sections/contact-cta-section";
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const openContact = () => {
+  // Handler for Nav and Hero: Scrolls to the bottom Contact Section
+  const scrollToContact = () => {
     const contactSection = document.querySelector("#contact-cta");
     if (contactSection) {
       contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
-  const closeContact = () => setIsContactOpen(false);
+
+  // Handler for Contact CTA Section: Opens the Smart Modal
+  const openContactModal = () => setIsContactOpen(true);
+  const closeContactModal = () => setIsContactOpen(false);
 
   return (
     <>
-      <Navbar onContactClick={openContact} />
+      <Navbar onContactClick={scrollToContact} />
 
       {/* Semantic Structure: Header (Hero) -> Main (Content) */}
-      <HeroSection onContactClick={openContact} />
+      <HeroSection onContactClick={scrollToContact} />
 
       <main id="main-content" role="main" className="bg-background">
         <AboutSection />
@@ -36,12 +40,12 @@ export default function Home() {
         <CaseStudySection />
         <TestimonialsSection />
         <ProcessSection />
-        <ContactCTASection onContactClick={openContact} />
+        <ContactCTASection onContactClick={openContactModal} />
       </main>
 
       <Footer />
 
-      <ContactModal isOpen={isContactOpen} onClose={closeContact} />
+      <ContactModal isOpen={isContactOpen} onClose={closeContactModal} />
     </>
   );
 }
