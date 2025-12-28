@@ -1,20 +1,40 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion, HTMLMotionProps } from "framer-motion";
 import React from "react";
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-    as?: React.ElementType;
+interface CardProps extends Omit<HTMLMotionProps<"div">, "children"> {
+    children: React.ReactNode;
+    hoverable?: boolean;
+    glow?: boolean;
 }
 
-export function Card({ as: Component = "div", className, children, ...props }: CardProps) {
+export function Card({
+    className,
+    children,
+    hoverable = true,
+    glow = false,
+    ...props
+}: CardProps) {
     return (
-        <Component
+        <motion.div
+            whileHover={hoverable ? { y: -4 } : undefined}
+            transition={{ duration: 0.2, ease: "easeOut" }}
             className={cn(
-                "rounded-xl border border-white/5 bg-card/50 p-6 backdrop-blur-sm transition-colors hover:bg-card/80 hover:border-white/10",
+                // Base glassmorphism
+                "glass rounded-2xl p-6",
+                // Subtle hover state
+                hoverable && "glass-hover cursor-pointer",
+                // Optional glow on hover
+                glow && "glow-on-hover",
+                // Transition
+                "transition-all duration-200 ease-out",
                 className
             )}
             {...props}
         >
             {children}
-        </Component>
+        </motion.div>
     );
 }
