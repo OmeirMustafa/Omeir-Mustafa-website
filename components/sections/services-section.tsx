@@ -6,16 +6,20 @@ import { motion } from "framer-motion";
 
 const services = [
     {
-        title: "Website Design & Development",
-        description: "Premium, fast, and conversion-focused websites built from scratch.",
+        title: "Custom Website Design",
+        description: "High-end UI/UX design focused on clarity, hierarchy, and conversion. Every pixel has a purpose.",
     },
     {
-        title: "Motion & Interaction Design",
-        description: "Subtle animations and micro-interactions that elevate experience.",
+        title: "Web Development",
+        description: "Clean, scalable development using modern technologies with a focus on performance and maintainability.",
     },
     {
-        title: "Performance & SEO",
-        description: "Clean builds that load fast and rank properly.",
+        title: "Animations & Interactions",
+        description: "Smooth, meaningful motion design that enhances usability and elevates perceived quality.",
+    },
+    {
+        title: "SEO & Optimization",
+        description: "Technical SEO, semantic structure, and performance optimization built directly into the site.",
     },
 ];
 
@@ -31,11 +35,8 @@ export function ServicesSection() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-20"
                 >
-                    <p className="text-sm text-foreground-subtle mb-6 tracking-[0.15em] uppercase">
-                        Services
-                    </p>
                     <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground">
-                        What I do
+                        What I Do
                     </h2>
                 </motion.div>
 

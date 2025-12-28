@@ -10,7 +10,7 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onContactClick }: HeroSectionProps) {
-    const scrollToNext = () => {
+    const scrollToCaseStudy = () => {
         const caseStudy = document.querySelector("#case-study");
         if (caseStudy) {
             caseStudy.scrollIntoView({ behavior: "smooth" });
@@ -39,45 +39,31 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                     }}
                 >
                     {/* Main headline - DOMINANT */}
-                    <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-10">
-                        Premium websites.
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8">
+                        Premium Websites Built
                         <br />
-                        <span className="text-foreground-muted">Built with intention.</span>
+                        <span className="text-foreground-muted">to Convert, Perform, and Scale</span>
                     </h1>
 
-                    {/* Single line - minimal */}
-                    <p className="text-lg text-foreground-muted mb-14 max-w-sm mx-auto leading-relaxed">
-                        Design, motion, and performance — done properly.
+                    {/* Sub-headline */}
+                    <h2 className="text-xl md:text-2xl text-foreground-muted mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
+                        I design and develop ultra-modern, high-performance websites for brands that care about quality, credibility, and results.
+                    </h2>
+
+                    {/* Supporting Line */}
+                    <p className="text-sm text-accent mb-12 uppercase tracking-widest font-medium">
+                        Strategy-driven design • Custom animations • Clean, scalable code
                     </p>
 
-                    {/* CTA - single word */}
-                    <Button size="lg" onClick={onContactClick}>
-                        Contact
-                    </Button>
-                </motion.div>
-
-                {/* Scroll indicator - very subtle */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 0.4 }}
-                    transition={{ delay: 2, duration: 1 }}
-                    className="absolute bottom-16 left-1/2 -translate-x-1/2"
-                >
-                    <button
-                        onClick={scrollToNext}
-                        className="flex flex-col items-center gap-3 text-foreground-subtle hover:text-foreground-muted transition-colors duration-500"
-                        aria-label="Scroll to next section"
-                    >
-                        <motion.div
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{
-                                repeat: Infinity,
-                                duration: 2.5,
-                                ease: "easeInOut"
-                            }}
-                            className="w-px h-12 bg-current"
-                        />
-                    </button>
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <Button size="lg" onClick={onContactClick}>
+                            Start a Project
+                        </Button>
+                        <Button variant="outline" size="lg" onClick={scrollToCaseStudy}>
+                            View Case Study
+                        </Button>
+                    </div>
                 </motion.div>
             </Container>
         </Section>

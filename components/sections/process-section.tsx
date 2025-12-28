@@ -7,29 +7,29 @@ import { motion } from "framer-motion";
 const steps = [
     {
         number: "01",
-        title: "Direction",
-        description: "Understanding goals and constraints.",
+        title: "Discovery & Strategy",
+        description: "Understanding goals, audience, and requirements.",
     },
     {
         number: "02",
-        title: "Design",
-        description: "Visual system and interaction design.",
+        title: "Design & Direction",
+        description: "Wireframes, visual identity, and interaction design.",
     },
     {
         number: "03",
-        title: "Build",
-        description: "Clean, performant implementation.",
+        title: "Development",
+        description: "Clean, responsive, performance-optimized build.",
     },
     {
         number: "04",
-        title: "Launch",
-        description: "Polished delivery and deployment.",
+        title: "Launch & Optimization",
+        description: "Deployment, testing, and SEO optimization.",
     },
 ];
 
 export function ProcessSection() {
     return (
-        <Section id="process" className="bg-background-subtle">
+        <Section id="process">
             <Container>
                 {/* Header - minimal */}
                 <motion.div
@@ -39,11 +39,8 @@ export function ProcessSection() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-20"
                 >
-                    <p className="text-sm text-foreground-subtle mb-6 tracking-[0.15em] uppercase">
-                        Process
-                    </p>
                     <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground">
-                        How it works
+                        How It Works
                     </h2>
                 </motion.div>
 

@@ -34,7 +34,7 @@ export function Footer() {
                         Omeir Mustafa
                     </span>
                     <p className="text-sm text-foreground-muted">
-                        Revenue Operations & CRM Specialist
+                        Premium Web Design & Development
                     </p>
                 </div>
 

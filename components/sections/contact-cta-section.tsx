@@ -11,20 +11,30 @@ interface ContactCTASectionProps {
 
 export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
     return (
-        <Section id="contact-cta">
+        <Section id="contact-cta" className="bg-background-subtle">
             <Container className="text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="max-w-3xl mx-auto"
                 >
-                    <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground mb-10">
-                        Let&apos;s work
+                    <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground mb-6">
+                        Let&apos;s Build Something Exceptional
                     </h2>
+                    <p className="text-xl text-foreground-muted mb-10 leading-relaxed">
+                        Have a project in mind or want to discuss an idea?
+                        <br className="hidden md:block" />
+                        Let&apos;s talk and see how we can create a premium digital experience.
+                    </p>
                     <Button size="lg" onClick={onContactClick}>
-                        Contact
+                        Contact Me
                     </Button>
+
+                    <p className="mt-10 text-foreground-subtle hover:text-accent transition-colors">
+                        Email: omeirmustafa.work@gmail.com
+                    </p>
                 </motion.div>
             </Container>
         </Section>
