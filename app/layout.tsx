@@ -14,24 +14,24 @@ const inter = Inter({
   display: "swap",
 });
 
-// Site configuration
+// Site configuration - GOD-TIER POSITIONING
 const siteConfig = {
   name: "Omeir Mustafa",
-  title: "Omeir Mustafa | Revenue Operations & CRM Specialist",
-  description: "I help growth-stage companies build scalable systems through strategic CRM architecture, process automation, and revenue operations consulting.",
+  title: "Omeir Mustafa | Premium Web Design & Development",
+  description: "Premium websites. Built with intention. Design, motion, and performance — done properly.",
   url: "https://omeirmustafa.com",
   email: "omeirmustafa.work@gmail.com",
   keywords: [
-    "CRM Specialist",
-    "Revenue Operations",
-    "HubSpot Consultant",
-    "Salesforce Expert",
-    "Process Automation",
-    "Business Development",
-    "RevOps",
-    "CRM Implementation",
-    "Sales Operations",
-    "Marketing Operations",
+    "Premium Web Design",
+    "Web Development",
+    "Motion Design",
+    "Next.js Developer",
+    "React Developer",
+    "Performance Optimization",
+    "SEO Specialist",
+    "Technical SEO",
+    "Interaction Design",
+    "Digital Experience",
   ],
 };
 
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - Revenue Operations & CRM Specialist`,
+        alt: siteConfig.title,
       },
     ],
   },
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-// Viewport configuration (separated in Next.js 14+)
+// Viewport configuration
 export const viewport: Viewport = {
   themeColor: "#09090b",
   width: "device-width",
@@ -118,19 +118,19 @@ function JsonLd() {
     name: siteConfig.name,
     url: siteConfig.url,
     email: siteConfig.email,
-    jobTitle: "Revenue Operations & CRM Specialist",
+    jobTitle: "Creative Engineer & Designer",
     description: siteConfig.description,
     sameAs: [
       "https://linkedin.com/in/omeirmustafa",
       "https://twitter.com/omeirmustafa",
     ],
     knowsAbout: [
-      "CRM Implementation",
-      "Revenue Operations",
-      "Process Automation",
-      "HubSpot",
-      "Salesforce",
-      "Business Development",
+      "Web Design",
+      "Web Development",
+      "Motion Design",
+      "Next.js",
+      "React",
+      "SEO",
     ],
   };
 
