@@ -48,7 +48,7 @@ export function Navbar() {
                         </Link>
                     ))}
                     <Link href="/contact">
-                        <Button size="sm" variant="primary">Let's Talk</Button>
+                        <Button size="sm" variant="primary">Let&apos;s Talk</Button>
                     </Link>
                 </nav>
 
@@ -83,7 +83,7 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <Link href="/contact" onClick={() => setIsOpen(false)}>
-                                <Button className="w-full">Let's Talk</Button>
+                                <Button className="w-full">Let&apos;s Talk</Button>
                             </Link>
                         </Container>
                     </motion.div>

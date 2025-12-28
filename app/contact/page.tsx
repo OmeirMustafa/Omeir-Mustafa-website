@@ -20,7 +20,7 @@ export default function ContactPage() {
                         >
                             <h1 className="text-4xl font-heading font-medium mb-4">Get in Touch</h1>
                             <p className="text-muted text-lg">
-                                Ready to optimize your business operations? Let's start a conversation.
+                                Ready to optimize your business operations? Let&apos;s start a conversation.
                             </p>
                         </motion.div>
 
