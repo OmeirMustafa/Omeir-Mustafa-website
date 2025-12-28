@@ -54,7 +54,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                     : undefined,
             };
 
-        const tapAnimation = prefersReducedMotion ? {} : { y: 0 };
+        const tapAnimation = prefersReducedMotion ? {} : { scale: 0.98 };
 
         return (
             <motion.button

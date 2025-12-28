@@ -47,8 +47,8 @@ export function AboutSection() {
                         <p>
                             I don&apos;t use templates. Every interface, animation, and interaction is carefully crafted to reflect your brand, improve user experience, and drive meaningful results.
                         </p>
-                        <p>
-                            Whether it&apos;s a business website, landing page, or full redesign, my approach combines strategy, aesthetics, and performance.
+                        <p className="font-medium text-foreground">
+                            I build intentional, high-performing websites that help businesses grow — without overcomplication.
                         </p>
                     </div>
 

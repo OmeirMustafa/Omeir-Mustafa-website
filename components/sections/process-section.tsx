@@ -7,23 +7,23 @@ import { motion } from "framer-motion";
 const steps = [
     {
         number: "01",
-        title: "Discovery & Strategy",
-        description: "Understanding goals, audience, and requirements.",
+        title: "Discovery",
+        description: "We define your goals, audience, and key success metrics before writing a single line of code.",
     },
     {
         number: "02",
-        title: "Design & Direction",
-        description: "Wireframes, visual identity, and interaction design.",
+        title: "Design",
+        description: "I craft a high-fidelity visual system that elevates your brand authority and user experience.",
     },
     {
         number: "03",
         title: "Development",
-        description: "Clean, responsive, performance-optimized build.",
+        description: "Your site is built with clean, scalable code for maximum performance and device compatibility.",
     },
     {
         number: "04",
-        title: "Launch & Optimization",
-        description: "Deployment, testing, and SEO optimization.",
+        title: "Launch",
+        description: "We deploy, test, and optimize until everything is pixel-perfect and ready for traffic.",
     },
 ];
 

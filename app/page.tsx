@@ -8,6 +8,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { CaseStudySection } from "@/components/sections/case-study-section";
 import { ServicesSection } from "@/components/sections/services-section";
+import { TestimonialsSection } from "@/components/sections/testimonials-section";
 import { ProcessSection } from "@/components/sections/process-section";
 import { ContactCTASection } from "@/components/sections/contact-cta-section";
 
@@ -28,6 +29,7 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <CaseStudySection />
+        <TestimonialsSection />
         <ProcessSection />
         <ContactCTASection onContactClick={openContact} />
       </main>

@@ -29,7 +29,7 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         Let&apos;s talk and see how we can create a premium digital experience.
                     </p>
                     <Button size="lg" onClick={onContactClick}>
-                        Contact Me
+                        Start a Project
                     </Button>
 
                     <p className="mt-10 text-foreground-subtle hover:text-accent transition-colors">
