@@ -83,7 +83,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         }}
                         className={cn(
                             "fixed left-1/2 top-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2",
-                            "bg-card/90 backdrop-blur-2xl border border-border rounded-2xl p-10"
+                            "bg-card/90 backdrop-blur-2xl border border-border rounded-2xl p-10 will-change-transform"
                         )}
                     >
                         {/* Close button */}
