@@ -11,25 +11,19 @@ interface ContactCTASectionProps {
 
 export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
     return (
-        <Section id="contact-cta" className="relative overflow-hidden">
-            {/* Background gradient */}
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-accent/10 via-background to-background" />
-
-            <Container className="relative z-10 text-center">
+        <Section id="contact-cta">
+            <Container className="text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-2xl mx-auto"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                    <h2 className="text-3xl md:text-5xl font-heading font-semibold text-foreground mb-6">
-                        Ready to Transform Your Operations?
+                    <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground mb-10">
+                        Let&apos;s work
                     </h2>
-                    <p className="text-lg text-foreground-muted mb-10">
-                        Let&apos;s discuss how I can help you build systems that scale.
-                    </p>
                     <Button size="lg" onClick={onContactClick}>
-                        Start a Conversation
+                        Contact
                     </Button>
                 </motion.div>
             </Container>

@@ -3,32 +3,27 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
-import { MessageSquare, FileText, Cog, CheckCircle2 } from "lucide-react";
 
 const steps = [
     {
-        icon: MessageSquare,
-        title: "Conversation",
-        description: "We start with a focused call to understand your goals, challenges, and timeline.",
-        expectation: "No pressure, just clarity.",
+        number: "01",
+        title: "Direction",
+        description: "Understanding goals and constraints.",
     },
     {
-        icon: FileText,
-        title: "Proposal",
-        description: "You receive a clear scope, timeline, and investment — no hidden fees or surprises.",
-        expectation: "Full transparency.",
+        number: "02",
+        title: "Design",
+        description: "Visual system and interaction design.",
     },
     {
-        icon: Cog,
-        title: "Execution",
-        description: "I handle the build while keeping you updated. You stay in the loop without the overwhelm.",
-        expectation: "White-glove delivery.",
+        number: "03",
+        title: "Build",
+        description: "Clean, performant implementation.",
     },
     {
-        icon: CheckCircle2,
-        title: "Handoff",
-        description: "You get documentation, training, and ongoing support to ensure long-term success.",
-        expectation: "You're never left hanging.",
+        number: "04",
+        title: "Launch",
+        description: "Polished delivery and deployment.",
     },
 ];
 
@@ -36,64 +31,47 @@ export function ProcessSection() {
     return (
         <Section id="process" className="bg-background-subtle">
             <Container>
-                {/* Header */}
+                {/* Header - minimal */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 md:mb-20"
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    className="mb-20"
                 >
-                    <p className="text-sm font-medium text-accent mb-4 tracking-[0.2em] uppercase">
+                    <p className="text-sm text-foreground-subtle mb-6 tracking-[0.15em] uppercase">
                         Process
                     </p>
-                    <h2 className="text-3xl md:text-5xl font-heading font-semibold text-foreground max-w-xl">
-                        What to Expect
+                    <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground">
+                        How it works
                     </h2>
                 </motion.div>
 
-                {/* Timeline */}
-                <div className="relative">
-                    {/* Vertical line */}
-                    <div className="absolute left-6 md:left-8 top-0 bottom-0 w-px bg-border hidden md:block" />
-
-                    <div className="space-y-8 md:space-y-12">
-                        {steps.map((step, index) => (
-                            <motion.div
-                                key={step.title}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className="relative flex gap-6 md:gap-10"
-                            >
-                                {/* Step indicator */}
-                                <div className="relative z-10 flex-shrink-0">
-                                    <motion.div
-                                        initial={{ scale: 0 }}
-                                        whileInView={{ scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: index * 0.1 + 0.2, type: "spring", stiffness: 200 }}
-                                        className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-muted border border-border flex items-center justify-center"
-                                    >
-                                        <step.icon className="w-5 h-5 md:w-6 md:h-6 text-accent" />
-                                    </motion.div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="flex-1 pt-1 md:pt-3">
-                                    <h3 className="text-xl md:text-2xl font-heading font-semibold text-foreground mb-2">
-                                        {step.title}
-                                    </h3>
-                                    <p className="text-foreground-muted leading-relaxed mb-3">
-                                        {step.description}
-                                    </p>
-                                    <p className="text-sm text-accent font-medium">
-                                        {step.expectation}
-                                    </p>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
+                {/* Steps - simple grid, no icons */}
+                <div className="grid md:grid-cols-4 gap-12 md:gap-8">
+                    {steps.map((step, index) => (
+                        <motion.div
+                            key={step.number}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: 0.8,
+                                delay: index * 0.15,
+                                ease: [0.16, 1, 0.3, 1]
+                            }}
+                        >
+                            <p className="text-sm text-foreground-subtle mb-4">
+                                {step.number}
+                            </p>
+                            <h3 className="text-xl font-heading font-medium text-foreground mb-3">
+                                {step.title}
+                            </h3>
+                            <p className="text-foreground-muted leading-relaxed">
+                                {step.description}
+                            </p>
+                        </motion.div>
+                    ))}
                 </div>
             </Container>
         </Section>

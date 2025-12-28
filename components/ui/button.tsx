@@ -14,51 +14,39 @@ interface ButtonProps extends Omit<HTMLMotionProps<"button">, "variant"> {
 
 const variantStyles: Record<ButtonVariant, string> = {
     primary: [
-        "bg-accent text-background font-medium",
-        "hover:bg-accent-muted",
-        "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "bg-foreground text-background font-medium",
+        "hover:bg-foreground/90",
+        "focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     ].join(" "),
     secondary: [
         "bg-muted text-foreground",
-        "hover:bg-card-hover",
-        "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "hover:bg-muted/80",
+        "focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     ].join(" "),
     outline: [
         "bg-transparent border border-border text-foreground",
-        "hover:border-accent hover:text-accent",
-        "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "hover:border-foreground-muted",
+        "focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     ].join(" "),
     ghost: [
         "bg-transparent text-foreground-muted",
-        "hover:bg-muted hover:text-foreground",
-        "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "hover:text-foreground",
+        "focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     ].join(" "),
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-    sm: "h-9 px-4 text-sm rounded-lg",
-    md: "h-11 px-6 text-sm rounded-lg",
-    lg: "h-14 px-8 text-base rounded-xl",
+    sm: "h-10 px-5 text-sm rounded-lg",
+    md: "h-12 px-7 text-sm rounded-lg",
+    lg: "h-14 px-10 text-base rounded-lg tracking-wide",
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
         const prefersReducedMotion = useReducedMotion();
 
-        // Simplified animation for reduced motion preference
-        const hoverAnimation = prefersReducedMotion
-            ? {}
-            : {
-                scale: 1.02,
-                y: -2,
-                boxShadow: variant === "primary" || variant === "outline"
-                    ? "0 8px 20px rgba(6, 182, 212, 0.15)"
-                    : undefined,
-            };
-
-        const tapAnimation = prefersReducedMotion
-            ? {}
-            : { scale: 0.98, y: 0 };
+        const hoverAnimation = prefersReducedMotion ? {} : { y: -1 };
+        const tapAnimation = prefersReducedMotion ? {} : { y: 0 };
 
         return (
             <motion.button
@@ -66,12 +54,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
                 whileHover={hoverAnimation}
                 whileTap={tapAnimation}
                 transition={{
-                    duration: 0.2,
+                    duration: 0.3,
                     ease: [0.16, 1, 0.3, 1],
                 }}
                 className={cn(
                     "inline-flex items-center justify-center whitespace-nowrap font-medium",
-                    "transition-colors duration-200",
+                    "transition-all duration-300",
                     "disabled:pointer-events-none disabled:opacity-50",
                     "outline-none cursor-pointer",
                     variantStyles[variant],

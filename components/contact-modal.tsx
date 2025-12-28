@@ -15,7 +15,6 @@ const EMAIL = "omeirmustafa.work@gmail.com";
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     const [copied, setCopied] = React.useState(false);
 
-    // Close on escape key
     React.useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
@@ -30,7 +29,6 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         };
     }, [isOpen, onClose]);
 
-    // Reset copied state when modal closes
     React.useEffect(() => {
         if (!isOpen) setCopied(false);
     }, [isOpen]);
@@ -47,7 +45,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
     const contactOptions = [
         {
-            label: "Open in Gmail",
+            label: "Open Gmail",
             icon: Mail,
             href: `https://mail.google.com/mail/?view=cm&to=${EMAIL}`,
             external: true,
@@ -64,152 +62,88 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
         <AnimatePresence>
             {isOpen && (
                 <>
-                    {/* Backdrop with blur */}
+                    {/* Backdrop - deeper blur */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                         onClick={onClose}
-                        className="fixed inset-0 z-50 bg-background/90 backdrop-blur-md"
+                        className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl"
                     />
 
-                    {/* Modal */}
+                    {/* Modal - slower, heavier */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 30 }}
                         transition={{
-                            type: "spring",
-                            stiffness: 300,
-                            damping: 25,
-                            duration: 0.4
+                            duration: 0.6,
+                            ease: [0.16, 1, 0.3, 1],
                         }}
                         className={cn(
-                            "fixed left-1/2 top-1/2 z-50 w-full max-w-md -translate-x-1/2 -translate-y-1/2 mx-4",
-                            "glass rounded-3xl p-8 md:p-10"
+                            "fixed left-1/2 top-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2",
+                            "bg-card/90 backdrop-blur-2xl border border-border rounded-2xl p-10"
                         )}
                     >
-                        {/* Glow effect */}
-                        <div className="absolute -inset-1 bg-accent/10 blur-2xl rounded-3xl -z-10" />
-
                         {/* Close button */}
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
+                        <button
                             onClick={onClose}
-                            className="absolute right-4 top-4 p-2 text-foreground-muted hover:text-foreground hover:bg-muted rounded-full transition-colors"
+                            className="absolute right-4 top-4 p-2 text-foreground-subtle hover:text-foreground transition-colors duration-300"
                             aria-label="Close modal"
                         >
                             <X size={20} />
-                        </motion.button>
+                        </button>
 
-                        {/* Header */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 }}
-                            className="text-center mb-8"
-                        >
-                            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-foreground mb-3">
+                        {/* Header - minimal */}
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl font-heading font-semibold text-foreground">
                                 Let&apos;s work
                             </h2>
-                            <p className="text-foreground-muted">
-                                Choose how you&apos;d like to connect
-                            </p>
-                        </motion.div>
+                        </div>
 
-                        {/* Email display */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.15 }}
-                            className="text-center mb-8"
-                        >
-                            <p className="text-sm text-foreground-subtle mb-2 uppercase tracking-wider">
-                                Email
-                            </p>
-                            <p className="text-lg text-accent font-medium">
+                        {/* Email - prominent */}
+                        <div className="text-center mb-10">
+                            <p className="text-lg text-foreground-muted">
                                 {EMAIL}
                             </p>
-                        </motion.div>
+                        </div>
 
-                        {/* Contact options */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2 }}
-                            className="space-y-3"
-                        >
-                            {contactOptions.map((option, index) => (
-                                <motion.a
+                        {/* Options - simple */}
+                        <div className="space-y-3">
+                            {contactOptions.map((option) => (
+                                <a
                                     key={option.label}
                                     href={option.href}
                                     target={option.external ? "_blank" : undefined}
                                     rel={option.external ? "noopener noreferrer" : undefined}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.25 + index * 0.05 }}
-                                    whileHover={{ scale: 1.02, x: 4 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    className="flex items-center gap-4 p-4 bg-muted rounded-xl border border-border hover:border-accent/50 hover:bg-card-hover transition-all duration-200 group glow-on-hover"
+                                    className="flex items-center justify-between p-4 border border-border rounded-xl hover:border-foreground-subtle hover:bg-muted/50 transition-all duration-300"
                                 >
-                                    <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center">
-                                        <option.icon size={18} className="text-foreground-muted group-hover:text-accent transition-colors" />
-                                    </div>
-                                    <span className="text-foreground font-medium group-hover:text-accent transition-colors">
-                                        {option.label}
-                                    </span>
-                                </motion.a>
+                                    <span className="text-foreground">{option.label}</span>
+                                    <option.icon size={18} className="text-foreground-muted" />
+                                </a>
                             ))}
 
-                            {/* Copy email button */}
-                            <motion.button
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.35 }}
-                                whileHover={{ scale: 1.02, x: 4 }}
-                                whileTap={{ scale: 0.98 }}
+                            {/* Copy button */}
+                            <button
                                 onClick={handleCopyEmail}
                                 className={cn(
-                                    "flex items-center gap-4 p-4 w-full bg-muted rounded-xl border transition-all duration-200 group",
+                                    "flex items-center justify-between p-4 w-full border rounded-xl transition-all duration-300",
                                     copied
-                                        ? "border-accent bg-accent/10"
-                                        : "border-border hover:border-accent/50 hover:bg-card-hover glow-on-hover"
+                                        ? "border-accent bg-accent/5"
+                                        : "border-border hover:border-foreground-subtle hover:bg-muted/50"
                                 )}
                             >
-                                <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center">
-                                    <AnimatePresence mode="wait">
-                                        {copied ? (
-                                            <motion.div
-                                                key="check"
-                                                initial={{ scale: 0 }}
-                                                animate={{ scale: 1 }}
-                                                exit={{ scale: 0 }}
-                                                transition={{ type: "spring", stiffness: 500 }}
-                                            >
-                                                <Check size={18} className="text-accent" />
-                                            </motion.div>
-                                        ) : (
-                                            <motion.div
-                                                key="copy"
-                                                initial={{ scale: 0 }}
-                                                animate={{ scale: 1 }}
-                                                exit={{ scale: 0 }}
-                                            >
-                                                <Copy size={18} className="text-foreground-muted group-hover:text-accent transition-colors" />
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                                <span className={cn(
-                                    "font-medium transition-colors",
-                                    copied ? "text-accent" : "text-foreground group-hover:text-accent"
-                                )}>
-                                    {copied ? "Copied!" : "Copy Email"}
+                                <span className={copied ? "text-accent" : "text-foreground"}>
+                                    {copied ? "Copied" : "Copy Email"}
                                 </span>
-                            </motion.button>
-                        </motion.div>
+                                {copied ? (
+                                    <Check size={18} className="text-accent" />
+                                ) : (
+                                    <Copy size={18} className="text-foreground-muted" />
+                                )}
+                            </button>
+                        </div>
                     </motion.div>
                 </>
             )}
