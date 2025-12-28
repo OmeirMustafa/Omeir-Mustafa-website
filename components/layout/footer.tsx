@@ -7,14 +7,9 @@ const socialLinks = [
         ariaLabel: "Visit Omeir Mustafa on LinkedIn",
     },
     {
-        name: "Twitter",
-        href: "https://twitter.com/omeirmustafa",
-        ariaLabel: "Visit Omeir Mustafa on Twitter",
-    },
-    {
-        name: "Email",
-        href: "mailto:omeirmustafa.work@gmail.com",
-        ariaLabel: "Send email to Omeir Mustafa",
+        name: "GitHub",
+        href: "https://github.com/omeirmustafa",
+        ariaLabel: "Visit Omeir Mustafa on GitHub",
     },
 ];
 

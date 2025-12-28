@@ -32,9 +32,7 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         Start a Project
                     </Button>
 
-                    <p className="mt-10 text-foreground-subtle hover:text-accent transition-colors">
-                        Email: omeirmustafa.work@gmail.com
-                    </p>
+
                 </motion.div>
             </Container>
         </Section>

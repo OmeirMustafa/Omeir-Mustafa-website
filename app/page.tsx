@@ -15,7 +15,12 @@ import { ContactCTASection } from "@/components/sections/contact-cta-section";
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
-  const openContact = () => setIsContactOpen(true);
+  const openContact = () => {
+    const contactSection = document.querySelector("#contact-cta");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   const closeContact = () => setIsContactOpen(false);
 
   return (

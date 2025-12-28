@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ExternalLink, CheckCircle2 } from "lucide-react";
+import { BeforeAfterSlider } from "@/components/ui/before-after-slider";
 
 export function CaseStudySection() {
     const highlights = [
@@ -33,7 +34,7 @@ export function CaseStudySection() {
                     </p>
                 </motion.div>
 
-                {/* Browser Mockup */}
+                {/* Before/After Visualization */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -41,36 +42,27 @@ export function CaseStudySection() {
                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-16"
                 >
-                    <a
-                        href="https://lumina-law-website-rebuilt.vercel.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block group"
-                    >
-                        <div className="relative glass rounded-2xl overflow-hidden shadow-2xl">
-                            {/* Browser chrome */}
-                            <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50 bg-muted/30">
-                                <div className="flex gap-1.5">
-                                    <div className="w-3 h-3 rounded-full bg-red-500/20" />
-                                    <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
-                                    <div className="w-3 h-3 rounded-full bg-green-500/20" />
-                                </div>
-                                <div className="ml-4 flex-1">
-                                    <div className="px-3 py-1 rounded bg-background/50 text-xs text-muted-foreground w-64 max-w-full truncate opacity-50">
-                                        lumina-law-website-rebuilt.vercel.app
-                                    </div>
-                                </div>
-                            </div>
+                    <BeforeAfterSlider
+                        beforeImage="/lumina-before.jpg"
+                        afterImage="/lumina-after.jpg"
+                        beforeLabel="Before (Standard)"
+                        afterLabel="After (Premium)"
+                    />
 
-                            {/* Preview Image Placeholder (Gradient for now) */}
-                            {/* Ideally this would be an actual image, but keeping the gradient concept for now as per "Preserve what works" */}
-                            <div className="relative aspect-[16/9] bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center p-8 group-hover:scale-[1.01] transition-transform duration-700">
-                                <span className="text-foreground-muted text-sm uppercase tracking-widest font-medium border border-border px-4 py-2 rounded-full">
-                                    View Live Preview
+                    <div className="flex justify-center mt-8">
+                        <a
+                            href="https://lumina-law-website-rebuilt.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button variant="outline" size="lg" className="border-blue-500/30 hover:bg-blue-500/10 hover:border-blue-500/50 text-blue-400">
+                                <span className="flex items-center gap-2">
+                                    View Live Transformation
+                                    <ExternalLink size={16} />
                                 </span>
-                            </div>
-                        </div>
-                    </a>
+                            </Button>
+                        </a>
+                    </div>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-start">
