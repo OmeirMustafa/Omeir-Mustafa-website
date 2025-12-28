@@ -17,30 +17,22 @@ const inter = Inter({
 // Site configuration - GOD-TIER POSITIONING
 const siteConfig = {
   name: "Omeir Mustafa",
-  title: "Omeir Mustafa | Premium Web Design & Development",
-  description: "Premium websites. Built with intention. Design, motion, and performance — done properly.",
-  url: "https://omeirmustafa.com",
+  title: "Omeir Mustafa — Premium Web Design & Development", // Updated Title
+  description: "Premium web designer and developer creating high-performance, custom websites with modern UI, animations, and SEO optimization.", // Updated Description
+  url: "https://omeir-mustafa.vercel.app/", // Updated URL
   email: "omeirmustafa.work@gmail.com",
   keywords: [
-    "Premium Web Design",
-    "Web Development",
-    "Motion Design",
-    "Next.js Developer",
-    "React Developer",
-    "Performance Optimization",
-    "SEO Specialist",
-    "Technical SEO",
-    "Interaction Design",
-    "Digital Experience",
+    "Web Designer", // Updated Keywords
+    "Web Developer",
+    "Premium Website Design",
+    "UI UX Designer",
+    "Portfolio Website",
   ],
 };
 
 export const metadata: Metadata = {
   // Basic
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
-  },
+  title: siteConfig.title, // Direct title as requested
   description: siteConfig.description,
   keywords: siteConfig.keywords,
   authors: [{ name: siteConfig.name }],
@@ -54,12 +46,10 @@ export const metadata: Metadata = {
 
   // Open Graph
   openGraph: {
+    title: "Omeir Mustafa — Premium Web Design & Development",
+    description: "Custom-built, high-performance websites designed for clarity, conversion, and scale.",
     type: "website",
-    locale: "en_US",
     url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: siteConfig.title,
-    description: siteConfig.description,
     images: [
       {
         url: "/og-image.png",
@@ -70,11 +60,11 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Twitter
+  // Twitter (Kept for completeness, though explicitly requested OG/HTML mainly)
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
+    title: "Omeir Mustafa — Premium Web Design & Development",
+    description: "Custom-built, high-performance websites designed for clarity, conversion, and scale.",
     images: ["/og-image.png"],
     creator: "@omeirmustafa",
   },
@@ -115,23 +105,11 @@ function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    email: siteConfig.email,
-    jobTitle: "Creative Engineer & Designer",
-    description: siteConfig.description,
-    sameAs: [
-      "https://linkedin.com/in/omeirmustafa",
-      "https://twitter.com/omeirmustafa",
-    ],
-    knowsAbout: [
-      "Web Design",
-      "Web Development",
-      "Motion Design",
-      "Next.js",
-      "React",
-      "SEO",
-    ],
+    "name": "Omeir Mustafa",
+    "url": "https://omeir-mustafa.vercel.app/",
+    "email": "omeirmustafa.work@gmail.com",
+    "jobTitle": "Web Designer & Developer",
+    "sameAs": []
   };
 
   return (

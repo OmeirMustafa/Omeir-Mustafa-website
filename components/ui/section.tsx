@@ -1,15 +1,23 @@
+"use client";
 
-import { cn } from "@/lib/utils";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   id?: string;
+  children: React.ReactNode;
+  className?: string;
+  as?: React.ElementType; // Allow custom tag
 }
 
-export function Section({ className, children, ...props }: SectionProps) {
+export function Section({ id, children, className, as: Component = "section", ...props }: SectionProps) {
   return (
-    <section className={cn("py-16 md:py-24 lg:py-32", className)} {...props}>
+    <Component
+      id={id}
+      className={cn("py-20 md:py-32 relative overflow-hidden", className)}
+      {...props}
+    >
       {children}
-    </section>
+    </Component>
   );
 }

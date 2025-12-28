@@ -21,8 +21,10 @@ export default function Home() {
     <>
       <Navbar onContactClick={openContact} />
 
-      <main id="main-content" role="main" className="min-h-screen bg-background">
-        <HeroSection onContactClick={openContact} />
+      {/* Semantic Structure: Header (Hero) -> Main (Content) */}
+      <HeroSection onContactClick={openContact} />
+
+      <main id="main-content" role="main" className="bg-background">
         <AboutSection />
         <ServicesSection />
         <CaseStudySection />

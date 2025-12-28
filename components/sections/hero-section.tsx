@@ -20,6 +20,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
     return (
         <Section
             id="hero"
+            as="header" // Render as <header>
             className="relative min-h-screen flex items-center justify-center overflow-hidden"
         >
             {/* Background: Single, barely perceptible gradient - no animation */}
