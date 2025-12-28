@@ -19,32 +19,49 @@ interface NavbarProps {
     onContactClick: () => void;
 }
 
-// Animated nav link with underline effect
+// Animated nav link with active state indicator
 function NavLink({
     href,
     children,
+    isActive,
     onClick
 }: {
     href: string;
     children: React.ReactNode;
+    isActive: boolean;
     onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }) {
     return (
         <motion.a
             href={href}
             onClick={onClick}
-            className="relative text-sm font-medium text-foreground-muted hover:text-foreground transition-colors duration-200 cursor-pointer py-1"
+            className={cn(
+                "relative text-sm font-medium transition-colors duration-200 cursor-pointer py-1",
+                isActive ? "text-foreground" : "text-foreground-muted hover:text-foreground"
+            )}
             whileHover="hover"
         >
             {children}
-            <motion.span
-                className="absolute bottom-0 left-0 h-px bg-accent"
-                initial={{ width: 0 }}
-                variants={{
-                    hover: { width: "100%" },
-                }}
-                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            />
+            {/* Active Indicator */}
+            {isActive && (
+                <motion.span
+                    layoutId="activeNav"
+                    className="absolute bottom-0 left-0 w-full h-px bg-accent"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+            )}
+
+            {/* Hover Indicator (only if not active) */}
+            {!isActive && (
+                <motion.span
+                    className="absolute bottom-0 left-0 h-px bg-accent"
+                    initial={{ width: 0 }}
+                    variants={{
+                        hover: { width: "100%" },
+                    }}
+                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                />
+            )}
         </motion.a>
     );
 }
@@ -52,10 +69,32 @@ function NavLink({
 export function Navbar({ onContactClick }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState("");
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 20);
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+
+            // Active section detection
+            const sections = navLinks.map(link => link.href.substring(1));
+            const scrollPosition = window.scrollY + 100; // Offset
+
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element &&
+                    element.offsetTop <= scrollPosition &&
+                    (element.offsetTop + element.offsetHeight) > scrollPosition
+                ) {
+                    setActiveSection("#" + section);
+                    return; // Found the section
+                }
+            }
+        };
+
         window.addEventListener("scroll", handleScroll);
+        // Initial check
+        handleScroll();
+
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -66,6 +105,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
             element.scrollIntoView({ behavior: "smooth" });
         }
         setIsOpen(false);
+        setActiveSection(href);
     };
 
     return (
@@ -85,6 +125,10 @@ export function Navbar({ onContactClick }: NavbarProps) {
                 <motion.div whileHover={{ x: 2 }} transition={{ duration: 0.15 }}>
                     <Link
                         href="/"
+                        onClick={() => {
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                            setActiveSection("");
+                        }}
                         className="text-xl font-heading font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-200"
                     >
                         Omeir Mustafa
@@ -97,6 +141,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
                         <NavLink
                             key={link.name}
                             href={link.href}
+                            isActive={activeSection === link.href}
                             onClick={(e) => handleNavClick(e, link.href)}
                         >
                             {link.name}
@@ -160,7 +205,10 @@ export function Navbar({ onContactClick }: NavbarProps) {
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: index * 0.1, duration: 0.3 }}
-                                    className="text-lg font-medium text-foreground-muted hover:text-accent transition-colors cursor-pointer"
+                                    className={cn(
+                                        "text-lg font-medium transition-colors cursor-pointer",
+                                        activeSection === link.href ? "text-accent" : "text-foreground-muted hover:text-foreground"
+                                    )}
                                 >
                                     {link.name}
                                 </motion.a>

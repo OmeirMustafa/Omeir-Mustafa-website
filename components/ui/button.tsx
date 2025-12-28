@@ -45,7 +45,15 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ({ className, variant = "primary", size = "md", children, ...props }, ref) => {
         const prefersReducedMotion = useReducedMotion();
 
-        const hoverAnimation = prefersReducedMotion ? {} : { y: -1 };
+        const hoverAnimation = prefersReducedMotion
+            ? {}
+            : {
+                y: -2,
+                boxShadow: variant === "primary"
+                    ? "0 0 20px rgba(6, 182, 212, 0.15)"
+                    : undefined,
+            };
+
         const tapAnimation = prefersReducedMotion ? {} : { y: 0 };
 
         return (
