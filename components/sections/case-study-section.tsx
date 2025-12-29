@@ -21,20 +21,20 @@ const caseStudies: CaseStudy[] = [
     {
         id: "lumina",
         title: "Lumina Law",
-        category: "Estate Planning Firm",
-        description: "Complete visual clarity overhaul for a high-trust legal firm. Increased engagement by streamlining the user journey and modernizing the aesthetic.",
+        category: "Visual Trust & Clarity",
+        description: "Problem: A confusing user journey was causing high bounce rates. Solution: A simplified, authoritative redesign that reduced friction and positioned the firm as the clear premium choice.",
         image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
-        tags: ["UI Redesign", "Next.js", "Trust Signals"]
+        tags: ["Trust Architecture", "Friction Reduction", "Lead Clarity"]
     },
     {
         id: "anchor",
         title: "Anchor Capital",
-        category: "Wealth Management",
-        description: "A dark-mode, authority-first platform for a boutique wealth firm targeting post-exit tech founders. Built for absolute credibility.",
+        category: "Authority Positioning",
+        description: "Problem: Generic branding failed to resonate with HNW founders. Solution: A 'dark-mode' aesthetic architecture that signals exclusivity, competence, and absolute financial seriousness.",
         image: "/anchor-preview.png",
         link: "https://financial-advisor-firm-anchor-case.vercel.app/",
-        tags: ["Brand Identity", "Fintech Styles", "Founder UX"]
+        tags: ["Post-Exit Positioning", "Credibility", "Founder UX"]
     }
 ];
 

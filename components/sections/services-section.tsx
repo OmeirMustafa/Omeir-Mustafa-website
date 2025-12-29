@@ -6,20 +6,20 @@ import { motion } from "framer-motion";
 
 const services = [
     {
-        title: "Custom Website Design",
-        description: "High-end UI/UX design focused on clarity, hierarchy, and conversion. Every pixel has a purpose.",
+        title: "Strategic Web Design",
+        description: "Design that organizes information for clarity, building trust and guiding visitors toward a specific action.",
     },
     {
-        title: "Web Development",
-        description: "Clean, scalable development using modern technologies with a focus on performance and maintainability.",
+        title: "Performance Engineering",
+        description: "Fast, secure, and scalable builds that ensure your site performs flawlessly on every device, reducing bounce rates.",
     },
     {
-        title: "Animations & Interactions",
-        description: "Smooth, meaningful motion design that enhances usability and elevates perceived quality.",
+        title: "User Experience Optimization",
+        description: "Purposeful interactions that reduce friction and make your brand feel established and expensive.",
     },
     {
-        title: "SEO & Optimization",
-        description: "Technical SEO, semantic structure, and performance optimization built directly into the site.",
+        title: "Technical Foundation", // Previously SEO & Optimization
+        description: "Built-in search readiness and speed optimizations that make your site visible and resilient.",
     },
 ];
 

@@ -7,23 +7,23 @@ import { motion } from "framer-motion";
 const steps = [
     {
         number: "01",
-        title: "Discovery",
-        description: "We define your goals, audience, and key success metrics before writing a single line of code.",
+        title: "Diagnosis & Strategy",
+        description: "We identify the friction points in your current presence and define exactly what success looks like for your business.",
     },
     {
         number: "02",
-        title: "Design",
-        description: "I craft a high-fidelity visual system that elevates your brand authority and user experience.",
+        title: "Authority Architecture",
+        description: "I design a system that positions you as the market leader, removing doubt and validating your pricing.",
     },
     {
         number: "03",
-        title: "Development",
-        description: "Your site is built with clean, scalable code for maximum performance and device compatibility.",
+        title: "Commercial Build",
+        description: "Development focused on stability and speed. No bloated code, just a lean asset ready for traffic.",
     },
     {
         number: "04",
-        title: "Launch",
-        description: "We deploy, test, and optimize until everything is pixel-perfect and ready for traffic.",
+        title: "Deployment & Handover",
+        description: "A stress-free launch. I ensure you own your assets and understand how to use them.",
     },
 ];
 

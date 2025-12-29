@@ -37,18 +37,18 @@ export function AboutSection() {
                     <h2 className="text-3xl md:text-5xl font-heading font-semibold text-foreground mb-8">
                         Design With Intention.
                         <br />
-                        <span className="text-foreground-muted">Development With Precision.</span>
+                        <span className="text-foreground-muted">Development With Commercial Purpose.</span>
                     </h2>
 
                     <div className="space-y-6 text-lg md:text-xl text-foreground-muted leading-relaxed mb-16">
                         <p>
-                            I&apos;m Omeir Mustafa — a web designer and developer focused on building premium digital experiences.
+                            I&apos;m Omeir. I help consultants, agencies, and service businesses turn their websites into assets that actually work.
                         </p>
                         <p>
-                            I don&apos;t use templates. Every interface, animation, and interaction is carefully crafted to reflect your brand, improve user experience, and drive meaningful results.
+                            Most websites are treated as digital business cards. That is a missed opportunity. Your website should be your hardest-working employee—validating your pricing, answering objections, and closing deals while you sleep.
                         </p>
                         <p className="font-medium text-foreground">
-                            I build intentional, high-performing websites that help businesses grow — without overcomplication.
+                            I don&apos;t just write code. I engineer clarity, trust, and revenue opportunity.
                         </p>
                     </div>
 
@@ -75,34 +75,61 @@ export function AboutSection() {
                         ))}
                     </div>
 
-                    {/* Authority Insight & Toolkit */}
-                    <div className="mt-20 border-t border-border pt-12 space-y-12">
-                        {/* Insight */}
+                    {/* Trust Anchors - Who This Is For */}
+                    <div className="mt-20 border-t border-border pt-12">
+                        <div className="grid md:grid-cols-2 gap-12 text-left">
+                            <div>
+                                <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
+                                    Who This Is For
+                                </h3>
+                                <ul className="space-y-3 text-foreground-muted">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-accent mt-1">✓</span>
+                                        <span>Service businesses selling high-ticket offers ($5k+)</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-accent mt-1">✓</span>
+                                        <span>Consultants who need to justify premium pricing</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-accent mt-1">✓</span>
+                                        <span>Founders aiming to exit or raise capital</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
+                                    Who This Is Not For
+                                </h3>
+                                <ul className="space-y-3 text-foreground-muted">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-foreground-subtle mt-1">×</span>
+                                        <span>Concept-stage startups looking for a "quick MVP"</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-foreground-subtle mt-1">×</span>
+                                        <span>Projects where "cheap" is the main priority</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-foreground-subtle mt-1">×</span>
+                                        <span>Those who view design as "just decoration"</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Authority Insight */}
                         <motion.div
                             initial={{ opacity: 0 }}
                             whileInView={{ opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
-                            className="bg-muted/30 border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto"
+                            className="bg-muted/30 border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto mt-16 text-center"
                         >
                             <p className="text-lg text-foreground font-medium italic">
-                                &ldquo;A premium website isn&apos;t an expense—it&apos;s a compounding asset that separates market leaders from the noise.&rdquo;
+                                &ldquo;If your website confuses your visitors, you are voluntarily lowering your revenue. Clarity is the ultimate competitive advantage.&rdquo;
                             </p>
                         </motion.div>
-
-                        {/* Toolkit */}
-                        <div className="text-center">
-                            <p className="text-sm uppercase tracking-widest text-foreground-subtle font-medium mb-4">
-                                Built with
-                            </p>
-                            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-foreground-muted font-medium">
-                                <span>Next.js 15</span>
-                                <span>React 19</span>
-                                <span>TypeScript</span>
-                                <span>Tailwind CSS</span>
-                                <span>Framer Motion</span>
-                            </div>
-                        </div>
                     </div>
                 </motion.div>
             </Container>

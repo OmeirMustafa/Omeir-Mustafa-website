@@ -50,14 +50,14 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                 >
                     {/* Main headline - DOMINANT */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8">
-                        Turn Your Brand Into A
+                        Your Website Should Be Your Best
                         <br />
-                        <span className="text-foreground-muted">High-Performance Revenue Engine</span>
+                        <span className="text-foreground-muted">Revenue Asset.</span>
                     </h1>
 
                     {/* Sub-headline */}
                     <h2 className="text-xl md:text-2xl text-foreground-muted mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-                        Strategic design and engineering for brands that refuse to compromise on quality, authority, or growth.
+                        I partner with businesses to build high-converting, authoritative websites that reduce risk and clarify your value proposition.
                     </h2>
 
                     {/* Supporting Line - HIDDEN (Removed to reduce noise/length per user request for clarity) */}
@@ -65,10 +65,10 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Button size="lg" onClick={onContactClick}>
-                            Start a Project
+                            Discuss a Project
                         </Button>
                         <Button variant="outline" size="lg" onClick={scrollToCaseStudy}>
-                            View Case Study
+                            View Selected Work
                         </Button>
                     </div>
                 </motion.div>
