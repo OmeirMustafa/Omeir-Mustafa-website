@@ -6,33 +6,37 @@
      Calm. Heavy. Intentional. Expensive.
      ============================================ */
 
-  /* Background: Near-black */
-  --background: #09090b;
-  --background-subtle: #0c0c0f;
+  /* Background: Deep Blue-Black (Ghost) */
+  --background: #02040a; /* Darker, richer */
+  --background-subtle: #050a14;
 
   /* Foreground / Text */
-  --foreground: #fafafa;
-  --foreground-muted: #71717a;
-  --foreground-subtle: #3f3f46;
+  --foreground: #e0f2fe; /* Ghost Blue Tint */
+  --foreground-muted: #94a3b8; /* Slate 400 */
+  --foreground-subtle: #475569;
 
-  /* Single Accent: Cyan (restrained) */
-  --accent: #06b6d4;
-  --accent-muted: #0891b2;
-  --accent-glow: rgba(6, 182, 212, 0.25);
+  /* Single Accent: Electric Blue */
+  --accent: #2563eb; /* Blue 600 - Electric */
+  --accent-muted: #1d4ed8;
+  --accent-glow: rgba(37, 99, 235, 0.4); /* Stronger glow */
+
+  /* Ghost Blue Accents */
+  --ghost-blue: #cffafe;
+  --ghost-glow: rgba(207, 250, 254, 0.15);
 
   /* Card / Surface */
-  --card: #111113;
-  --card-hover: #18181b;
-  --card-border: rgba(255, 255, 255, 0.04);
-  --card-border-hover: rgba(255, 255, 255, 0.08);
+  --card: rgba(10, 15, 30, 0.6); /* Glassy Deep Blue */
+  --card-hover: rgba(15, 23, 42, 0.8);
+  --card-border: rgba(56, 189, 248, 0.1); /* Sky 400 faint */
+  --card-border-hover: rgba(56, 189, 248, 0.3); /* Electric pop */
 
   /* Muted */
-  --muted: #1c1c1f;
-  --muted-foreground: #a1a1aa;
+  --muted: #0f172a;
+  --muted-foreground: #64748b;
 
   /* Border */
-  --border: rgba(255, 255, 255, 0.06);
-  --border-hover: rgba(255, 255, 255, 0.1);
+  --border: rgba(56, 189, 248, 0.08);
+  --border-hover: rgba(56, 189, 248, 0.2);
 
   /* Ring / Focus */
   --ring: var(--accent);
@@ -52,10 +56,10 @@
   --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
 
   /* ============================================
-     GLOW (reduced - hover/focus only)
+     GLOW (Electric)
      ============================================ */
-  --glow-sm: 0 0 12px var(--accent-glow);
-  --glow-md: 0 0 24px var(--accent-glow);
+  --glow-sm: 0 0 15px var(--accent-glow);
+  --glow-md: 0 0 30px var(--accent-glow), 0 0 10px var(--ghost-glow);
 }
 
 /* ============================================
