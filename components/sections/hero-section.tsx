@@ -50,20 +50,17 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                 >
                     {/* Main headline - DOMINANT */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8">
-                        Premium Websites Built
+                        Turn Your Brand Into A
                         <br />
-                        <span className="text-foreground-muted">to Convert, Perform, and Scale</span>
+                        <span className="text-foreground-muted">High-Performance Revenue Engine</span>
                     </h1>
 
                     {/* Sub-headline */}
-                    <h2 className="text-xl md:text-2xl text-foreground-muted mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
-                        I design and develop ultra-modern, high-performance websites for brands that care about quality, credibility, and results.
+                    <h2 className="text-xl md:text-2xl text-foreground-muted mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
+                        Strategic design and engineering for brands that refuse to compromise on quality, authority, or growth.
                     </h2>
 
-                    {/* Supporting Line */}
-                    <p className="text-sm text-accent mb-12 uppercase tracking-widest font-medium">
-                        Strategy-driven design • Custom animations • Clean, scalable code
-                    </p>
+                    {/* Supporting Line - HIDDEN (Removed to reduce noise/length per user request for clarity) */}
 
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -74,6 +74,36 @@ export function AboutSection() {
                             </motion.div>
                         ))}
                     </div>
+
+                    {/* Authority Insight & Toolkit */}
+                    <div className="mt-20 border-t border-border pt-12 space-y-12">
+                        {/* Insight */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                            className="bg-muted/30 border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto"
+                        >
+                            <p className="text-lg text-foreground font-medium italic">
+                                &ldquo;A premium website isn&apos;t an expense—it&apos;s a compounding asset that separates market leaders from the noise.&rdquo;
+                            </p>
+                        </motion.div>
+
+                        {/* Toolkit */}
+                        <div className="text-center">
+                            <p className="text-sm uppercase tracking-widest text-foreground-subtle font-medium mb-4">
+                                Built with
+                            </p>
+                            <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-foreground-muted font-medium">
+                                <span>Next.js 15</span>
+                                <span>React 19</span>
+                                <span>TypeScript</span>
+                                <span>Tailwind CSS</span>
+                                <span>Framer Motion</span>
+                            </div>
+                        </div>
+                    </div>
                 </motion.div>
             </Container>
         </Section>

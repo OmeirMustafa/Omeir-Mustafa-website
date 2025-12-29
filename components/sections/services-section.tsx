@@ -62,6 +62,18 @@ export function ServicesSection() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Secondary CTA - Low Friction */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-16 text-center"
+                >
+                    <a href="mailto:omeirmustafa.work@gmail.com" className="inline-flex items-center text-foreground-muted hover:text-accent transition-colors font-medium border-b border-transparent hover:border-accent pb-0.5">
+                        Not ready to commit? Discuss a project
+                    </a>
+                </motion.div>
             </Container>
         </Section>
     );
