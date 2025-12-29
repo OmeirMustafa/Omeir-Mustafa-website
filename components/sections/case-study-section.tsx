@@ -23,7 +23,7 @@ const caseStudies: CaseStudy[] = [
         title: "Lumina Law",
         category: "Estate Planning Firm",
         description: "Complete visual clarity overhaul for a high-trust legal firm. Increased engagement by streamlining the user journey and modernizing the aesthetic.",
-        image: "/lumina-after.jpg",
+        image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
         tags: ["UI Redesign", "Next.js", "Trust Signals"]
     },
