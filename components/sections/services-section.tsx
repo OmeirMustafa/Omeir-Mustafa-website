@@ -70,8 +70,8 @@ export function ServicesSection() {
                     viewport={{ once: true }}
                     className="mt-16 text-center"
                 >
-                    <a href="mailto:omeirmustafa.work@gmail.com" className="inline-flex items-center text-foreground-muted hover:text-accent transition-colors font-medium border-b border-transparent hover:border-accent pb-0.5">
-                        Not ready to commit? Discuss a project
+                    <a href="#process" className="inline-flex items-center text-foreground-muted hover:text-accent transition-colors font-medium border-b border-transparent hover:border-accent pb-0.5">
+                        Not ready to commit? Understand the process behind the work
                     </a>
                 </motion.div>
             </Container>

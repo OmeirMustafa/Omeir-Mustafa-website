@@ -15,6 +15,7 @@ interface CaseStudy {
     image: string;
     link: string;
     tags: string[];
+    badge: "Client Project" | "Concept Case Study";
 }
 
 const caseStudies: CaseStudy[] = [
@@ -25,7 +26,8 @@ const caseStudies: CaseStudy[] = [
         description: "Problem: A confusing user journey was causing high bounce rates. Solution: A simplified, authoritative redesign that reduced friction and positioned the firm as the clear premium choice.",
         image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
-        tags: ["Trust Architecture", "Friction Reduction", "Lead Clarity"]
+        tags: ["Trust Architecture", "Friction Reduction", "Lead Clarity"],
+        badge: "Client Project"
     },
     {
         id: "anchor",
@@ -34,7 +36,8 @@ const caseStudies: CaseStudy[] = [
         description: "Problem: Generic branding failed to resonate with HNW founders. Solution: A 'dark-mode' aesthetic architecture that signals exclusivity, competence, and absolute financial seriousness.",
         image: "/anchor-preview.png",
         link: "https://financial-advisor-firm-anchor-case.vercel.app/",
-        tags: ["Post-Exit Positioning", "Credibility", "Founder UX"]
+        tags: ["Post-Exit Positioning", "Credibility", "Founder UX"],
+        badge: "Concept Case Study"
     }
 ];
 
@@ -54,6 +57,12 @@ export function CaseStudySection() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-16 md:mb-24 text-center md:text-left"
                 >
+                    <div className="flex items-center gap-4 mb-4 justify-center md:justify-start">
+                        <div className="h-px w-8 bg-accent" />
+                        <span className="text-sm font-medium tracking-widest text-accent uppercase">
+                            Selected Case Studies (Client & Concept)
+                        </span>
+                    </div>
                     <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground mb-4">
                         Selected Work
                     </h2>
@@ -62,7 +71,7 @@ export function CaseStudySection() {
                     </p>
                 </motion.div>
 
-                {/* Case Study Grid */}
+                {/* Case Study Grid - Scalable Layout (1 Featured + 2 Grid) */}
                 <div className="grid md:grid-cols-2 gap-8 md:gap-12">
                     {caseStudies.map((project, index) => (
                         <motion.a
@@ -74,22 +83,32 @@ export function CaseStudySection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: index * 0.2 }}
-                            className="group block relative"
+                            className={`group block relative ${index === 0 ? 'md:col-span-2' : 'md:col-span-1'}`}
                         >
                             {/* Card Surface */}
-                            <div className="relative rounded-2xl overflow-hidden bg-card border border-border transition-all duration-500 hover:border-accent/40 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] group-hover:-translate-y-1">
+                            <div className="relative rounded-2xl overflow-hidden bg-card border border-border transition-all duration-500 hover:border-accent/40 hover:shadow-[0_0_30px_rgba(37,99,235,0.15)] group-hover:-translate-y-1 h-full flex flex-col">
 
                                 {/* Image Container */}
-                                <div className="relative aspect-[16/10] overflow-hidden">
+                                <div className={`relative overflow-hidden ${index === 0 ? 'aspect-[21/9]' : 'aspect-[16/10]'}`}>
                                     <Image
                                         src={project.image}
                                         alt={project.title}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        sizes={index === 0 ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
                                     />
                                     {/* Overlay Gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-80" />
+
+                                    {/* Badge - Concept vs Client */}
+                                    <div className="absolute top-4 left-4 z-20">
+                                        <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md ${project.badge === "Client Project"
+                                                ? "bg-accent/20 border-accent/30 text-white"
+                                                : "bg-background/40 border-white/10 text-foreground-muted"
+                                            }`}>
+                                            {project.badge}
+                                        </span>
+                                    </div>
 
                                     {/* View Project Button (Floating) */}
                                     <div className="absolute bottom-6 right-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
@@ -100,7 +119,7 @@ export function CaseStudySection() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="p-8 pt-6">
+                                <div className="p-8 pt-6 flex-1 flex flex-col">
                                     <div className="flex items-center justify-between mb-3">
                                         <span className="text-accent text-xs font-bold uppercase tracking-widest">
                                             {project.category}
@@ -111,12 +130,12 @@ export function CaseStudySection() {
                                         {project.title}
                                     </h3>
 
-                                    <p className="text-foreground-muted text-sm leading-relaxed mb-6 line-clamp-2">
+                                    <p className="text-foreground-muted text-sm leading-relaxed mb-6 line-clamp-2 md:line-clamp-none">
                                         {project.description}
                                     </p>
 
-                                    {/* Minimal Tags */}
-                                    <div className="flex flex-wrap gap-2">
+                                    {/* Minimal Tags - Push to bottom */}
+                                    <div className="flex flex-wrap gap-2 mt-auto">
                                         {project.tags.map(tag => (
                                             <span
                                                 key={tag}

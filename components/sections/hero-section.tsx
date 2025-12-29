@@ -60,6 +60,11 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         I partner with businesses to build high-converting, authoritative websites that reduce risk and clarify your value proposition.
                     </h2>
 
+                    {/* Qualification / Grounding Line - Subtle */}
+                    <p className="text-sm font-medium tracking-widest uppercase text-foreground-subtle mb-10 opacity-80">
+                        Methodology: Strategy • UX Clarity • Intentional Positioning
+                    </p>
+
                     {/* Supporting Line - HIDDEN (Removed to reduce noise/length per user request for clarity) */}
 
                     {/* CTAs */}

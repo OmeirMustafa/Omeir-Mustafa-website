@@ -7,28 +7,36 @@
      ============================================ */
 
   /* Background: Deep Blue-Black (Ghost) */
-  --background: #02040a; /* Darker, richer */
+  --background: #02040a;
+  /* Darker, richer */
   --background-subtle: #050a14;
 
   /* Foreground / Text */
-  --foreground: #e0f2fe; /* Ghost Blue Tint */
-  --foreground-muted: #94a3b8; /* Slate 400 */
+  --foreground: #e0f2fe;
+  /* Ghost Blue Tint */
+  --foreground-muted: #94a3b8;
+  /* Slate 400 */
   --foreground-subtle: #475569;
 
   /* Single Accent: Electric Blue */
-  --accent: #2563eb; /* Blue 600 - Electric */
+  --accent: #2563eb;
+  /* Blue 600 - Electric */
   --accent-muted: #1d4ed8;
-  --accent-glow: rgba(37, 99, 235, 0.4); /* Stronger glow */
+  --accent-glow: rgba(37, 99, 235, 0.4);
+  /* Stronger glow */
 
   /* Ghost Blue Accents */
   --ghost-blue: #cffafe;
   --ghost-glow: rgba(207, 250, 254, 0.15);
 
   /* Card / Surface */
-  --card: rgba(10, 15, 30, 0.6); /* Glassy Deep Blue */
+  --card: rgba(10, 15, 30, 0.6);
+  /* Glassy Deep Blue */
   --card-hover: rgba(15, 23, 42, 0.8);
-  --card-border: rgba(56, 189, 248, 0.1); /* Sky 400 faint */
-  --card-border-hover: rgba(56, 189, 248, 0.3); /* Electric pop */
+  --card-border: rgba(56, 189, 248, 0.1);
+  /* Sky 400 faint */
+  --card-border-hover: rgba(56, 189, 248, 0.3);
+  /* Electric pop */
 
   /* Muted */
   --muted: #0f172a;
@@ -45,7 +53,7 @@
   /* ============================================
      SPACING (generous)
      ============================================ */
-  --section-padding: 8rem;
+  --section-padding: 10rem;
   --section-padding-mobile: 5rem;
 
   /* ============================================

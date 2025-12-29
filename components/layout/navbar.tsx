@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 const navLinks = [
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Selected Work", href: "#work" },
-    { name: "Process", href: "#process" },
+    { name: "Case Studies", href: "#work" },
+    { name: "How It Works", href: "#process" },
 ];
 
 interface NavbarProps {
