@@ -38,6 +38,16 @@ const caseStudies: CaseStudy[] = [
         link: "https://financial-advisor-firm-anchor-case.vercel.app/",
         tags: ["Post-Exit Positioning", "Credibility", "Founder UX"],
         badge: "Concept Case Study"
+    },
+    {
+        id: "aura",
+        title: "Aura Health",
+        category: "Clinical Authority",
+        description: "Problem: Standard medical sites feel sterile and impersonal. Solution: A warm, high-end digital experience that reduces patient anxiety and simplifies the booking journey.",
+        image: "/aura-preview.png",
+        link: "https://healthcare-clinic-conceptual-case-s.vercel.app/",
+        tags: ["Healthcare UX", "Patient Trust", "Booking Conversion"],
+        badge: "Concept Case Study"
     }
 ];
 
@@ -103,8 +113,8 @@ export function CaseStudySection() {
                                     {/* Badge - Concept vs Client */}
                                     <div className="absolute top-4 left-4 z-20">
                                         <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md ${project.badge === "Client Project"
-                                                ? "bg-accent/20 border-accent/30 text-white"
-                                                : "bg-background/40 border-white/10 text-foreground-muted"
+                                            ? "bg-accent/20 border-accent/30 text-white"
+                                            : "bg-background/40 border-white/10 text-foreground-muted"
                                             }`}>
                                             {project.badge}
                                         </span>
