@@ -17,16 +17,16 @@ const inter = Inter({
 // Site configuration - GOD-TIER POSITIONING
 const siteConfig = {
   name: "Omeir Mustafa",
-  title: "Omeir Mustafa — Premium Web Design & Development", // Updated Title
-  description: "Premium web designer and developer creating high-performance, custom websites with modern UI, animations, and SEO optimization.", // Updated Description
-  url: "https://omeir-mustafa.vercel.app/", // Updated URL
+  title: "Omeir Mustafa — Strategic Web Design for High-Trust Businesses", // Updated Title
+  description: "Custom websites designed to build trust, clarify value, and convert serious clients. Strategic UX and modern engineering for service-based businesses.", // Updated Description
+  url: "https://omeir-mustafa.vercel.app/",
   email: "omeirmustafa.work@gmail.com",
   keywords: [
-    "Web Designer", // Updated Keywords
+    "Web Designer",
     "Web Developer",
-    "Premium Website Design",
-    "UI UX Designer",
-    "Portfolio Website",
+    "High-Trust Web Design",
+    "Conversion Strategy",
+    "Service Business Website",
   ],
 };
 

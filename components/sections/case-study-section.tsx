@@ -23,30 +23,30 @@ const caseStudies: CaseStudy[] = [
         id: "lumina",
         title: "Lumina Law",
         category: "Visual Trust & Clarity",
-        description: "Problem: A confusing user journey was causing high bounce rates. Solution: A simplified, authoritative redesign that reduced friction and positioned the firm as the clear premium choice.",
+        description: "Lumina Law required a modern website that communicated credibility and professionalism while making it easy for prospective clients to understand services and initiate contact. Intended Outcome: Reduce hesitation, improve clarity, and help potential clients feel confident enough to make first contact.",
         image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
-        tags: ["Trust Architecture", "Friction Reduction", "Lead Clarity"],
+        tags: ["Client Project"],
         badge: "Client Project"
     },
     {
         id: "anchor",
         title: "Anchor Capital",
         category: "Authority Positioning",
-        description: "Problem: Generic branding failed to resonate with HNW founders. Solution: A 'dark-mode' aesthetic architecture that signals exclusivity, competence, and absolute financial seriousness.",
+        description: "Generic branding failed to resonate with HNW founders. Solution: A 'dark-mode' aesthetic architecture that signals exclusivity, competence, and absolute financial seriousness.",
         image: "/anchor-preview.png",
         link: "https://financial-advisor-firm-anchor-case.vercel.app/",
-        tags: ["Post-Exit Positioning", "Credibility", "Founder UX"],
+        tags: ["Concept Case Study"],
         badge: "Concept Case Study"
     },
     {
         id: "aura",
         title: "Aura Health",
         category: "Clinical Authority",
-        description: "Problem: Standard medical sites feel sterile and impersonal. Solution: A warm, high-end digital experience that reduces patient anxiety and simplifies the booking journey.",
+        description: "Standard medical sites feel sterile and impersonal. Solution: A warm, high-end digital experience that reduces patient anxiety and simplifies the booking journey.",
         image: "/aura-preview.png",
         link: "https://healthcare-clinic-conceptual-case-s.vercel.app/",
-        tags: ["Healthcare UX", "Patient Trust", "Booking Conversion"],
+        tags: ["Concept Case Study"],
         badge: "Concept Case Study"
     }
 ];
@@ -70,14 +70,14 @@ export function CaseStudySection() {
                     <div className="flex items-center gap-4 mb-4 justify-center md:justify-start">
                         <div className="h-px w-8 bg-accent" />
                         <span className="text-sm font-medium tracking-widest text-accent uppercase">
-                            Selected Case Studies (Client & Concept)
+                            Selected Case Studies
                         </span>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground mb-4">
-                        Selected Work
+                        Selected Case Studies
                     </h2>
                     <p className="text-lg md:text-xl text-foreground-muted max-w-2xl">
-                        Digital experiences engineered for authority, performance, and conversion.
+                        Real client work and strategic concept studies focused on business clarity, trust, and conversion.
                     </p>
                 </motion.div>
 
@@ -161,12 +161,16 @@ export function CaseStudySection() {
                     ))}
                 </div>
 
-                {/* Secondary Call to Action */}
-                <div className="mt-20 text-center">
-                    <Button variant="outline" className="group border-border hover:border-accent/50 text-foreground-muted hover:text-foreground">
-                        <span className="flex items-center gap-2">
-                            More projects coming soon
-                        </span>
+                {/* Secondary Call to Action - MID PAGE REASSURANCE */}
+                <div className="mt-24 py-12 border-t border-border/50 text-center">
+                    <h3 className="text-xl md:text-2xl font-heading font-medium text-foreground mb-4">
+                        Not sure if this is the right fit?
+                    </h3>
+                    <p className="text-foreground-muted mb-8 max-w-lg mx-auto">
+                        See how I approach projects and whether my process aligns with your goals.
+                    </p>
+                    <Button variant="outline" size="lg" className="border-border hover:border-accent/50 text-foreground" onClick={() => document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })}>
+                        Understand the Process
                     </Button>
                 </div>
             </Container>

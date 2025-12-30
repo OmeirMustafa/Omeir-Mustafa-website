@@ -33,6 +33,15 @@ export default function Home() {
       {/* Semantic Structure: Header (Hero) -> Main (Content) */}
       <HeroSection onContactClick={scrollToContact} />
 
+      {/* Trust Strip - Above Fold */}
+      <div className="border-b border-border bg-background-subtle/50 py-4">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-xs md:text-sm text-foreground-muted font-medium tracking-wide">
+            Designed for service businesses where trust determines conversion — legal, financial, healthcare, and professional services.
+          </p>
+        </div>
+      </div>
+
       <main id="main-content" role="main" className="bg-background">
         <AboutSection />
         <ServicesSection />

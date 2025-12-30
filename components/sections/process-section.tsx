@@ -7,23 +7,18 @@ import { motion } from "framer-motion";
 const steps = [
     {
         number: "01",
-        title: "Diagnosis & Strategy",
-        description: "We identify the friction points in your current presence and define exactly what success looks like for your business.",
+        title: "Discovery & Alignment",
+        description: "Understand the business, audience, constraints, and success criteria before design begins.",
     },
     {
         number: "02",
-        title: "Authority Architecture",
-        description: "I design a system that positions you as the market leader, removing doubt and validating your pricing.",
+        title: "Strategy & Execution",
+        description: "Translate business goals into structure, UX decisions, and a scalable technical build.",
     },
     {
         number: "03",
-        title: "Commercial Build",
-        description: "Development focused on stability and speed. No bloated code, just a lean asset ready for traffic.",
-    },
-    {
-        number: "04",
-        title: "Deployment & Handover",
-        description: "A stress-free launch. I ensure you own your assets and understand how to use them.",
+        title: "Launch & Refinement",
+        description: "Deliver a production-ready website with clarity, performance, and long-term maintainability.",
     },
 ];
 
@@ -45,7 +40,7 @@ export function ProcessSection() {
                 </motion.div>
 
                 {/* Steps - simple grid, no icons */}
-                <div className="grid md:grid-cols-4 gap-12 md:gap-8">
+                <div className="grid md:grid-cols-3 gap-12 md:gap-8">
                     {steps.map((step, index) => (
                         <motion.div
                             key={step.number}

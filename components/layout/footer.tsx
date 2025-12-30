@@ -52,10 +52,16 @@ export function Footer() {
                     </ul>
                 </nav>
 
-                {/* Copyright */}
-                <p className="text-xs text-foreground-subtle">
-                    © {currentYear} Omeir Mustafa. All rights reserved.
-                </p>
+                {/* Copyright + Tech Stack */}
+                <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4 mt-8 pt-8 border-t border-border/50">
+                    <p className="text-xs text-foreground-subtle">
+                        © {currentYear} Omeir Mustafa. All rights reserved.
+                    </p>
+                    {/* Quiet Tech Disclosure */}
+                    <p className="text-[10px] text-foreground-subtle/50 uppercase tracking-widest font-medium">
+                        Tools & Stack: Next.js • React • Tailwind CSS • Vercel
+                    </p>
+                </div>
             </Container>
         </footer>
     );

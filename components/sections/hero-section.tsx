@@ -49,31 +49,28 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                     }}
                 >
                     {/* Main headline - DOMINANT */}
+                    {/* Main headline - DOMINANT */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8">
-                        Your Website Should Be Your Best
-                        <br />
-                        <span className="text-foreground-muted">Revenue Asset.</span>
+                        Websites engineered to earn trust, clarify value, and convert serious clients
                     </h1>
 
                     {/* Sub-headline */}
-                    <h2 className="text-xl md:text-2xl text-foreground-muted mb-8 max-w-3xl mx-auto leading-relaxed font-medium">
-                        I partner with businesses to build high-converting, authoritative websites that reduce risk and clarify your value proposition.
+                    <h2 className="text-xl md:text-2xl text-foreground-muted mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
+                        I design and build custom websites for service-based businesses where credibility, clarity, and decision confidence directly impact revenue.
                     </h2>
 
-                    {/* Qualification / Grounding Line - Subtle */}
-                    <p className="text-sm font-medium tracking-widest uppercase text-foreground-subtle mb-10 opacity-80">
-                        Methodology: Strategy • UX Clarity • Intentional Positioning
+                    {/* Trust Anchor Line */}
+                    <p className="text-sm font-medium tracking-widest uppercase text-foreground-subtle mb-10 opacity-90">
+                        Strategic UX • Conversion-focused structure • Modern, maintainable engineering
                     </p>
-
-                    {/* Supporting Line - HIDDEN (Removed to reduce noise/length per user request for clarity) */}
 
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <Button size="lg" onClick={onContactClick}>
-                            Discuss a Project
+                            Start a Project
                         </Button>
                         <Button variant="outline" size="lg" onClick={scrollToCaseStudy}>
-                            View Selected Work
+                            View Case Studies
                         </Button>
                     </div>
                 </motion.div>
