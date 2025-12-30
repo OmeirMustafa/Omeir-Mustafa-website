@@ -20,46 +20,51 @@ export function Footer() {
         <footer
             role="contentinfo"
             aria-label="Site footer"
-            className="border-t border-border bg-background-subtle py-12 md:py-16"
+            className="border-t border-white/10 bg-background-subtle py-12 md:py-16 relative overflow-hidden"
         >
-            <Container className="flex flex-col items-center justify-between gap-8 md:flex-row">
-                {/* Brand */}
-                <div className="flex flex-col items-center md:items-start gap-2">
-                    <span className="text-xl font-heading font-semibold text-foreground">
-                        Omeir Mustafa
-                    </span>
-                    <p className="text-sm text-foreground-muted">
-                        Premium Web Design & Development
-                    </p>
+            {/* Subtle top glow for border emphasis */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+
+            <Container>
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-12">
+                    {/* Brand */}
+                    <div className="flex flex-col items-center md:items-start gap-3">
+                        <span className="text-2xl font-heading font-bold text-foreground tracking-tight">
+                            Omeir Mustafa
+                        </span>
+                        <p className="text-sm text-foreground-muted font-medium tracking-wide border-l-2 border-accent/50 pl-3">
+                            Premium Web Design & Development
+                        </p>
+                    </div>
+
+                    {/* Social Links */}
+                    <nav aria-label="Social media links">
+                        <ul className="flex items-center gap-8">
+                            {socialLinks.map((link) => (
+                                <li key={link.name}>
+                                    <a
+                                        href={link.href}
+                                        target={link.href.startsWith("mailto") ? undefined : "_blank"}
+                                        rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                                        aria-label={link.ariaLabel}
+                                        className="text-sm font-medium text-foreground-muted hover:text-accent transition-all duration-300 hover:tracking-wider uppercase"
+                                    >
+                                        {link.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
                 </div>
 
-                {/* Social Links */}
-                <nav aria-label="Social media links">
-                    <ul className="flex gap-6 text-sm text-foreground-muted">
-                        {socialLinks.map((link) => (
-                            <li key={link.name}>
-                                <a
-                                    href={link.href}
-                                    target={link.href.startsWith("mailto") ? undefined : "_blank"}
-                                    rel={link.href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                                    aria-label={link.ariaLabel}
-                                    className="hover:text-accent transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
-                                >
-                                    {link.name}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-
                 {/* Copyright + Tech Stack */}
-                <div className="flex flex-col md:flex-row items-center justify-between w-full gap-4 mt-8 pt-8 border-t border-border/50">
-                    <p className="text-xs text-foreground-subtle">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 border-t border-white/5">
+                    <p className="text-xs text-foreground-subtle/70">
                         © {currentYear} Omeir Mustafa. All rights reserved.
                     </p>
                     {/* Quiet Tech Disclosure */}
-                    <p className="text-[10px] text-foreground-subtle/50 uppercase tracking-widest font-medium">
-                        Tools & Stack: Next.js • React • Tailwind CSS • Vercel
+                    <p className="text-[10px] text-foreground-subtle/40 uppercase tracking-[0.2em] font-medium">
+                        Crafted with Next.js • Tailwind • Vercel
                     </p>
                 </div>
             </Container>

@@ -11,7 +11,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ onContactClick }: HeroSectionProps) {
     const scrollToCaseStudy = () => {
-        const caseStudy = document.querySelector("#case-study");
+        const caseStudy = document.querySelector("#work"); // Corrected ID
         if (caseStudy) {
             caseStudy.scrollIntoView({ behavior: "smooth" });
         }
