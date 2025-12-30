@@ -64,7 +64,7 @@ export function ServicesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className="group relative p-8 md:p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-accent/30 transition-colors duration-500 overflow-hidden"
+                            className="group relative p-8 md:p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-accent/30 transition-colors duration-500 overflow-hidden will-change-transform"
                         >
                             {/* Hover Gradient Reveal */}
                             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
