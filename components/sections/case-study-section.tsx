@@ -16,6 +16,7 @@ interface CaseStudy {
     link: string;
     tags: string[];
     badge: "Client Project" | "Concept Case Study";
+    strategicTradeoffs?: string[]; // New optional field
 }
 
 const caseStudies: CaseStudy[] = [
@@ -27,7 +28,12 @@ const caseStudies: CaseStudy[] = [
         image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
         tags: ["Client Project"],
-        badge: "Client Project"
+        badge: "Client Project",
+        strategicTradeoffs: [
+            "In this project, visual restraint was prioritized over trend-driven design to avoid undermining professional credibility.",
+            "Animations were intentionally limited to reduce distraction and keep focus on clarity, readability, and trust.",
+            "The structure favored immediate service comprehension over extended brand storytelling to support first-contact decision-making."
+        ]
     },
     {
         id: "anchor",
@@ -144,6 +150,22 @@ export function CaseStudySection() {
                                         {project.description}
                                     </p>
 
+                                    {/* Strategic Trade-offs Subsection (Only if present) */}
+                                    {project.strategicTradeoffs && (
+                                        <div className="mt-4 mb-6 pt-4 border-t border-border/50">
+                                            <h4 className="text-xs font-bold uppercase tracking-wider text-foreground-subtle mb-3">
+                                                Strategic Trade-Offs Considered
+                                            </h4>
+                                            <ul className="space-y-2">
+                                                {project.strategicTradeoffs.map((tradeoff, i) => (
+                                                    <li key={i} className="text-xs text-foreground-muted/80 leading-relaxed">
+                                                        • {tradeoff}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
                                     {/* Minimal Tags - Push to bottom */}
                                     <div className="flex flex-wrap gap-2 mt-auto">
                                         {project.tags.map(tag => (
@@ -164,13 +186,13 @@ export function CaseStudySection() {
                 {/* Secondary Call to Action - MID PAGE REASSURANCE */}
                 <div className="mt-24 py-12 border-t border-border/50 text-center">
                     <h3 className="text-xl md:text-2xl font-heading font-medium text-foreground mb-4">
-                        Not sure if this is the right fit?
+                        Considering a redesign but want clarity first?
                     </h3>
                     <p className="text-foreground-muted mb-8 max-w-lg mx-auto">
-                        See how I approach projects and whether my process aligns with your goals.
+                        If you’re unsure whether a full project makes sense, we can start with a short conversation to assess fit, constraints, and realistic next steps.
                     </p>
-                    <Button variant="outline" size="lg" className="border-border hover:border-accent/50 text-foreground" onClick={() => document.getElementById("process")?.scrollIntoView({ behavior: "smooth" })}>
-                        Understand the Process
+                    <Button variant="outline" size="lg" className="border-border hover:border-accent/50 text-foreground" onClick={() => document.getElementById("contact-cta")?.scrollIntoView({ behavior: "smooth" })}>
+                        See If This Is a Fit
                     </Button>
                 </div>
             </Container>

@@ -32,6 +32,11 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         Start a Project
                     </Button>
 
+                    <p className="mt-6 text-xs text-foreground-subtle max-w-md mx-auto opacity-70">
+                        After reaching out, you’ll receive a response outlining next steps, timelines, and whether the project is a good mutual fit — even if the answer is no.
+                    </p>
+
+
 
                 </motion.div>
             </Container>

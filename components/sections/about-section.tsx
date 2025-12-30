@@ -82,18 +82,21 @@ export function AboutSection() {
                                 <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
                                     Who This Is For
                                 </h3>
+                                <p className="text-sm text-foreground-muted mb-4 uppercase tracking-widest font-medium opacity-80">
+                                    Best suited for service-based businesses that:
+                                </p>
                                 <ul className="space-y-3 text-foreground-muted">
                                     <li className="flex items-start gap-2">
                                         <span className="text-accent mt-1">✓</span>
-                                        <span>Service businesses selling high-ticket offers ($5k+)</span>
+                                        <span>Rely on trust and credibility to convert leads</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <span className="text-accent mt-1">✓</span>
-                                        <span>Consultants who need to justify premium pricing</span>
+                                        <span>Sell expertise, judgment, or professional services rather than commodities</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <span className="text-accent mt-1">✓</span>
-                                        <span>Founders aiming to exit or raise capital</span>
+                                        <span>Need clarity and structure more than visual flash</span>
                                     </li>
                                 </ul>
                             </div>
@@ -101,18 +104,21 @@ export function AboutSection() {
                                 <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
                                     Who This Is Not For
                                 </h3>
+                                <p className="text-sm text-foreground-muted mb-4 uppercase tracking-widest font-medium opacity-80">
+                                    Not a fit for:
+                                </p>
                                 <ul className="space-y-3 text-foreground-muted">
                                     <li className="flex items-start gap-2">
                                         <span className="text-foreground-subtle mt-1">×</span>
-                                        <span>Concept-stage startups looking for a "quick MVP"</span>
+                                        <span>Quick template builds or one-week turnaround projects</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <span className="text-foreground-subtle mt-1">×</span>
-                                        <span>Projects where "cheap" is the main priority</span>
+                                        <span>High-volume, low-budget engagements</span>
                                     </li>
                                     <li className="flex items-start gap-2">
                                         <span className="text-foreground-subtle mt-1">×</span>
-                                        <span>Those who view design as "just decoration"</span>
+                                        <span>Brands looking for aggressive, hype-driven, or trend-led design</span>
                                     </li>
                                 </ul>
                             </div>

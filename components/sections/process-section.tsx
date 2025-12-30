@@ -65,6 +65,13 @@ export function ProcessSection() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Expectation Setting - Trust Anchor */}
+                <div className="mt-16 text-center border-t border-border/30 pt-8">
+                    <p className="text-sm md:text-base text-foreground-muted italic max-w-2xl mx-auto">
+                        Throughout the process, decisions are documented, explained, and aligned with business priorities — not personal design preference.
+                    </p>
+                </div>
             </Container>
         </Section>
     );

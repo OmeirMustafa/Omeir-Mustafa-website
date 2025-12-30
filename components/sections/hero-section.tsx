@@ -51,17 +51,17 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                     {/* Main headline - DOMINANT */}
                     {/* Main headline - DOMINANT */}
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8">
-                        Websites engineered to earn trust, clarify value, and convert serious clients
+                        Websites designed for high-trust service businesses where credibility drives conversion
                     </h1>
 
                     {/* Sub-headline */}
                     <h2 className="text-xl md:text-2xl text-foreground-muted mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
-                        I design and build custom websites for service-based businesses where credibility, clarity, and decision confidence directly impact revenue.
+                        I help professional service firms turn complex offerings into clear, confidence-building websites that support real business decisions.
                     </h2>
 
                     {/* Trust Anchor Line */}
                     <p className="text-sm font-medium tracking-widest uppercase text-foreground-subtle mb-10 opacity-90">
-                        Strategic UX • Conversion-focused structure • Modern, maintainable engineering
+                        Particularly effective for legal, financial, healthcare, and advisory services.
                     </p>
 
                     {/* CTAs */}

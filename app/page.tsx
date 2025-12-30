@@ -10,6 +10,7 @@ import { CaseStudySection } from "@/components/sections/case-study-section";
 import { ServicesSection } from "@/components/sections/services-section";
 import { ProcessSection } from "@/components/sections/process-section";
 import { ContactCTASection } from "@/components/sections/contact-cta-section";
+import { ClientExperienceSection } from "@/components/sections/client-experience-section";
 
 export default function Home() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -46,6 +47,7 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <CaseStudySection />
+        <ClientExperienceSection />
         <ProcessSection />
         <ContactCTASection onContactClick={openContactModal} />
       </main>
