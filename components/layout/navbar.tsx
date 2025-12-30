@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -19,53 +18,6 @@ interface NavbarProps {
     onContactClick: () => void;
 }
 
-// Animated nav link with active state indicator
-function NavLink({
-    href,
-    children,
-    isActive,
-    onClick
-}: {
-    href: string;
-    children: React.ReactNode;
-    isActive: boolean;
-    onClick: (e: React.MouseEvent<HTMLAnchorElement>) => void;
-}) {
-    return (
-        <motion.a
-            href={href}
-            onClick={onClick}
-            className={cn(
-                "relative text-sm font-medium transition-colors duration-200 cursor-pointer py-1",
-                isActive ? "text-foreground" : "text-foreground-muted hover:text-foreground"
-            )}
-            whileHover="hover"
-        >
-            {children}
-            {/* Active Indicator */}
-            {isActive && (
-                <motion.span
-                    layoutId="activeNav"
-                    className="absolute bottom-0 left-0 w-full h-px bg-accent"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-            )}
-
-            {/* Hover Indicator (only if not active) */}
-            {!isActive && (
-                <motion.span
-                    className="absolute bottom-0 left-0 h-px bg-accent"
-                    initial={{ width: 0 }}
-                    variants={{
-                        hover: { width: "100%" },
-                    }}
-                    transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                />
-            )}
-        </motion.a>
-    );
-}
-
 export function Navbar({ onContactClick }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -73,11 +25,10 @@ export function Navbar({ onContactClick }: NavbarProps) {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
+            setIsScrolled(window.scrollY > 50);
 
-            // Active section detection
             const sections = navLinks.map(link => link.href.substring(1));
-            const scrollPosition = window.scrollY + 100; // Offset
+            const scrollPosition = window.scrollY + 150;
 
             for (const section of sections) {
                 const element = document.getElementById(section);
@@ -86,15 +37,13 @@ export function Navbar({ onContactClick }: NavbarProps) {
                     (element.offsetTop + element.offsetHeight) > scrollPosition
                 ) {
                     setActiveSection("#" + section);
-                    return; // Found the section
+                    return;
                 }
             }
         };
 
-        window.addEventListener("scroll", handleScroll);
-        // Initial check
+        window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
-
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -112,123 +61,117 @@ export function Navbar({ onContactClick }: NavbarProps) {
         <motion.header
             initial={{ y: -100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={cn(
-                "fixed top-0 z-40 w-full transition-all duration-300",
-                isScrolled
-                    ? "glass border-b border-border"
-                    : "bg-transparent"
-            )}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed top-0 z-50 w-full flex justify-center pt-4 md:pt-6 px-4"
         >
-            <Container className="flex h-16 items-center justify-between">
-                {/* Logo with subtle hover effect */}
-                <motion.div whileHover={{ x: 2 }} transition={{ duration: 0.15 }}>
-                    <Link
-                        href="/"
-                        onClick={() => {
-                            window.scrollTo({ top: 0, behavior: "smooth" });
-                            setActiveSection("");
-                        }}
-                        className="text-xl font-heading font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-200"
-                    >
-                        Omeir Mustafa
-                    </Link>
-                </motion.div>
+            {/* Floating Island Container */}
+            <nav
+                className={cn(
+                    "relative flex items-center justify-between gap-4 md:gap-8 px-4 md:px-6 py-3 rounded-full transition-all duration-500",
+                    isScrolled
+                        ? "bg-background/70 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+                        : "bg-transparent"
+                )}
+            >
+                {/* Logo */}
+                <Link
+                    href="/"
+                    onClick={() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                        setActiveSection("");
+                    }}
+                    className="text-lg font-heading font-semibold tracking-tight text-foreground hover:text-accent transition-colors duration-300 whitespace-nowrap"
+                >
+                    Omeir Mustafa
+                </Link>
 
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-8">
+                {/* Desktop Nav Links */}
+                <div className="hidden md:flex items-center gap-1">
                     {navLinks.map((link) => (
-                        <NavLink
+                        <a
                             key={link.name}
                             href={link.href}
-                            isActive={activeSection === link.href}
                             onClick={(e) => handleNavClick(e, link.href)}
+                            className={cn(
+                                "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
+                                activeSection === link.href
+                                    ? "text-foreground"
+                                    : "text-foreground-muted hover:text-foreground"
+                            )}
                         >
-                            {link.name}
-                        </NavLink>
+                            {/* Active Pill Background */}
+                            {activeSection === link.href && (
+                                <motion.span
+                                    layoutId="activePill"
+                                    className="absolute inset-0 bg-white/10 rounded-full"
+                                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                />
+                            )}
+                            <span className="relative z-10">{link.name}</span>
+                        </a>
                     ))}
-                    <Button size="sm" onClick={onContactClick}>
-                        Contact
-                    </Button>
-                </nav>
+                </div>
+
+                {/* Contact Button */}
+                <Button size="sm" onClick={onContactClick} className="hidden md:inline-flex">
+                    Contact
+                </Button>
 
                 {/* Mobile Toggle */}
                 <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="md:hidden text-foreground p-2 hover:bg-muted rounded-lg transition-colors"
+                    whileTap={{ scale: 0.9 }}
+                    className="md:hidden text-foreground p-2 -mr-2"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle menu"
                 >
-                    <AnimatePresence mode="wait">
+                    <AnimatePresence mode="wait" initial={false}>
                         {isOpen ? (
-                            <motion.div
-                                key="close"
-                                initial={{ rotate: -90, opacity: 0 }}
-                                animate={{ rotate: 0, opacity: 1 }}
-                                exit={{ rotate: 90, opacity: 0 }}
-                                transition={{ duration: 0.15 }}
-                            >
-                                <X size={24} />
+                            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                                <X size={22} />
                             </motion.div>
                         ) : (
-                            <motion.div
-                                key="menu"
-                                initial={{ rotate: 90, opacity: 0 }}
-                                animate={{ rotate: 0, opacity: 1 }}
-                                exit={{ rotate: -90, opacity: 0 }}
-                                transition={{ duration: 0.15 }}
-                            >
-                                <Menu size={24} />
+                            <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                                <Menu size={22} />
                             </motion.div>
                         )}
                     </AnimatePresence>
                 </motion.button>
-            </Container>
+            </nav>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu - Full Screen Overlay */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="md:hidden glass border-b border-border overflow-hidden"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 top-20 bg-background/95 backdrop-blur-xl z-40 md:hidden"
                     >
-                        <Container className="flex flex-col gap-4 py-8">
+                        <div className="flex flex-col items-center justify-center h-full gap-8">
                             {navLinks.map((link, index) => (
                                 <motion.a
                                     key={link.name}
                                     href={link.href}
                                     onClick={(e) => handleNavClick(e, link.href)}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: index * 0.1, duration: 0.3 }}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -20 }}
+                                    transition={{ delay: index * 0.1 }}
                                     className={cn(
-                                        "text-lg font-medium transition-colors cursor-pointer",
-                                        activeSection === link.href ? "text-accent" : "text-foreground-muted hover:text-foreground"
+                                        "text-3xl font-heading font-medium",
+                                        activeSection === link.href ? "text-accent" : "text-foreground-muted"
                                     )}
                                 >
                                     {link.name}
                                 </motion.a>
                             ))}
-                            <motion.div
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.3, duration: 0.3 }}
-                            >
-                                <Button
-                                    className="w-full"
-                                    onClick={() => {
-                                        setIsOpen(false);
-                                        onContactClick();
-                                    }}
-                                >
+                            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+                                <Button size="lg" onClick={() => { setIsOpen(false); onContactClick(); }}>
                                     Contact
                                 </Button>
                             </motion.div>
-                        </Container>
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>
