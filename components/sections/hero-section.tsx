@@ -50,29 +50,49 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                 >
                     {/* Main headline - DOMINANT */}
                     {/* Main headline - DOMINANT */}
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-[-0.02em] mb-8"
+                    >
                         Websites designed for high-trust service businesses where credibility drives conversion
-                    </h1>
+                    </motion.h1>
 
                     {/* Sub-headline */}
-                    <h2 className="text-xl md:text-2xl text-foreground-muted mb-6 max-w-3xl mx-auto leading-relaxed font-medium">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-xl md:text-2xl text-foreground-muted mb-6 max-w-3xl mx-auto leading-relaxed font-medium"
+                    >
                         I help professional service firms turn complex offerings into clear, confidence-building websites that support real business decisions.
-                    </h2>
+                    </motion.h2>
 
                     {/* Trust Anchor Line */}
-                    <p className="text-sm font-medium tracking-widest uppercase text-foreground-subtle mb-10 opacity-90">
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.9 }}
+                        transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-sm font-medium tracking-widest uppercase text-foreground-subtle mb-10"
+                    >
                         Particularly effective for legal, financial, healthcare, and advisory services.
-                    </p>
+                    </motion.p>
 
                     {/* CTAs */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
+                    >
                         <Button size="lg" onClick={onContactClick}>
                             Start a Project
                         </Button>
                         <Button variant="outline" size="lg" onClick={scrollToCaseStudy}>
                             View Case Studies
                         </Button>
-                    </div>
+                    </motion.div>
                 </motion.div>
             </Container>
         </Section>

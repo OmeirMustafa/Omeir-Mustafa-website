@@ -50,7 +50,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             : {
                 y: -2,
                 boxShadow: variant === "primary"
-                    ? "0 0 20px rgba(6, 182, 212, 0.15)"
+                    ? "var(--glow-sm)"
                     : undefined,
             };
 
