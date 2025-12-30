@@ -2,142 +2,164 @@
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { motion } from "framer-motion";
-import { Layout, Zap, Sparkles } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Layout, Zap, Sparkles, Check, X } from "lucide-react";
+import { useRef } from "react";
 
 export function AboutSection() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"],
+    });
+
+    const yParallax = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
     const traits = [
         {
             icon: Layout,
-            title: "Custom-Built",
-            description: "No templates, no shortcuts.",
+            title: "Custom-Built Architecture",
+            description: "No templates. No bloat. Every line of code is written to serve your specific business logic.",
         },
         {
             icon: Zap,
-            title: "Performance-First",
-            description: "Optimized for speed, SEO, and scalability.",
+            title: "Performance-First Core",
+            description: "Engineered for sub-second loads, perfect Lighthouse scores, and instant user interaction.",
         },
         {
             icon: Sparkles,
-            title: "Detail-Obsessed",
-            description: "Micro-interactions, motion, and polish.",
+            title: "Premium Micro-Interactions",
+            description: "Subtle, physics-based motion that signals quality without distracting from the message.",
         },
     ];
 
     return (
-        <Section id="about" className="bg-background-subtle">
+        <Section id="about" className="bg-background relative overflow-hidden">
+            {/* Ultra-Subtle Background Elements */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
+
             <Container>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-4xl mx-auto text-center"
-                >
-                    <h2 className="text-3xl md:text-5xl font-heading font-semibold text-foreground mb-8">
-                        Design With Intention.
-                        <br />
-                        <span className="text-foreground-muted">Development With Commercial Purpose.</span>
-                    </h2>
+                <div ref={containerRef} className="relative z-10">
 
-                    <div className="space-y-6 text-lg md:text-xl text-foreground-muted leading-relaxed mb-16">
-                        <p>
-                            I&apos;m Omeir. I help consultants, agencies, and service businesses turn their websites into assets that actually work.
-                        </p>
-                        <p>
-                            Most websites are treated as digital business cards. That is a missed opportunity. Your website should be your hardest-working employee—validating your pricing, answering objections, and closing deals while you sleep.
-                        </p>
-                        <p className="font-medium text-foreground">
-                            I don&apos;t just write code. I engineer clarity, trust, and revenue opportunity.
-                        </p>
-                    </div>
+                    {/* 1. Header Block - Editorial Style */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="mb-24 md:mb-32"
+                    >
+                        <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-foreground tracking-tight leading-[1.1] mb-8">
+                            Design With Intention. <br />
+                            <span className="text-foreground-muted opacity-60">Development With Purpose.</span>
+                        </h2>
 
-                    <div className="grid md:grid-cols-3 gap-8 border-t border-border pt-12">
+                        <div className="grid md:grid-cols-2 gap-12 md:gap-24">
+                            <div className="text-lg text-foreground-muted leading-relaxed">
+                                <p className="mb-6">
+                                    I help consultants, agencies, and service firms turn their websites into high-performance assets.
+                                </p>
+                                <p>
+                                    Most sites are treated as digital business cards—passive, static, and forgettable. I build revenue engines that validate pricing, handle objections, and close deals while you sleep.
+                                </p>
+                            </div>
+                            <div className="flex flex-col justify-end">
+                                <p className="text-xl md:text-2xl font-medium text-foreground border-l-2 border-accent pl-6 py-2">
+                                    "I don't just write code. I engineer clarity, trust, and revenue opportunity."
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* 2. Bento Grid Traits - Glassmorphic Cards */}
+                    <div className="grid md:grid-cols-3 gap-6 mb-32">
                         {traits.map((trait, index) => (
                             <motion.div
                                 key={trait.title}
-                                initial={{ opacity: 0, y: 20 }}
+                                style={{ y: index % 2 === 0 ? 0 : yParallax }} // Slight parallax on middle card? Or staggering
+                                initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1, duration: 0.6 }}
-                                className="flex flex-col items-center"
+                                transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                className="group p-8 rounded-3xl bg-background-subtle border border-white/5 hover:border-accent/20 transition-all duration-500 relative overflow-hidden"
                             >
-                                <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center mb-4">
-                                    <trait.icon size={20} className="text-accent" />
+                                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                                <div className="w-14 h-14 rounded-2xl bg-muted border border-white/10 flex items-center justify-center mb-6 text-accent group-hover:scale-110 transition-transform duration-500 relative z-10">
+                                    <trait.icon size={26} strokeWidth={1.5} />
                                 </div>
-                                <h3 className="text-lg font-heading font-semibold text-foreground mb-2">
+                                <h3 className="text-xl font-heading font-semibold text-foreground mb-3 relative z-10">
                                     {trait.title}
                                 </h3>
-                                <p className="text-foreground-muted text-sm">
+                                <p className="text-foreground-muted text-sm leading-relaxed relative z-10">
                                     {trait.description}
                                 </p>
                             </motion.div>
                         ))}
                     </div>
 
-                    {/* Trust Anchors - Who This Is For */}
-                    <div className="mt-20 border-t border-border pt-12">
-                        <div className="grid md:grid-cols-2 gap-12 text-left">
-                            <div>
-                                <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
-                                    Who This Is For
-                                </h3>
-                                <p className="text-sm text-foreground-muted mb-4 uppercase tracking-widest font-medium opacity-80">
-                                    Best suited for service-based businesses that:
-                                </p>
-                                <ul className="space-y-3 text-foreground-muted">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-accent mt-1">✓</span>
-                                        <span>Rely on trust and credibility to convert leads</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-accent mt-1">✓</span>
-                                        <span>Sell expertise, judgment, or professional services rather than commodities</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-accent mt-1">✓</span>
-                                        <span>Need clarity and structure more than visual flash</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
-                                    Who This Is Not For
-                                </h3>
-                                <p className="text-sm text-foreground-muted mb-4 uppercase tracking-widest font-medium opacity-80">
-                                    Not a fit for:
-                                </p>
-                                <ul className="space-y-3 text-foreground-muted">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-foreground-subtle mt-1">×</span>
-                                        <span>Quick template builds or one-week turnaround projects</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-foreground-subtle mt-1">×</span>
-                                        <span>High-volume, low-budget engagements</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-foreground-subtle mt-1">×</span>
-                                        <span>Brands looking for aggressive, hype-driven, or trend-led design</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        {/* Authority Insight */}
+                    {/* 3. The "Filter" - High Contrast Comparison */}
+                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
+                        {/* Who This Is For - Dark/Premium */}
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-muted/30 border border-border/50 rounded-2xl p-8 max-w-2xl mx-auto mt-16 text-center"
+                            transition={{ duration: 0.8 }}
+                            className="bg-gradient-to-br from-background-subtle to-background border border-accent/20 rounded-3xl p-8 md:p-10 relative overflow-hidden"
                         >
-                            <p className="text-lg text-foreground font-medium italic">
-                                &ldquo;If your website confuses your visitors, you are voluntarily lowering your revenue. Clarity is the ultimate competitive advantage.&rdquo;
-                            </p>
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 blur-[60px] rounded-full" />
+
+                            <h3 className="text-2xl font-heading font-semibold text-foreground mb-6 flex items-center gap-3">
+                                <div className="w-2 h-8 bg-accent rounded-full" />
+                                Who This Is For
+                            </h3>
+                            <ul className="space-y-4">
+                                {[
+                                    "Businesses selling expertise, not commodities",
+                                    "Leaders who value clarity over decorative fluff",
+                                    "Companies ready to invest in a long-term asset"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-foreground-muted">
+                                        <div className="mt-1 p-0.5 rounded-full bg-accent/20 text-accent">
+                                            <Check size={12} strokeWidth={3} />
+                                        </div>
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+
+                        {/* Who This Is Not For - Muted/Standard */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="bg-transparent border border-white/5 rounded-3xl p-8 md:p-10 opacity-70 hover:opacity-100 transition-opacity duration-500"
+                        >
+                            <h3 className="text-2xl font-heading font-semibold text-foreground-muted mb-6 flex items-center gap-3">
+                                <div className="w-2 h-8 bg-foreground-subtle rounded-full" />
+                                Who This Is Not For
+                            </h3>
+                            <ul className="space-y-4">
+                                {[
+                                    "Quick 1-week template builds",
+                                    "Lowest-bidder price shopping",
+                                    "Design-by-committee environments"
+                                ].map((item, i) => (
+                                    <li key={i} className="flex items-start gap-3 text-foreground-subtle">
+                                        <div className="mt-1 p-0.5 rounded-full bg-white/5 text-foreground-subtle">
+                                            <X size={12} strokeWidth={3} />
+                                        </div>
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </motion.div>
                     </div>
-                </motion.div>
+
+                </div>
             </Container>
         </Section>
     );
