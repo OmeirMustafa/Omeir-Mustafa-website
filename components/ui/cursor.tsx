@@ -1,17 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+
+interface TrailPoint {
+    x: number;
+    y: number;
+    id: number;
+}
 
 export function Cursor() {
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [isTouchDevice, setIsTouchDevice] = useState(true);
+    const [trail, setTrail] = useState<TrailPoint[]>([]);
+    const trailIdRef = useRef(0);
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Responsive spring - no trailing, just smooth response
+    // Responsive spring - snappy, no lag
     const springConfig = { damping: 50, stiffness: 800, mass: 0.1 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
@@ -21,20 +29,47 @@ export function Cursor() {
         setIsTouchDevice(isTouch);
         if (isTouch) return;
 
-        // Hide the default cursor on the entire page
         document.body.style.cursor = "none";
         document.documentElement.style.cursor = "none";
+
+        let lastX = 0;
+        let lastY = 0;
+        let frameId: number;
 
         const moveCursor = (e: MouseEvent) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
             if (!isVisible) setIsVisible(true);
+
+            // Calculate movement distance for trail intensity
+            const dx = e.clientX - lastX;
+            const dy = e.clientY - lastY;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Only add trail points when moving fast enough
+            if (distance > 8) {
+                trailIdRef.current++;
+                setTrail(prev => [
+                    ...prev.slice(-6), // Keep last 6 points
+                    { x: e.clientX, y: e.clientY, id: trailIdRef.current }
+                ]);
+            }
+
+            lastX = e.clientX;
+            lastY = e.clientY;
+        };
+
+        // Clean up old trail points
+        const cleanTrail = () => {
+            setTrail(prev => prev.slice(-4));
+            frameId = requestAnimationFrame(cleanTrail);
         };
 
         const handleMouseEnter = () => setIsHovered(true);
         const handleMouseLeave = () => setIsHovered(false);
 
         window.addEventListener("mousemove", moveCursor);
+        frameId = requestAnimationFrame(cleanTrail);
 
         const addHoverListeners = () => {
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
@@ -46,7 +81,6 @@ export function Cursor() {
         };
 
         addHoverListeners();
-
         const observer = new MutationObserver(addHoverListeners);
         observer.observe(document.body, { childList: true, subtree: true });
 
@@ -54,6 +88,7 @@ export function Cursor() {
             document.body.style.cursor = "";
             document.documentElement.style.cursor = "";
             window.removeEventListener("mousemove", moveCursor);
+            cancelAnimationFrame(frameId);
             observer.disconnect();
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
             clickables.forEach((el) => {
@@ -73,43 +108,71 @@ export function Cursor() {
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.2 }}
         >
-            {/* The Triangle Cursor */}
+            {/* Smoky Jet Trail */}
+            {trail.map((point, index) => (
+                <motion.div
+                    key={point.id}
+                    className="absolute rounded-full"
+                    initial={{
+                        x: point.x,
+                        y: point.y,
+                        opacity: 0.4,
+                        scale: 1
+                    }}
+                    animate={{
+                        opacity: 0,
+                        scale: 2.5,
+                    }}
+                    transition={{
+                        duration: 0.6,
+                        ease: "easeOut"
+                    }}
+                    style={{
+                        width: 8 - index * 0.5,
+                        height: 8 - index * 0.5,
+                        background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)",
+                        filter: "blur(3px)",
+                        translateX: "-50%",
+                        translateY: "-50%",
+                    }}
+                />
+            ))}
+
+            {/* The Triangle Cursor - Pointing Top-Left */}
             <motion.div
                 style={{
                     x: cursorX,
                     y: cursorY,
-                    translateX: "-20%",
-                    translateY: "-10%",
                 }}
             >
-                {/* Glow Layer - Soft, Smoky Blur */}
+                {/* Glow Layer */}
                 <svg
-                    width="28"
-                    height="36"
-                    viewBox="0 0 28 36"
+                    width="20"
+                    height="26"
+                    viewBox="0 0 20 26"
                     fill="none"
                     style={{
-                        filter: "blur(3px)",
+                        filter: "blur(2px)",
                         position: "absolute",
                         top: 0,
                         left: 0,
-                        opacity: 0.6,
+                        opacity: 0.5,
                     }}
                 >
                     <path
-                        d="M2 2L26 18L2 34L8 18L2 2Z"
+                        d="M1 1L1 22L6 17L10 25L13 24L9 16L18 16L1 1Z"
                         fill="rgba(255, 255, 255, 0.5)"
                     />
                 </svg>
 
-                {/* Main Cursor - Sharp Triangle */}
+                {/* Main Cursor - Classic Arrow Shape Pointing Top-Left */}
                 <motion.svg
-                    width="28"
-                    height="36"
-                    viewBox="0 0 28 36"
+                    width="20"
+                    height="26"
+                    viewBox="0 0 20 26"
                     fill="none"
                     animate={{
-                        scale: isHovered ? 1.15 : 1,
+                        scale: isHovered ? 1.1 : 1,
                     }}
                     transition={{
                         type: "spring",
@@ -117,15 +180,14 @@ export function Cursor() {
                         damping: 20,
                     }}
                     style={{
-                        filter: "drop-shadow(0 0 4px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.2))",
+                        filter: "drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.15))",
                     }}
                 >
-                    {/* The Triangle Path: Point at top-left, extends down-right */}
                     <path
-                        d="M2 2L26 18L2 34L8 18L2 2Z"
-                        fill="rgba(255, 255, 255, 0.85)"
-                        stroke="rgba(255, 255, 255, 0.3)"
-                        strokeWidth="1"
+                        d="M1 1L1 22L6 17L10 25L13 24L9 16L18 16L1 1Z"
+                        fill="rgba(255, 255, 255, 0.9)"
+                        stroke="rgba(255, 255, 255, 0.4)"
+                        strokeWidth="0.5"
                     />
                 </motion.svg>
             </motion.div>
