@@ -132,30 +132,25 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                         onClick={handleCopyEmail}
                                         className={cn(
                                             "relative w-full group overflow-hidden rounded-2xl border transition-all duration-300",
-                                            "p-4 flex items-center justify-between",
+                                            "p-5 flex items-center justify-center gap-3",
                                             copied
                                                 ? "bg-emerald-500/10 border-emerald-500/50"
                                                 : "bg-white/5 border-white/10 hover:border-accent/50 hover:bg-white/[0.07]"
                                         )}
                                     >
-                                        <div className="flex flex-col items-start gap-1">
-                                            <span className="text-xs font-medium text-foreground-muted uppercase tracking-wider">
-                                                Copy Email Address
-                                            </span>
-                                            <span className={cn(
-                                                "text-lg font-medium transition-colors font-mono",
-                                                copied ? "text-emerald-400" : "text-foreground"
-                                            )}>
-                                                {EMAIL}
-                                            </span>
-                                        </div>
-
                                         <div className={cn(
                                             "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300",
                                             copied ? "bg-emerald-500/20 text-emerald-400" : "bg-white/5 text-foreground-muted group-hover:bg-accent/20 group-hover:text-accent"
                                         )}>
                                             {copied ? <Check size={20} /> : <Copy size={20} />}
                                         </div>
+
+                                        <span className={cn(
+                                            "text-base font-medium transition-colors",
+                                            copied ? "text-emerald-400" : "text-foreground"
+                                        )}>
+                                            {copied ? "Copied to Clipboard" : "Copy Email Address"}
+                                        </span>
 
                                         {/* Success Splash */}
                                         {copied && (
