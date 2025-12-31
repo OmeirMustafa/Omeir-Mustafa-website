@@ -59,10 +59,14 @@ export function ProcessSection() {
 
                 {/* Timeline Container */}
                 <div ref={containerRef} className="relative">
-                    {/* Vertical Line - Animated */}
-                    <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px] bg-white/5">
+                    {/* Vertical Line - Animated with Fade */}
+                    <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px]">
+                        {/* Track - Fades at both ends */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+
+                        {/* Progress Line - Fades at bottom */}
                         <motion.div
-                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-accent to-accent/50"
+                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-accent via-accent to-transparent"
                             style={{ height: lineHeight }}
                         />
                     </div>

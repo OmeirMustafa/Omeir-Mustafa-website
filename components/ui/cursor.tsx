@@ -128,10 +128,10 @@ export function Cursor() {
                         ease: "easeOut"
                     }}
                     style={{
-                        width: 8 - index * 0.5,
-                        height: 8 - index * 0.5,
-                        background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%)",
-                        filter: "blur(3px)",
+                        width: 12, // Larger base for smoke
+                        height: 12,
+                        background: "radial-gradient(circle, rgba(6,182,212,0.4) 0%, rgba(255,255,255,0.1) 50%, transparent 100%)", // Cyan/White smoke
+                        filter: "blur(6px)", // Increased blur
                         translateX: "-50%",
                         translateY: "-50%",
                     }}
