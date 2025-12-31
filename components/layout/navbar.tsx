@@ -18,6 +18,64 @@ interface NavbarProps {
     onContactClick: () => void;
 }
 
+// Individual NavLink component to manage its own hover state
+function NavLink({
+    link,
+    activeSection,
+    onClick
+}: {
+    link: { name: string; href: string };
+    activeSection: string;
+    onClick: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
+}) {
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <a
+            href={link.href}
+            onClick={(e) => onClick(e, link.href)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={cn(
+                "relative px-4 py-2 text-sm font-medium rounded-full transition-colors duration-300",
+                activeSection === link.href
+                    ? "text-foreground"
+                    : "text-foreground-muted hover:text-foreground"
+            )}
+        >
+            {/* Active Pill Background */}
+            {activeSection === link.href && (
+                <motion.span
+                    layoutId="activePill"
+                    className="absolute inset-0 bg-white/10 rounded-full"
+                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+            )}
+
+            {/* Ghost-Neon Underline - Razor Sharp with Fade */}
+            <motion.span
+                className="absolute bottom-1.5 left-1/2 h-[1px] pointer-events-none"
+                style={{
+                    translateX: "-50%",
+                    background: "linear-gradient(90deg, transparent 0%, rgba(37,99,235,0.9) 25%, rgba(37,99,235,1) 50%, rgba(37,99,235,0.9) 75%, transparent 100%)",
+                    boxShadow: "0 0 8px rgba(37,99,235,0.5), 0 0 2px rgba(37,99,235,0.8)",
+                }}
+                initial={false}
+                animate={{
+                    width: isHovered ? "70%" : "0%",
+                    opacity: isHovered ? 1 : 0,
+                }}
+                transition={{
+                    width: { type: "spring", stiffness: 500, damping: 30 },
+                    opacity: { duration: isHovered ? 0.15 : 0.3 }
+                }}
+            />
+
+            <span className="relative z-10">{link.name}</span>
+        </a>
+    );
+}
+
 export function Navbar({ onContactClick }: NavbarProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
@@ -88,36 +146,12 @@ export function Navbar({ onContactClick }: NavbarProps) {
                 {/* Desktop Nav Links */}
                 <div className="hidden md:flex items-center gap-1">
                     {navLinks.map((link) => (
-                        <motion.a
+                        <NavLink
                             key={link.name}
-                            href={link.href}
-                            onClick={(e) => handleNavClick(e as any, link.href)}
-                            className={cn(
-                                "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
-                                activeSection === link.href
-                                    ? "text-foreground"
-                                    : "text-foreground-muted hover:text-foreground"
-                            )}
-                        >
-                            {/* Active Pill Background (Context) */}
-                            {activeSection === link.href && (
-                                <motion.span
-                                    layoutId="activePill"
-                                    className="absolute inset-0 bg-white/10 rounded-full"
-                                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                                />
-                            )}
-
-                            {/* Ghost-Neon Hover Underline (Interaction) */}
-                            <motion.span
-                                className="absolute bottom-1 left-1/2 w-4/5 h-[1.5px] bg-gradient-to-r from-transparent via-accent/80 to-transparent blur-[0.5px] -translate-x-1/2"
-                                initial={{ scaleX: 0, opacity: 0 }}
-                                whileHover={{ scaleX: 1, opacity: 1 }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            />
-
-                            <span className="relative z-10">{link.name}</span>
-                        </motion.a>
+                            link={link}
+                            activeSection={activeSection}
+                            onClick={handleNavClick}
+                        />
                     ))}
                 </div>
 
