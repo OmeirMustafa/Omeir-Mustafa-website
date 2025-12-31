@@ -88,10 +88,10 @@ export function Navbar({ onContactClick }: NavbarProps) {
                 {/* Desktop Nav Links */}
                 <div className="hidden md:flex items-center gap-1">
                     {navLinks.map((link) => (
-                        <a
+                        <motion.a
                             key={link.name}
                             href={link.href}
-                            onClick={(e) => handleNavClick(e, link.href)}
+                            onClick={(e) => handleNavClick(e as any, link.href)}
                             className={cn(
                                 "relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300",
                                 activeSection === link.href
@@ -99,7 +99,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
                                     : "text-foreground-muted hover:text-foreground"
                             )}
                         >
-                            {/* Active Pill Background */}
+                            {/* Active Pill Background (Context) */}
                             {activeSection === link.href && (
                                 <motion.span
                                     layoutId="activePill"
@@ -107,8 +107,17 @@ export function Navbar({ onContactClick }: NavbarProps) {
                                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                 />
                             )}
+
+                            {/* Ghost-Neon Hover Underline (Interaction) */}
+                            <motion.span
+                                className="absolute bottom-1 left-1/2 w-4/5 h-[1.5px] bg-gradient-to-r from-transparent via-accent/80 to-transparent blur-[0.5px] -translate-x-1/2"
+                                initial={{ scaleX: 0, opacity: 0 }}
+                                whileHover={{ scaleX: 1, opacity: 1 }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            />
+
                             <span className="relative z-10">{link.name}</span>
-                        </a>
+                        </motion.a>
                     ))}
                 </div>
 
