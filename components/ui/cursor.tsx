@@ -4,17 +4,15 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function Cursor() {
-    const [isHovered, setIsHovered] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
     const [isTouchDevice, setIsTouchDevice] = useState(true);
 
-    // Mouse position values
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Ultra-responsive spring for the blade
-    // Stiff and heavily dampened for a "sharp" feel, no wobble
-    const springConfig = { damping: 20, stiffness: 500, mass: 0.2 };
+    // Responsive spring - no trailing, just smooth response
+    const springConfig = { damping: 50, stiffness: 800, mass: 0.1 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
@@ -22,6 +20,10 @@ export function Cursor() {
         const isTouch = window.matchMedia("(pointer: coarse)").matches;
         setIsTouchDevice(isTouch);
         if (isTouch) return;
+
+        // Hide the default cursor on the entire page
+        document.body.style.cursor = "none";
+        document.documentElement.style.cursor = "none";
 
         const moveCursor = (e: MouseEvent) => {
             mouseX.set(e.clientX);
@@ -37,6 +39,7 @@ export function Cursor() {
         const addHoverListeners = () => {
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
             clickables.forEach((el) => {
+                (el as HTMLElement).style.cursor = "none";
                 el.addEventListener("mouseenter", handleMouseEnter);
                 el.addEventListener("mouseleave", handleMouseLeave);
             });
@@ -48,10 +51,13 @@ export function Cursor() {
         observer.observe(document.body, { childList: true, subtree: true });
 
         return () => {
+            document.body.style.cursor = "";
+            document.documentElement.style.cursor = "";
             window.removeEventListener("mousemove", moveCursor);
             observer.disconnect();
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
             clickables.forEach((el) => {
+                (el as HTMLElement).style.cursor = "";
                 el.removeEventListener("mouseenter", handleMouseEnter);
                 el.removeEventListener("mouseleave", handleMouseLeave);
             });
@@ -62,52 +68,67 @@ export function Cursor() {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
+            className="fixed top-0 left-0 pointer-events-none z-[9999]"
             initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
         >
-            {/* The Blade: A sharp, rotating diamond */}
+            {/* The Triangle Cursor */}
             <motion.div
-                className="absolute bg-white"
                 style={{
                     x: cursorX,
                     y: cursorY,
-                    translateX: "-50%",
-                    translateY: "-50%",
-                    rotate: 45, // Constant 45deg rotation for diamond shape
+                    translateX: "-20%",
+                    translateY: "-10%",
                 }}
-                animate={{
-                    width: isHovered ? 20 : 12,
-                    height: isHovered ? 20 : 12,
-                    borderRadius: 0, // Perfectly sharp corners
-                    scale: isHovered ? 1.2 : 1,
-                    rotate: isHovered ? 135 : 45, // satisfying 90deg rotation on hover
-                }}
-                transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25,
-                    mass: 0.5
-                }}
-            />
+            >
+                {/* Glow Layer - Soft, Smoky Blur */}
+                <svg
+                    width="28"
+                    height="36"
+                    viewBox="0 0 28 36"
+                    fill="none"
+                    style={{
+                        filter: "blur(3px)",
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        opacity: 0.6,
+                    }}
+                >
+                    <path
+                        d="M2 2L26 18L2 34L8 18L2 2Z"
+                        fill="rgba(255, 255, 255, 0.5)"
+                    />
+                </svg>
 
-            {/* Center Cutout/Detail (Optional - adds richness) */}
-            <motion.div
-                className="absolute bg-black"
-                style={{
-                    x: cursorX,
-                    y: cursorY,
-                    translateX: "-50%",
-                    translateY: "-50%",
-                    rotate: 45,
-                }}
-                animate={{
-                    width: isHovered ? 0 : 0,
-                    height: isHovered ? 0 : 0,
-                    opacity: 0,
-                }}
-            />
+                {/* Main Cursor - Sharp Triangle */}
+                <motion.svg
+                    width="28"
+                    height="36"
+                    viewBox="0 0 28 36"
+                    fill="none"
+                    animate={{
+                        scale: isHovered ? 1.15 : 1,
+                    }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 20,
+                    }}
+                    style={{
+                        filter: "drop-shadow(0 0 4px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.2))",
+                    }}
+                >
+                    {/* The Triangle Path: Point at top-left, extends down-right */}
+                    <path
+                        d="M2 2L26 18L2 34L8 18L2 2Z"
+                        fill="rgba(255, 255, 255, 0.85)"
+                        stroke="rgba(255, 255, 255, 0.3)"
+                        strokeWidth="1"
+                    />
+                </motion.svg>
+            </motion.div>
         </motion.div>
     );
 }
