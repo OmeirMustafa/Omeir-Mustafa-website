@@ -6,19 +6,19 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 export function Cursor() {
     const [isHovered, setIsHovered] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
-    const [isTouchDevice, setIsTouchDevice] = useState(true); // Default to true for SSR
+    const [isTouchDevice, setIsTouchDevice] = useState(true);
 
     // Mouse position values
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Silky smooth spring physics for the trailing ring
-    const springConfig = { damping: 30, stiffness: 400, mass: 0.3 };
+    // Ultra-responsive spring for the blade
+    // Stiff and heavily dampened for a "sharp" feel, no wobble
+    const springConfig = { damping: 20, stiffness: 500, mass: 0.2 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
-        // Check for touch device
         const isTouch = window.matchMedia("(pointer: coarse)").matches;
         setIsTouchDevice(isTouch);
         if (isTouch) return;
@@ -32,10 +32,8 @@ export function Cursor() {
         const handleMouseEnter = () => setIsHovered(true);
         const handleMouseLeave = () => setIsHovered(false);
 
-        // Track mouse movement
         window.addEventListener("mousemove", moveCursor);
 
-        // Add hover detection for clickable elements
         const addHoverListeners = () => {
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
             clickables.forEach((el) => {
@@ -46,7 +44,6 @@ export function Cursor() {
 
         addHoverListeners();
 
-        // Re-run listener attachment on DOM changes
         const observer = new MutationObserver(addHoverListeners);
         observer.observe(document.body, { childList: true, subtree: true });
 
@@ -61,56 +58,54 @@ export function Cursor() {
         };
     }, [mouseX, mouseY, isVisible]);
 
-    // Don't render on touch devices
     if (isTouchDevice) return null;
 
     return (
         <motion.div
-            className="fixed top-0 left-0 pointer-events-none z-[9999]"
+            className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference"
             initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
+            transition={{ duration: 0.3 }}
         >
-            {/* Primary Dot - Crisp, Instant */}
+            {/* The Blade: A sharp, rotating diamond */}
             <motion.div
-                className="absolute rounded-full"
-                style={{
-                    x: mouseX,
-                    y: mouseY,
-                    translateX: "-50%",
-                    translateY: "-50%",
-                    backgroundColor: "rgba(37, 99, 235, 1)", // accent color
-                    boxShadow: "0 0 6px rgba(37, 99, 235, 0.6), 0 0 2px rgba(255,255,255,0.8)",
-                }}
-                animate={{
-                    width: isHovered ? 6 : 6,
-                    height: isHovered ? 6 : 6,
-                }}
-                transition={{ duration: 0 }}
-            />
-
-            {/* Trailing Ring - Elegant, Fluid */}
-            <motion.div
-                className="absolute rounded-full"
+                className="absolute bg-white"
                 style={{
                     x: cursorX,
                     y: cursorY,
                     translateX: "-50%",
                     translateY: "-50%",
-                    border: "1.5px solid rgba(37, 99, 235, 0.6)",
-                    backgroundColor: "transparent",
+                    rotate: 45, // Constant 45deg rotation for diamond shape
                 }}
                 animate={{
-                    width: isHovered ? 48 : 32,
-                    height: isHovered ? 48 : 32,
-                    opacity: isHovered ? 0.9 : 0.5,
-                    borderColor: isHovered ? "rgba(37, 99, 235, 0.8)" : "rgba(255, 255, 255, 0.3)",
+                    width: isHovered ? 20 : 12,
+                    height: isHovered ? 20 : 12,
+                    borderRadius: 0, // Perfectly sharp corners
+                    scale: isHovered ? 1.2 : 1,
+                    rotate: isHovered ? 135 : 45, // satisfying 90deg rotation on hover
                 }}
                 transition={{
                     type: "spring",
+                    stiffness: 400,
                     damping: 25,
-                    stiffness: 300,
-                    mass: 0.4
+                    mass: 0.5
+                }}
+            />
+
+            {/* Center Cutout/Detail (Optional - adds richness) */}
+            <motion.div
+                className="absolute bg-black"
+                style={{
+                    x: cursorX,
+                    y: cursorY,
+                    translateX: "-50%",
+                    translateY: "-50%",
+                    rotate: 45,
+                }}
+                animate={{
+                    width: isHovered ? 0 : 0,
+                    height: isHovered ? 0 : 0,
+                    opacity: 0,
                 }}
             />
         </motion.div>
