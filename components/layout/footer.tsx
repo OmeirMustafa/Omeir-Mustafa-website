@@ -42,7 +42,7 @@ export function Footer() {
                             Building high-trust digital assets for service businesses that refuse to compete on commodities.
                         </p>
                         <div className="flex gap-4">
-                            <div className="h-1 w-12 bg-accent rounded-full mb-4" />
+                            <div className="h-1 w-16 rounded-full mb-4 bg-gradient-to-r from-transparent via-accent to-transparent" />
                         </div>
                     </div>
 

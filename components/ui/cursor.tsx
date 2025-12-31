@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface TrailPoint {
     x: number;
@@ -12,7 +12,13 @@ interface TrailPoint {
 export function Cursor() {
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
-    const [isTouchDevice, setIsTouchDevice] = useState(true);
+    const [isTouchDevice] = useState(() => {
+        // Initialize based on media query (SSR-safe)
+        if (typeof window !== "undefined") {
+            return window.matchMedia("(pointer: coarse)").matches;
+        }
+        return true; // Default to touch device for SSR
+    });
     const [trail, setTrail] = useState<TrailPoint[]>([]);
     const trailIdRef = useRef(0);
 
@@ -25,8 +31,8 @@ export function Cursor() {
     const cursorY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
+        // Re-check on mount (handles SSR hydration)
         const isTouch = window.matchMedia("(pointer: coarse)").matches;
-        setIsTouchDevice(isTouch);
         if (isTouch) return;
 
         document.body.style.cursor = "none";
@@ -108,8 +114,8 @@ export function Cursor() {
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.2 }}
         >
-            {/* Smoky Jet Trail */}
-            {trail.map((point, index) => (
+            {/* Ghost Smoke Trail */}
+            {trail.map((point) => (
                 <motion.div
                     key={point.id}
                     className="absolute rounded-full"
