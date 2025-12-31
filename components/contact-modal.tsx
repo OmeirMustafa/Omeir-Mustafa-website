@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Mail, ExternalLink, Copy, Check, ArrowRight } from "lucide-react";
+import { X, Mail, ExternalLink, Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ContactModalProps {
@@ -66,6 +66,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <>
                     {/* Backdrop - Deep, Heavy Blur */}
                     <motion.div
+                        key="backdrop"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -75,8 +76,15 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     />
 
                     {/* Modal Container */}
-                    <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none">
+                    <motion.div
+                        key="modal-wrapper"
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none"
+                    >
                         <motion.div
+                            key="modal-card"
                             initial={{ opacity: 0, scale: 0.9, y: 20, rotateX: 10 }}
                             animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -194,7 +202,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
+                    </motion.div>
                 </>
             )}
         </AnimatePresence>
