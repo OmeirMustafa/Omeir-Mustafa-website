@@ -74,7 +74,10 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                 >
                     {/* Main Headline - Broken into cinematic segments */}
                     <div className="overflow-hidden mb-6">
-                        <motion.h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-semibold text-foreground leading-[1.05] tracking-tight">
+                        <motion.h1
+                            className="font-heading font-semibold text-foreground leading-[1.05] tracking-tight"
+                            style={{ fontSize: "clamp(2.5rem, 8vw, 6rem)" }}
+                        >
                             <span className="block overflow-hidden">
                                 <motion.span variants={itemVariants} className="block">
                                     Websites designed for

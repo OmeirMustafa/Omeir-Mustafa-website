@@ -139,6 +139,7 @@ export function CaseStudySection() {
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                                         sizes={index === 0 ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                                        priority={index === 0}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60" />
 
