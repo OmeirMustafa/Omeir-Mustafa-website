@@ -106,7 +106,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                className="absolute right-4 top-4 p-2 rounded-full text-foreground-muted hover:text-foreground hover:bg-white/5 transition-all duration-200 z-10"
+                                className="absolute right-4 top-4 p-2 rounded-full text-foreground-muted hover:text-foreground hover:bg-white/5 transition-all duration-200 z-20"
                                 aria-label="Close modal"
                             >
                                 <X size={20} />
