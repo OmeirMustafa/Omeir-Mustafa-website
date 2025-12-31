@@ -117,7 +117,7 @@ export function ProcessSection() {
                     className="mt-32 pt-12 border-t border-white/5 text-center"
                 >
                     <p className="text-sm md:text-base text-foreground-muted italic max-w-2xl mx-auto">
-                        "Throughout the process, every decision is documented, explained, and aligned with your business priorities—not personal design preference."
+                        &quot;Throughout the process, every decision is documented, explained, and aligned with your business priorities—not personal design preference.&quot;
                     </p>
                 </motion.div>
             </Container>

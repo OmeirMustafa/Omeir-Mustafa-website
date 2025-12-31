@@ -11,7 +11,6 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ onContactClick }: HeroSectionProps) {
-    const containerRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll();
     const y1 = useTransform(scrollY, [0, 500], [0, 200]);
     const y2 = useTransform(scrollY, [0, 500], [0, -150]);

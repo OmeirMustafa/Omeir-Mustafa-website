@@ -51,7 +51,7 @@ export function ServicesSection() {
                         <span className="text-foreground-muted">Technical Expertise</span>
                     </h2>
                     <p className="text-lg text-foreground-muted leading-relaxed">
-                        I bridge the gap between "good design" and "serious engineering." Every project is a bespoke build, optimized for commercial performance.
+                        I bridge the gap between &quot;good design&quot; and &quot;serious engineering.&quot; Every project is a bespoke build, optimized for commercial performance.
                     </p>
                 </motion.div>
 

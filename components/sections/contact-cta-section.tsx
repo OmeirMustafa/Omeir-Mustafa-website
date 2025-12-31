@@ -24,14 +24,14 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                     className="text-center max-w-3xl mx-auto"
                 >
                     <h2 className="text-4xl md:text-6xl lg:text-7xl font-heading font-semibold text-foreground mb-6 tracking-tight leading-[1.1]">
-                        Let's Build Something <br />
+                        Let&apos;s Build Something <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-400 to-accent">Exceptional</span>
                     </h2>
                     <p className="text-lg md:text-xl text-foreground-muted leading-relaxed mb-4">
                         Have a project in mind or want to discuss an idea?
                     </p>
                     <p className="text-foreground-muted mb-12">
-                        Let's talk and see how we can create a premium digital experience.
+                        Let&apos;s talk and see how we can create a premium digital experience.
                     </p>
 
                     <motion.div
@@ -53,7 +53,7 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         transition={{ delay: 0.4 }}
                         className="mt-10 text-xs text-foreground-subtle max-w-md mx-auto opacity-60"
                     >
-                        After reaching out, you'll receive a response outlining next steps, timelines, and whether the project is a good mutual fit — even if the answer is no.
+                        After reaching out, you&apos;ll receive a response outlining next steps, timelines, and whether the project is a good mutual fit — even if the answer is no.
                     </motion.p>
                 </motion.div>
             </Container>

@@ -65,7 +65,7 @@ export function AboutSection() {
                             </div>
                             <div className="flex flex-col justify-end">
                                 <p className="text-xl md:text-2xl font-medium text-foreground border-l-2 border-accent pl-6 py-2">
-                                    "I don't just write code. I engineer clarity, trust, and revenue opportunity."
+                                    &quot;I don&apos;t just write code. I engineer clarity, trust, and revenue opportunity.&quot;
                                 </p>
                             </div>
                         </div>
