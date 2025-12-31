@@ -62,7 +62,7 @@ export function ProcessSection() {
                     {/* Vertical Line - Animated */}
                     <div className="absolute left-4 md:left-1/2 md:-translate-x-px top-0 bottom-0 w-[2px] bg-white/5">
                         <motion.div
-                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-accent to-accent/50 will-change-transform"
+                            className="absolute top-0 left-0 w-full bg-gradient-to-b from-accent to-accent/50"
                             style={{ height: lineHeight }}
                         />
                     </div>
@@ -76,7 +76,7 @@ export function ProcessSection() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                                className={`relative grid md:grid-cols-2 gap-8 md:gap-16 items-start ${index % 2 === 1 ? 'md:text-right' : ''} will-change-transform`}
+                                className={`relative grid md:grid-cols-2 gap-8 md:gap-16 items-start ${index % 2 === 1 ? 'md:text-right' : ''}`}
                             >
                                 {/* Node Indicator */}
                                 <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-background border-2 border-accent shadow-[0_0_15px_rgba(37,99,235,0.5)] z-10" />

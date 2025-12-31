@@ -58,11 +58,11 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
             <div className="absolute inset-0 pointer-events-none select-none">
                 <motion.div
                     style={{ y: y1, opacity: 0.4 }}
-                    className="absolute top-0 right-[-10%] w-[800px] h-[800px] rounded-full bg-accent/5 blur-[120px] will-change-transform"
+                    className="absolute top-0 right-[-10%] w-[800px] h-[800px] rounded-full bg-accent/5 blur-[80px] will-change-transform"
                 />
                 <motion.div
                     style={{ y: y2, opacity: 0.3 }}
-                    className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-[100px] will-change-transform"
+                    className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-[60px] will-change-transform"
                 />
             </div>
 
