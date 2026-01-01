@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-interface TrailPoint {
+interface SmokeParticle {
     x: number;
     y: number;
     id: number;
@@ -13,25 +13,22 @@ export function Cursor() {
     const [isVisible, setIsVisible] = useState(false);
     const [isHovered, setIsHovered] = useState(false);
     const [isTouchDevice] = useState(() => {
-        // Initialize based on media query (SSR-safe)
         if (typeof window !== "undefined") {
             return window.matchMedia("(pointer: coarse)").matches;
         }
-        return true; // Default to touch device for SSR
+        return true;
     });
-    const [trail, setTrail] = useState<TrailPoint[]>([]);
-    const trailIdRef = useRef(0);
+    const [smokeParticles, setSmokeParticles] = useState<SmokeParticle[]>([]);
+    const particleIdRef = useRef(0);
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    // Responsive spring - snappy, no lag
     const springConfig = { damping: 50, stiffness: 800, mass: 0.1 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
     useEffect(() => {
-        // Re-check on mount (handles SSR hydration)
         const isTouch = window.matchMedia("(pointer: coarse)").matches;
         if (isTouch) return;
 
@@ -40,24 +37,23 @@ export function Cursor() {
 
         let lastX = 0;
         let lastY = 0;
-        let frameId: number;
 
         const moveCursor = (e: MouseEvent) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
             if (!isVisible) setIsVisible(true);
 
-            // Calculate movement distance for trail intensity
+            // Calculate movement speed
             const dx = e.clientX - lastX;
             const dy = e.clientY - lastY;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            const speed = Math.sqrt(dx * dx + dy * dy);
 
-            // Only add trail points when moving fast enough
-            if (distance > 8) {
-                trailIdRef.current++;
-                setTrail(prev => [
-                    ...prev.slice(-6), // Keep last 6 points
-                    { x: e.clientX, y: e.clientY, id: trailIdRef.current }
+            // Create smoke/flame particles when moving fast
+            if (speed > 15) {
+                particleIdRef.current++;
+                setSmokeParticles(prev => [
+                    ...prev.slice(-8),
+                    { x: e.clientX, y: e.clientY, id: particleIdRef.current }
                 ]);
             }
 
@@ -65,17 +61,10 @@ export function Cursor() {
             lastY = e.clientY;
         };
 
-        // Clean up old trail points
-        const cleanTrail = () => {
-            setTrail(prev => prev.slice(-4));
-            frameId = requestAnimationFrame(cleanTrail);
-        };
-
         const handleMouseEnter = () => setIsHovered(true);
         const handleMouseLeave = () => setIsHovered(false);
 
         window.addEventListener("mousemove", moveCursor);
-        frameId = requestAnimationFrame(cleanTrail);
 
         const addHoverListeners = () => {
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
@@ -94,7 +83,6 @@ export function Cursor() {
             document.body.style.cursor = "";
             document.documentElement.style.cursor = "";
             window.removeEventListener("mousemove", moveCursor);
-            cancelAnimationFrame(frameId);
             observer.disconnect();
             const clickables = document.querySelectorAll('a, button, input, textarea, select, [role="button"], .clickable');
             clickables.forEach((el) => {
@@ -114,37 +102,38 @@ export function Cursor() {
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.2 }}
         >
-            {/* Ghost Smoke Trail */}
-            {trail.map((point) => (
+            {/* Fire/Smoke Particles - Only appear when moving fast */}
+            {smokeParticles.map((particle) => (
                 <motion.div
-                    key={point.id}
-                    className="absolute rounded-full"
+                    key={particle.id}
+                    className="absolute rounded-full pointer-events-none"
                     initial={{
-                        x: point.x,
-                        y: point.y,
-                        opacity: 0.4,
-                        scale: 1
+                        x: particle.x,
+                        y: particle.y,
+                        opacity: 0.7,
+                        scale: 0.5
                     }}
                     animate={{
                         opacity: 0,
-                        scale: 2.5,
+                        scale: 2,
+                        y: particle.y - 20, // Rise up like flame
                     }}
                     transition={{
-                        duration: 0.6,
+                        duration: 0.5,
                         ease: "easeOut"
                     }}
                     style={{
-                        width: 12, // Larger base for smoke
-                        height: 12,
-                        background: "radial-gradient(circle, rgba(6,182,212,0.4) 0%, rgba(255,255,255,0.1) 50%, transparent 100%)", // Cyan/White smoke
-                        filter: "blur(6px)", // Increased blur
+                        width: 16,
+                        height: 16,
+                        background: "radial-gradient(circle, rgba(255,140,0,0.6) 0%, rgba(255,69,0,0.3) 40%, rgba(255,255,255,0.1) 70%, transparent 100%)",
+                        filter: "blur(4px)",
                         translateX: "-50%",
                         translateY: "-50%",
                     }}
                 />
             ))}
 
-            {/* The Triangle Cursor - Pointing Top-Left */}
+            {/* Main Cursor - Arrow */}
             <motion.div
                 style={{
                     x: cursorX,
@@ -171,7 +160,7 @@ export function Cursor() {
                     />
                 </svg>
 
-                {/* Main Cursor - Classic Arrow Shape Pointing Top-Left */}
+                {/* Main Cursor */}
                 <motion.svg
                     width="20"
                     height="26"

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
 import { Cursor } from "@/components/ui/cursor";
+import { NewYearOverlay } from "@/components/ui/new-year-overlay";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -141,6 +142,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <Cursor />
+        <NewYearOverlay />
         {children}
       </body>
     </html>
