@@ -2,18 +2,14 @@
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Layout, Zap, Sparkles, Check, X } from "lucide-react";
-import { useRef } from "react";
+import { motion } from "framer-motion";
+import { Check, Layout, Sparkles, X, Zap } from "lucide-react";
 
 export function AboutSection() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"],
-    });
 
-    const yParallax = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
+
+
 
     const traits = [
         {
@@ -39,7 +35,7 @@ export function AboutSection() {
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none -translate-y-1/2 translate-x-1/3" />
 
             <Container>
-                <div ref={containerRef} className="relative z-10">
+                <div className="relative z-10">
 
                     {/* 1. Header Block - Editorial Style */}
                     <motion.div
@@ -76,7 +72,7 @@ export function AboutSection() {
                         {traits.map((trait, index) => (
                             <motion.div
                                 key={trait.title}
-                                style={{ y: index % 2 === 0 ? 0 : yParallax }} // Slight parallax on middle card? Or staggering
+                                // style={{ y: index % 2 === 0 ? 0 : yParallax }} // Static as requested
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}

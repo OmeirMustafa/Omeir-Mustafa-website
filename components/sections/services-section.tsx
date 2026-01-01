@@ -3,7 +3,7 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
-import { Palette, Terminal, MonitorSmartphone, MousePointerClick, ArrowUpRight } from "lucide-react";
+import { Palette, Terminal, MonitorSmartphone, MousePointerClick } from "lucide-react";
 
 const services = [
     {
@@ -35,6 +35,8 @@ const services = [
 export function ServicesSection() {
     return (
         <Section id="services" className="bg-background relative overflow-hidden">
+            {/* Seamless Section Divider */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             {/* Ambient Lighting */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
 
@@ -64,7 +66,7 @@ export function ServicesSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className="group relative p-8 md:p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-accent/30 transition-colors duration-500 overflow-hidden"
+                            className="group relative p-8 md:p-10 rounded-3xl bg-white/[0.02] border border-white/5 hover:border-accent/30 transition-colors duration-500 overflow-hidden flex flex-col h-full"
                         >
                             {/* Hover Gradient Reveal */}
                             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -75,17 +77,16 @@ export function ServicesSection() {
                             </div>
 
                             {/* Content */}
-                            <div className="relative z-10">
-                                <h3 className="text-2xl font-heading font-medium text-foreground mb-3 flex items-center justify-between group-hover:text-accent transition-colors">
+                            <div className="relative z-10 flex flex-col flex-1">
+                                <h3 className="text-2xl font-heading font-medium text-foreground mb-3 group-hover:text-accent transition-colors">
                                     {service.title}
-                                    <ArrowUpRight className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" size={20} />
                                 </h3>
                                 <p className="text-foreground-muted leading-relaxed mb-8">
                                     {service.description}
                                 </p>
 
-                                {/* Tags */}
-                                <div className="flex flex-wrap gap-2">
+                                {/* Tags - Pushed to bottom */}
+                                <div className="flex flex-wrap gap-2 mt-auto">
                                     {service.tags.map(tag => (
                                         <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-white/5 text-foreground-subtle border border-white/5 group-hover:border-accent/20 group-hover:text-foreground-muted transition-colors">
                                             {tag}

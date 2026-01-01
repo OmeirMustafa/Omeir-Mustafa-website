@@ -14,7 +14,9 @@ const values = [
 
 export function ClientExperienceSection() {
     return (
-        <Section id="client-experience" className="bg-background border-t border-border">
+        <Section id="client-experience" className="bg-background relative">
+            {/* Seamless Section Divider */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <Container className="max-w-4xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}

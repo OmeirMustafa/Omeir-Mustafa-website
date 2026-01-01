@@ -12,6 +12,8 @@ interface ContactCTASectionProps {
 export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
     return (
         <Section id="contact-cta" className="bg-background relative overflow-hidden">
+            {/* Seamless Section Divider */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             {/* Ambient Glow */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-accent/10 blur-[150px] rounded-full pointer-events-none" />
 
@@ -40,7 +42,7 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.5 }}
                     >
-                        <Button size="lg" onClick={onContactClick} className="shadow-[0_0_30px_rgba(37,99,235,0.3)]">
+                        <Button size="lg" onClick={onContactClick} className="shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
                             Start a Project
                         </Button>
                     </motion.div>

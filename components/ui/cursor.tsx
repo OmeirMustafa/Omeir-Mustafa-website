@@ -125,7 +125,7 @@ export function Cursor() {
                     style={{
                         width: 16,
                         height: 16,
-                        background: "radial-gradient(circle, rgba(255,140,0,0.6) 0%, rgba(255,69,0,0.3) 40%, rgba(255,255,255,0.1) 70%, transparent 100%)",
+                        background: "radial-gradient(circle, rgba(255,140,0,0.6) 0%, rgba(255,69,0,0.3) 40%, rgba(255,255,255,0) 70%, transparent 100%)",
                         filter: "blur(4px)",
                         translateX: "-50%",
                         translateY: "-50%",

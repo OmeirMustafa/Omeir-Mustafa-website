@@ -1,6 +1,8 @@
 "use client";
 
 import { Container } from "@/components/ui/container";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const socialLinks = [
     {
@@ -17,16 +19,60 @@ const socialLinks = [
 
 export function Footer() {
     const currentYear = new Date().getFullYear();
+    const footerRef = useRef<HTMLElement>(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHoveringFooter, setIsHoveringFooter] = useState(false);
+
+    useEffect(() => {
+        const footer = footerRef.current;
+        if (!footer) return;
+
+        const handleMouseMove = (e: MouseEvent) => {
+            const rect = footer.getBoundingClientRect();
+            setMousePosition({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+            });
+        };
+
+        const handleMouseEnter = () => setIsHoveringFooter(true);
+        const handleMouseLeave = () => setIsHoveringFooter(false);
+
+        footer.addEventListener("mousemove", handleMouseMove);
+        footer.addEventListener("mouseenter", handleMouseEnter);
+        footer.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+            footer.removeEventListener("mousemove", handleMouseMove);
+            footer.removeEventListener("mouseenter", handleMouseEnter);
+            footer.removeEventListener("mouseleave", handleMouseLeave);
+        };
+    }, []);
+
+    const name = "Omeir Mustafa";
 
     return (
         <footer
+            ref={footerRef}
             role="contentinfo"
             aria-label="Site footer"
             className="border-t border-white/5 bg-background relative overflow-hidden py-24 md:py-32"
         >
-            {/* Signature Watermark - Massive Depth Layer */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none opacity-[0.03]">
-                <span className="text-[15vw] md:text-[20vw] font-heading font-bold text-foreground leading-none tracking-tighter whitespace-nowrap">
+            {/* Signature Watermark - Massive Depth Layer with Fog Reveal */}
+            <div
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none"
+                style={{
+                    maskImage: isHoveringFooter
+                        ? `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 80%)`
+                        : "none",
+                    WebkitMaskImage: isHoveringFooter
+                        ? `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 80%)`
+                        : "none",
+                    opacity: isHoveringFooter ? 1 : 0, // Hide by default, reveal with cursor
+                    transition: "opacity 0.5s ease-out"
+                }}
+            >
+                <span className="text-[15vw] md:text-[20vw] font-heading font-bold text-foreground/[0.08] leading-none tracking-tighter whitespace-nowrap blur-[2px]">
                     OMEIR
                 </span>
             </div>
@@ -36,7 +82,22 @@ export function Footer() {
                     {/* Brand Block */}
                     <div className="max-w-md">
                         <span className="text-3xl font-heading font-bold text-foreground tracking-tight block mb-6">
-                            Omeir Mustafa
+                            {name.split("").map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    initial={{ color: "var(--foreground)" }}
+                                    animate={{ color: ["#e0f2fe", "#2563eb", "#e0f2fe"] }}
+                                    transition={{
+                                        duration: 3,
+                                        repeat: Infinity,
+                                        delay: index * 0.1,
+                                        ease: "easeInOut",
+                                        repeatDelay: 5
+                                    }}
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
                         </span>
                         <p className="text-lg text-foreground-muted leading-relaxed mb-8">
                             Building high-trust digital assets for service businesses that refuse to compete on commodities.

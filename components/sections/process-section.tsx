@@ -37,6 +37,8 @@ export function ProcessSection() {
 
     return (
         <Section id="process" className="bg-background-subtle relative overflow-hidden">
+            {/* Seamless Section Divider */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             {/* Ambient Glow */}
             <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 

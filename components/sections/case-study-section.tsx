@@ -92,6 +92,8 @@ function SpotlightCard({ children, className = "" }: { children: React.ReactNode
 export function CaseStudySection() {
     return (
         <Section id="work" className="bg-background relative overflow-hidden">
+            {/* Seamless Section Divider */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             {/* Deep Background Glow */}
             <div className="absolute top-1/4 left-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
 
@@ -103,8 +105,8 @@ export function CaseStudySection() {
                     transition={{ duration: 0.8 }}
                     className="mb-20 md:mb-24"
                 >
-                    <div className="flex items-center gap-4 mb-4">
-                        <div className="h-px w-12 bg-accent" />
+                    <div className="flex items-center gap-3 mb-4">
+                        <ArrowRight className="text-accent w-6 h-6" />
                         <span className="text-sm font-medium tracking-widest text-accent uppercase">
                             Selected Work
                         </span>

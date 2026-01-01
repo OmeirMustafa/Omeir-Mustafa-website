@@ -134,20 +134,20 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                             "relative w-full group overflow-hidden rounded-2xl border transition-all duration-300",
                                             "p-5 flex items-center justify-center gap-3",
                                             copied
-                                                ? "bg-cyan-500/10 border-cyan-500/50"
+                                                ? "bg-accent/10 border-accent/50"
                                                 : "bg-white/5 border-white/10 hover:border-accent/50 hover:bg-white/[0.07]"
                                         )}
                                     >
                                         <div className={cn(
                                             "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300",
-                                            copied ? "bg-cyan-500/20 text-cyan-400" : "bg-white/5 text-foreground-muted group-hover:bg-accent/20 group-hover:text-accent"
+                                            copied ? "bg-accent/20 text-accent" : "bg-white/5 text-foreground-muted group-hover:bg-accent/20 group-hover:text-accent"
                                         )}>
                                             {copied ? <Check size={20} /> : <Copy size={20} />}
                                         </div>
 
                                         <span className={cn(
                                             "text-base font-medium transition-colors",
-                                            copied ? "text-cyan-400" : "text-foreground"
+                                            copied ? "text-accent" : "text-foreground"
                                         )}>
                                             {copied ? "Copied to Clipboard" : "Copy Email Address"}
                                         </span>
@@ -158,7 +158,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                                 initial={{ scale: 0, opacity: 0 }}
                                                 animate={{ scale: 1.5, opacity: 0 }}
                                                 transition={{ duration: 0.6 }}
-                                                className="absolute inset-0 bg-cyan-500/20 pointer-events-none"
+                                                className="absolute inset-0 bg-accent/20 pointer-events-none"
                                             />
                                         )}
                                     </button>

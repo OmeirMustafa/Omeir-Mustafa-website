@@ -156,7 +156,11 @@ export function Navbar({ onContactClick }: NavbarProps) {
                 </div>
 
                 {/* Contact Button */}
-                <Button size="sm" onClick={onContactClick} className="hidden md:inline-flex">
+                <Button
+                    size="sm"
+                    onClick={onContactClick}
+                    className="hidden md:inline-flex shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)] transition-all duration-300 border border-accent/20"
+                >
                     Contact
                 </Button>
 

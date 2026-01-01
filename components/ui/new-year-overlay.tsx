@@ -5,13 +5,23 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export function NewYearOverlay() {
     const [isVisible, setIsVisible] = useState(false);
-    const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; color: string }>>([]);
+    const [particles, setParticles] = useState<Array<{
+        id: number;
+        x: number;
+        y: number;
+        color: string;
+        duration: number;
+        delay: number;
+        width: number;
+        height: number;
+    }>>([]);
 
     useEffect(() => {
         // Check if already seen this session
         if (typeof window !== "undefined") {
             const hasSeen = sessionStorage.getItem("hasSeenNewYear2026");
             if (!hasSeen) {
+                // eslint-disable-next-line react-hooks/set-state-in-effect
                 setIsVisible(true);
                 sessionStorage.setItem("hasSeenNewYear2026", "true");
 
@@ -22,7 +32,11 @@ export function NewYearOverlay() {
                         id: i,
                         x: Math.random() * 100,
                         y: Math.random() * 100,
-                        color: ["#06b6d4", "#ffffff", "#a5f3fc", "#22d3ee"][Math.floor(Math.random() * 4)]
+                        color: ["#06b6d4", "#ffffff", "#a5f3fc", "#22d3ee"][Math.floor(Math.random() * 4)],
+                        duration: 2 + Math.random() * 2,
+                        delay: Math.random() * 1.5,
+                        width: 4 + Math.random() * 4,
+                        height: 4 + Math.random() * 4
                     });
                 }
                 setParticles(newParticles);
@@ -66,13 +80,13 @@ export function NewYearOverlay() {
                                 scale: [0, 1.5, 1, 0]
                             }}
                             transition={{
-                                duration: 2 + Math.random() * 2,
-                                delay: Math.random() * 1.5,
+                                duration: particle.duration,
+                                delay: particle.delay,
                                 ease: "easeOut"
                             }}
                             style={{
-                                width: 4 + Math.random() * 4,
-                                height: 4 + Math.random() * 4,
+                                width: particle.width,
+                                height: particle.height,
                                 backgroundColor: particle.color,
                                 boxShadow: `0 0 10px ${particle.color}, 0 0 20px ${particle.color}`,
                                 filter: "blur(1px)"
