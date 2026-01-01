@@ -24,36 +24,61 @@ const caseStudies: CaseStudy[] = [
         id: "lumina",
         title: "Lumina Law",
         category: "Visual Trust & Clarity",
-        description: "A high-authority redesign for a legal firm. Prioritized visual restraint and immediate comprehension over decorative trends to build credibility with corporate clients.",
+        description: "Redesigned a legal firm's digital presence to modernize their authority without losing gravitas. Focused on immediate service comprehension.",
         image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
-        tags: ["Client Project"],
+        tags: ["Self-Initiated Redesign"],
         badge: "Client Project",
         strategicTradeoffs: [
-            "Restraint prioritized over trend-driven design",
-            "Animations limited to reduce distraction",
-            "Structure favors immediate service comprehension"
+            "Prioritized restraint over trendy animations",
+            " Simplified navigation to reduce client friction",
+            "Typography chosen for maximum readability"
         ]
     },
     {
         id: "anchor",
         title: "Anchor Capital",
         category: "Authority Positioning",
-        description: "A 'dark-mode' aesthetic architecture that signals exclusivity, competence, and absolute financial seriousness for HNW founders.",
+        description: "A 'dark-mode' concept for wealth advisors that signals exclusivity. Translates complex financial value into clear client outcomes.",
         image: "/anchor-preview.png",
         link: "https://financial-advisor-firm-anchor-case.vercel.app/",
         tags: ["Concept Case Study"],
-        badge: "Concept Case Study"
+        badge: "Concept Case Study",
+        strategicTradeoffs: [
+            "Used dark aesthetics to signal premium value",
+            "Focused on 'outcome' messaging over features",
+            "Built for high-net-worth mobile users"
+        ]
     },
     {
         id: "aura",
         title: "Aura Health",
         category: "Clinical Authority",
-        description: "A warm, high-end digital experience that reduces patient anxiety and simplifies the booking journey, countering sterile medical norms.",
+        description: "A calm, accessible concept for a medical clinic. Designed to reduce patient anxiety and simplify the booking journey.",
         image: "/aura-preview.png",
         link: "https://healthcare-clinic-conceptual-case-s.vercel.app/",
         tags: ["Concept Case Study"],
-        badge: "Concept Case Study"
+        badge: "Concept Case Study",
+        strategicTradeoffs: [
+            "Selected soft 'calm' color palette",
+            "Removed aggressive CTAs for a gentler flow",
+            "Accessibility-first design structure"
+        ]
+    },
+    {
+        id: "revops",
+        title: "RevOps Circuitry",
+        category: "B2B Infrastructure",
+        description: "Streamlined a complex technical service offering into a clear, high-conversion landing page for sophisticated B2B buyers.",
+        image: "https://revopscircuitry.vercel.app/og-image.png", // Using live OG image as placeholder if local not avail
+        link: "https://revopscircuitry.vercel.app/",
+        tags: ["Client Project"],
+        badge: "Client Project",
+        strategicTradeoffs: [
+            "Condensed technical jargon into benefits",
+            "High-contrast design for B2B clarity",
+            "Direct-to-calendar conversion funnel"
+        ]
     }
 ];
 
@@ -115,7 +140,7 @@ export function CaseStudySection() {
                         Case Studies
                     </h2>
                     <p className="text-lg text-foreground-muted max-w-2xl leading-relaxed">
-                        Strategic implementations where design directly supports business outcomes.
+                        Solving business problems through clarity, structure, and strategic design.
                     </p>
                 </motion.div>
 

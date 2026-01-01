@@ -7,28 +7,28 @@ import { Palette, Terminal, MonitorSmartphone, MousePointerClick } from "lucide-
 
 const services = [
     {
-        title: "Strategic Design",
+        title: "Strategic Positioning",
         icon: Palette,
-        description: "Aesthetics that serve a function. We build high-trust visual systems that differentiate your brand from the generic template noise.",
-        tags: ["UI/UX", "Design Systems", "Brand Identity"]
+        description: "We clarify exactly what you sell and who it's for. Then we build a visual system that signals authority before you even speak.",
+        tags: ["Brand Logic", "Messaging Strategy", "Visual Identity"]
     },
     {
-        title: "Performance Engineering",
-        icon: Terminal,
-        description: "Zero-compromise technical execution. Next.js builds that load instantly, rank higher, and scale effortlessly.",
-        tags: ["Next.js", "React", "Vercel"]
-    },
-    {
-        title: "Interaction Design",
+        title: "High-Trust Interface Design",
         icon: MousePointerClick,
-        description: "Subtle, physics-based motion that guides the user's eye and makes the interface feel alive and expensive.",
-        tags: ["Framer Motion", "GSAP", "Micro-interactions"]
+        description: "Reducing decision friction. We design 'calm' interfaces that guide high-value prospects to book a consultation without hesitation.",
+        tags: ["UX Systems", "Conversion Design", "Accessibility"]
     },
     {
-        title: "Responsive Systems",
+        title: "Conversion Infrastructure",
+        icon: Terminal,
+        description: "Zero-compromise engineering. Your site will load instantly, rank for key intent terms, and capture leads while you sleep.",
+        tags: ["Next.js", "SEO Architecture", "Performance"]
+    },
+    {
+        title: "Adaptive Growth Systems",
         icon: MonitorSmartphone,
-        description: "Flawless adaptation across every viewport. Your site will feel native to every device, from 4K monitors to mobile screens.",
-        tags: ["Mobile First", "Fluid Typography", "Adaptive Layouts"]
+        description: "Built to scale. Easily add case studies, articles, and new service lines without breaking the design or needing a developer.",
+        tags: ["Scalable CMS", "Mobile First", "Fluid Layouts"]
     }
 ];
 

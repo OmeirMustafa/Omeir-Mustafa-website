@@ -19,16 +19,16 @@ const inter = Inter({
 // Site configuration - GOD-TIER POSITIONING
 const siteConfig = {
   name: "Omeir Mustafa",
-  title: "Omeir Mustafa — Strategic Web Design for High-Trust Businesses", // Updated Title
-  description: "Custom websites designed to build trust, clarify value, and convert serious clients. Strategic UX and modern engineering for service-based businesses.", // Updated Description
+  title: "Strategic Web Design for Law, Healthcare & Consultants | Omeir Mustafa",
+  description: "I build high-trust websites that reduce decision friction and increase client inquiries for professional service firms. No templates, just revenue-focused design.",
   url: "https://omeir-mustafa.vercel.app/",
   email: "omeirmustafa.work@gmail.com",
   keywords: [
-    "Web Designer",
-    "Web Developer",
+    "Web Design for Law Firms",
+    "Medical Practice Website Design",
+    "Consultant Website Strategy",
     "High-Trust Web Design",
-    "Conversion Strategy",
-    "Service Business Website",
+    "Conversion Focused Design",
   ],
 };
 
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
 
   // Open Graph
   openGraph: {
-    title: "Omeir Mustafa — Premium Web Design & Development",
-    description: "Custom-built, high-performance websites designed for clarity, conversion, and scale.",
+    title: "Strategic Web Design for Law, Healthcare & Consultants | Omeir Mustafa",
+    description: "I build high-trust websites that reduce decision friction and increase client inquiries for professional service firms.",
     type: "website",
     url: siteConfig.url,
     images: [

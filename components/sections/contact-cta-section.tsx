@@ -41,9 +41,10 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.5 }}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <button onClick={onContactClick} className="h-12 px-6 rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
-                            Start a Project
+                        <button onClick={onContactClick} className="h-14 px-8 text-lg rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
+                            Discuss Your Project
                         </button>
                     </motion.div>
 

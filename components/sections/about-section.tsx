@@ -106,9 +106,9 @@ export function AboutSection() {
                             </h3>
                             <ul className="space-y-4">
                                 {[
-                                    "Businesses selling expertise, not commodities",
-                                    "Leaders who value clarity over decorative fluff",
-                                    "Companies ready to invest in a long-term asset"
+                                    "Firms losing high-value leads due to outdated positioning",
+                                    "Experts whose digital presence contradicts their real-world reputation",
+                                    "Teams tired of cosmetic redesigns that fail to move business metrics"
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-foreground-muted">
                                         <div className="mt-1 p-0.5 rounded-full bg-accent/20 text-accent">
