@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface HeroSectionProps {
@@ -117,12 +117,12 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <Button size="lg" onClick={onContactClick} className="h-14 px-8 text-lg shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
+                        <button onClick={onContactClick} className="h-14 px-8 text-lg rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
                             Start a Project
-                        </Button>
-                        <Button variant="outline" size="lg" onClick={scrollToCaseStudy} className="h-14 px-8 text-lg border-white/10 hover:bg-white/5">
+                        </button>
+                        <button onClick={scrollToCaseStudy} className="h-14 px-8 text-lg rounded-full border border-white/10 text-foreground font-medium hover:bg-white/5 transition-colors">
                             View Case Studies
-                        </Button>
+                        </button>
                     </motion.div>
                 </motion.div>
             </Container>

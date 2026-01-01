@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -156,13 +156,12 @@ export function Navbar({ onContactClick }: NavbarProps) {
                 </div>
 
                 {/* Contact Button */}
-                <Button
-                    size="sm"
+                <button
                     onClick={onContactClick}
-                    className="hidden md:inline-flex shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)] transition-all duration-300 border border-accent/20"
+                    className="hidden md:inline-flex items-center justify-center h-9 px-4 rounded-full bg-accent text-white text-sm font-medium shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_35px_rgba(37,99,235,0.6)] transition-all duration-300 border border-accent/20"
                 >
                     Contact
-                </Button>
+                </button>
 
                 {/* Mobile Toggle */}
                 <motion.button
@@ -214,9 +213,9 @@ export function Navbar({ onContactClick }: NavbarProps) {
                                 </motion.a>
                             ))}
                             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                                <Button size="lg" onClick={() => { setIsOpen(false); onContactClick(); }}>
+                                <button onClick={() => { setIsOpen(false); onContactClick(); }} className="h-12 px-6 rounded-full bg-accent text-white font-medium">
                                     Contact
-                                </Button>
+                                </button>
                             </motion.div>
                         </div>
                     </motion.div>

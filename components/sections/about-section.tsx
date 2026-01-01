@@ -6,11 +6,6 @@ import { motion } from "framer-motion";
 import { Check, Layout, Sparkles, X, Zap } from "lucide-react";
 
 export function AboutSection() {
-
-
-
-
-
     const traits = [
         {
             icon: Layout,
@@ -67,7 +62,6 @@ export function AboutSection() {
                         </div>
                     </motion.div>
 
-                    {/* 2. Bento Grid Traits - Glassmorphic Cards */}
                     <div className="grid md:grid-cols-3 gap-6 mb-32">
                         {traits.map((trait, index) => (
                             <motion.div

@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
+
 import { motion } from "framer-motion";
 
 interface ContactCTASectionProps {
@@ -42,9 +42,9 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         viewport={{ once: true }}
                         transition={{ delay: 0.2, duration: 0.5 }}
                     >
-                        <Button size="lg" onClick={onContactClick} className="shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
+                        <button onClick={onContactClick} className="h-12 px-6 rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
                             Start a Project
-                        </Button>
+                        </button>
                     </motion.div>
 
                     {/* Trust Note */}
