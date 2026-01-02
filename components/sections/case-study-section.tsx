@@ -70,7 +70,7 @@ const caseStudies: CaseStudy[] = [
         title: "RevOps Circuitry",
         category: "B2B Infrastructure",
         description: "Streamlined a complex technical service offering into a clear, high-conversion landing page for sophisticated B2B buyers.",
-        image: "https://revopscircuitry.vercel.app/og-image.png", // Using live OG image as placeholder if local not avail
+        image: "/revops-circuitry-preview.png",
         link: "https://revopscircuitry.vercel.app/",
         tags: ["Client Project"],
         badge: "Client Project",
