@@ -66,7 +66,6 @@ export function AboutSection() {
                         {traits.map((trait, index) => (
                             <motion.div
                                 key={trait.title}
-                                // style={{ y: index % 2 === 0 ? 0 : yParallax }} // Static as requested
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}

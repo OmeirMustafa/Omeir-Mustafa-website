@@ -74,8 +74,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                     {/* Main Headline */}
                     <div className="overflow-hidden mb-8">
                         <motion.h1
-                            className="font-heading font-semibold text-foreground leading-[1.05] tracking-tight"
-                            style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}
+                            className="font-heading font-semibold text-foreground leading-[1.1] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
                         >
                             <span className="block overflow-hidden">
                                 <motion.span variants={itemVariants} className="block">
@@ -87,9 +86,9 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                                     reduce friction, clarify value,
                                 </motion.span>
                             </span>
-                            <span className="block overflow-hidden text-foreground-muted/80 text-3xl md:text-5xl lg:text-6xl mt-4">
+                            <span className="block overflow-hidden text-foreground-muted/80 text-xl sm:text-2xl md:text-4xl lg:text-5xl mt-4">
                                 <motion.span variants={itemVariants} className="block">
-                                    and increase client inquiries for<br />high-trust service businesses.
+                                    and increase client inquiries for high-trust service businesses.
                                 </motion.span>
                             </span>
                         </motion.h1>
@@ -98,21 +97,21 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                     {/* Sub-headline */}
                     <motion.p
                         variants={itemVariants}
-                        className="text-xl md:text-2xl text-foreground-muted mb-10 max-w-2xl mx-auto leading-relaxed font-medium"
+                        className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground-muted mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed font-medium px-2"
                     >
                         Specialized digital infrastructure for law firms, medical practices, and consultancies that need to convey authority and earn trust instantly.
                     </motion.p>
 
                     {/* Trust Bar */}
-                    <motion.div variants={itemVariants} className="mb-12 flex justify-center">
-                        <div className="px-6 py-3 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm">
-                            <p className="text-sm font-medium tracking-widest uppercase text-foreground-subtle flex items-center gap-3">
-                                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                                Strategic Thinking
+                    <motion.div variants={itemVariants} className="mb-10 md:mb-12 flex justify-center px-2">
+                        <div className="px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm">
+                            <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wider sm:tracking-widest uppercase text-foreground-subtle flex flex-wrap items-center justify-center gap-1 sm:gap-2 md:gap-3">
+                                <span className="w-1.5 h-1.5 rounded-full bg-accent hidden sm:block"></span>
+                                <span>Strategic Thinking</span>
                                 <span className="text-white/10">•</span>
-                                Calm Authority
+                                <span>Calm Authority</span>
                                 <span className="text-white/10">•</span>
-                                Business-First Mindset
+                                <span>Business-First</span>
                             </p>
                         </div>
                     </motion.div>
@@ -122,10 +121,10 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        <button onClick={onContactClick} className="h-14 px-8 text-lg rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
+                        <button onClick={onContactClick} className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
                             Explore How We Can Help
                         </button>
-                        <button onClick={scrollToCaseStudy} className="h-14 px-8 text-lg rounded-full border border-white/10 text-foreground font-medium hover:bg-white/5 transition-colors">
+                        <button onClick={scrollToCaseStudy} className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg rounded-full border border-white/10 text-foreground font-medium hover:bg-white/5 transition-colors">
                             View Case Studies
                         </button>
                     </motion.div>
