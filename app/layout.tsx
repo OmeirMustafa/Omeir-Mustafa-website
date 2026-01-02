@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Inter } from "next/font/google";
 import "./globals.css";
+// Trigger Vercel Deploy
 import { Cursor } from "@/components/ui/cursor";
 import { NewYearOverlay } from "@/components/ui/new-year-overlay";
 
