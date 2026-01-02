@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/ui/container";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 
 const socialLinks = [
     {
@@ -20,7 +20,8 @@ const socialLinks = [
 export function Footer() {
     const currentYear = new Date().getFullYear();
     const footerRef = useRef<HTMLElement>(null);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
     const [isHoveringFooter, setIsHoveringFooter] = useState(false);
 
     useEffect(() => {
@@ -29,10 +30,8 @@ export function Footer() {
 
         const handleMouseMove = (e: MouseEvent) => {
             const rect = footer.getBoundingClientRect();
-            setMousePosition({
-                x: e.clientX - rect.left,
-                y: e.clientY - rect.top,
-            });
+            mouseX.set(e.clientX - rect.left);
+            mouseY.set(e.clientY - rect.top);
         };
 
         const handleMouseEnter = () => setIsHoveringFooter(true);
@@ -47,7 +46,10 @@ export function Footer() {
             footer.removeEventListener("mouseenter", handleMouseEnter);
             footer.removeEventListener("mouseleave", handleMouseLeave);
         };
-    }, []);
+    }, [mouseX, mouseY]);
+
+    const maskImage = useMotionTemplate`radial-gradient(circle 300px at ${mouseX}px ${mouseY}px, black 0%, transparent 80%)`;
+    const opacity = isHoveringFooter ? 1 : 0;
 
     const name = "Omeir Mustafa";
 
@@ -59,23 +61,19 @@ export function Footer() {
             className="border-t border-white/5 bg-background relative overflow-hidden py-24 md:py-32"
         >
             {/* Signature Watermark - Massive Depth Layer with Fog Reveal */}
-            <div
+            <motion.div
                 className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none"
                 style={{
-                    maskImage: isHoveringFooter
-                        ? `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 80%)`
-                        : "none",
-                    WebkitMaskImage: isHoveringFooter
-                        ? `radial-gradient(circle 300px at ${mousePosition.x}px ${mousePosition.y}px, black 0%, transparent 80%)`
-                        : "none",
-                    opacity: isHoveringFooter ? 1 : 0, // Hide by default, reveal with cursor
-                    transition: "opacity 0.5s ease-out"
+                    maskImage: isHoveringFooter ? maskImage : "none",
+                    WebkitMaskImage: isHoveringFooter ? maskImage : "none",
                 }}
+                animate={{ opacity }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
             >
                 <span className="text-[15vw] md:text-[20vw] font-heading font-bold text-foreground/[0.08] leading-none tracking-tighter whitespace-nowrap blur-[2px]">
                     OMEIR
                 </span>
-            </div>
+            </motion.div>
 
             <Container className="relative z-10">
                 <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-20">

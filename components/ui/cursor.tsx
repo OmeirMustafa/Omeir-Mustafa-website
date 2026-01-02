@@ -1,25 +1,18 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-interface SmokeParticle {
-    x: number;
-    y: number;
-    id: number;
-}
-
 export function Cursor() {
-    const [isVisible, setIsVisible] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
     const [isTouchDevice] = useState(() => {
         if (typeof window !== "undefined") {
             return window.matchMedia("(pointer: coarse)").matches;
         }
         return true;
     });
-    const [smokeParticles, setSmokeParticles] = useState<SmokeParticle[]>([]);
-    const particleIdRef = useRef(0);
+
+    const [isVisible, setIsVisible] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -35,30 +28,10 @@ export function Cursor() {
         document.body.style.cursor = "none";
         document.documentElement.style.cursor = "none";
 
-        let lastX = 0;
-        let lastY = 0;
-
         const moveCursor = (e: MouseEvent) => {
             mouseX.set(e.clientX);
             mouseY.set(e.clientY);
             if (!isVisible) setIsVisible(true);
-
-            // Calculate movement speed
-            const dx = e.clientX - lastX;
-            const dy = e.clientY - lastY;
-            const speed = Math.sqrt(dx * dx + dy * dy);
-
-            // Create smoke/flame particles when moving fast
-            if (speed > 15) {
-                particleIdRef.current++;
-                setSmokeParticles(prev => [
-                    ...prev.slice(-8),
-                    { x: e.clientX, y: e.clientY, id: particleIdRef.current }
-                ]);
-            }
-
-            lastX = e.clientX;
-            lastY = e.clientY;
         };
 
         const handleMouseEnter = () => setIsHovered(true);
@@ -102,37 +75,6 @@ export function Cursor() {
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.2 }}
         >
-            {/* Fire/Smoke Particles - Only appear when moving fast */}
-            {smokeParticles.map((particle) => (
-                <motion.div
-                    key={particle.id}
-                    className="absolute rounded-full pointer-events-none"
-                    initial={{
-                        x: particle.x,
-                        y: particle.y,
-                        opacity: 0.7,
-                        scale: 0.5
-                    }}
-                    animate={{
-                        opacity: 0,
-                        scale: 2,
-                        y: particle.y - 20, // Rise up like flame
-                    }}
-                    transition={{
-                        duration: 0.5,
-                        ease: "easeOut"
-                    }}
-                    style={{
-                        width: 16,
-                        height: 16,
-                        background: "radial-gradient(circle, rgba(255,140,0,0.6) 0%, rgba(255,69,0,0.3) 40%, rgba(255,255,255,0) 70%, transparent 100%)",
-                        filter: "blur(4px)",
-                        translateX: "-50%",
-                        translateY: "-50%",
-                    }}
-                />
-            ))}
-
             {/* Main Cursor - Arrow */}
             <motion.div
                 style={{
