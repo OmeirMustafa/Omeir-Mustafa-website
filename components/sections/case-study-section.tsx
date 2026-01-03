@@ -14,9 +14,10 @@ interface CaseStudy {
     description: string;
     image: string;
     link: string;
-    tags: string[];
     badge: "Client Project" | "Concept Case Study";
-    strategicTradeoffs?: string[];
+    businessContext: string;
+    constraints: string[];
+    impact: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -24,61 +25,49 @@ const caseStudies: CaseStudy[] = [
         id: "lumina",
         title: "Lumina Law",
         category: "Visual Trust & Clarity",
-        description: "Redesigned a legal firm's digital presence to modernize their authority without losing gravitas. Focused on immediate service comprehension.",
+        description: "Modernizing a legacy law firm to compete with digital-first disruptors without losing their established gravitas.",
         image: "/lumina-preview.png",
         link: "https://lumina-law-website-rebuilt.vercel.app/",
-        tags: ["Self-Initiated Redesign"],
         badge: "Client Project",
-        strategicTradeoffs: [
-            "Prioritized restraint over trendy animations",
-            " Simplified navigation to reduce client friction",
-            "Typography chosen for maximum readability"
-        ]
-    },
-    {
-        id: "anchor",
-        title: "Anchor Capital",
-        category: "Authority Positioning",
-        description: "A 'dark-mode' concept for wealth advisors that signals exclusivity. Translates complex financial value into clear client outcomes.",
-        image: "/anchor-preview.png",
-        link: "https://financial-advisor-firm-anchor-case.vercel.app/",
-        tags: ["Concept Case Study"],
-        badge: "Concept Case Study",
-        strategicTradeoffs: [
-            "Used dark aesthetics to signal premium value",
-            "Focused on 'outcome' messaging over features",
-            "Built for high-net-worth mobile users"
-        ]
-    },
-    {
-        id: "aura",
-        title: "Aura Health",
-        category: "Clinical Authority",
-        description: "A calm, accessible concept for a medical clinic. Designed to reduce patient anxiety and simplify the booking journey.",
-        image: "/aura-preview.png",
-        link: "https://healthcare-clinic-conceptual-case-s.vercel.app/",
-        tags: ["Concept Case Study"],
-        badge: "Concept Case Study",
-        strategicTradeoffs: [
-            "Selected soft 'calm' color palette",
-            "Removed aggressive CTAs for a gentler flow",
-            "Accessibility-first design structure"
-        ]
+        businessContext: "Firm was losing leads to newer, less experienced competitors with better websites.",
+        constraints: ["Must retain conservative 'serious' tone", "Zero tolerance for flashy animations", "Mobile-first for commuter clients"],
+        impact: "Established a digital presence that validated their premium hourly rates."
     },
     {
         id: "revops",
         title: "RevOps Circuitry",
         category: "B2B Infrastructure",
-        description: "Streamlined a complex technical service offering into a clear, high-conversion landing page for sophisticated B2B buyers.",
+        description: "Transforming a complex technical service offering into a streamlined conversion engine for 6-figure contracts.",
         image: "/revops-circuitry-preview.png",
         link: "https://revopscircuitry.vercel.app/",
-        tags: ["Client Project"],
         badge: "Client Project",
-        strategicTradeoffs: [
-            "Condensed technical jargon into benefits",
-            "High-contrast design for B2B clarity",
-            "Direct-to-calendar conversion funnel"
-        ]
+        businessContext: "Prospects were confused by the technical complexity of the service offering.",
+        constraints: ["High-ticket B2B Audience", "Need to filter out low-budget leads", "Explain 'invisible' backend work"],
+        impact: "Reduced sales cycle time by clarifying value proposition upfront."
+    },
+    {
+        id: "anchor",
+        title: "Anchor Capital",
+        category: "Authority Positioning",
+        description: "Wealth management infrastructure designed to signal exclusivity and competence to high-net-worth individuals.",
+        image: "/anchor-preview.png",
+        link: "https://financial-advisor-firm-anchor-case.vercel.app/",
+        badge: "Concept Case Study",
+        businessContext: "Wealth advisors often look generic. Anchor needed to look like a 'private bank'.",
+        constraints: ["Dark mode requirement (rare in finance)", "Strict data privacy signaling", "Mobile-heavy user base"],
+        impact: "Demonstrated how visual design affects perceived asset value."
+    },
+    {
+        id: "aura",
+        title: "Aura Health",
+        category: "Clinical Authority",
+        description: "Reducing patient booking anxiety through an interface designed for calm, accessibility, and speed.",
+        image: "/aura-preview.png",
+        link: "https://healthcare-clinic-conceptual-case-s.vercel.app/",
+        badge: "Concept Case Study",
+        businessContext: "Medical websites are often cluttered, increasing patient stress.",
+        constraints: ["WCAG Accessibility Compliance", "Calm color psychology", "One-click booking flow"],
+        impact: "Hypothesis: 20% increase in booking completion due to reduced friction."
     }
 ];
 
@@ -202,17 +191,31 @@ export function CaseStudySection() {
                                         {project.description}
                                     </p>
 
-                                    {/* Trade-offs for featured */}
-                                    {project.strategicTradeoffs && (
-                                        <div className="mt-auto pt-6 border-t border-white/5 space-y-2">
-                                            {project.strategicTradeoffs.map((item, i) => (
-                                                <div key={i} className="flex items-start gap-2 text-xs text-foreground-subtle">
-                                                    <span className="text-accent mt-0.5">•</span>
-                                                    {item}
-                                                </div>
-                                            ))}
+                                    {/* Business Context Block */}
+                                    <div className="mt-auto space-y-6 pt-6 border-t border-white/5">
+                                        <div>
+                                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground-subtle mb-2">Context</h4>
+                                            <p className="text-sm text-foreground-muted">{project.businessContext}</p>
                                         </div>
-                                    )}
+
+                                        <div>
+                                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground-subtle mb-2">Constraints & Logic</h4>
+                                            <ul className="space-y-1">
+                                                {project.constraints.map((c, i) => (
+                                                    <li key={i} className="text-xs text-foreground-muted/80 flex items-start gap-2">
+                                                        <span className="text-accent">•</span> {c}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div>
+                                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground-subtle mb-2">Impact</h4>
+                                            <p className="text-sm text-foreground font-medium border-l-2 border-accent pl-3 text-white/90">
+                                                {project.impact}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </SpotlightCard>
                         </motion.a>

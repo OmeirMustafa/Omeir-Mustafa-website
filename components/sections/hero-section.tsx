@@ -78,17 +78,17 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         >
                             <span className="block overflow-hidden">
                                 <motion.span variants={itemVariants} className="block">
-                                    We build websites that
+                                    We design digital systems that
                                 </motion.span>
                             </span>
                             <span className="block overflow-hidden text-transparent bg-clip-text bg-gradient-to-r from-foreground via-foreground to-foreground/70">
                                 <motion.span variants={itemVariants} className="block">
-                                    reduce friction, clarify value,
+                                    reduce friction, qualify demand,
                                 </motion.span>
                             </span>
                             <span className="block overflow-hidden text-foreground-muted/80 text-xl sm:text-2xl md:text-4xl lg:text-5xl mt-4">
                                 <motion.span variants={itemVariants} className="block">
-                                    and increase client inquiries for high-trust service businesses.
+                                    and increase revenue clarity for service businesses.
                                 </motion.span>
                             </span>
                         </motion.h1>
@@ -99,7 +99,7 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         variants={itemVariants}
                         className="text-base sm:text-lg md:text-xl lg:text-2xl text-foreground-muted mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed font-medium px-2"
                     >
-                        Specialized digital infrastructure for law firms, medical practices, and consultancies that need to convey authority and earn trust instantly.
+                        This website is not a brochure. It is operational infrastructure for law firms, medical practices, and consultancies that demand results.
                     </motion.p>
 
                     {/* Trust Bar */}
@@ -107,11 +107,11 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         <div className="px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm">
                             <p className="text-[10px] sm:text-xs md:text-sm font-medium tracking-wider sm:tracking-widest uppercase text-foreground-subtle flex flex-wrap items-center justify-center gap-1 sm:gap-2 md:gap-3">
                                 <span className="w-1.5 h-1.5 rounded-full bg-accent hidden sm:block"></span>
-                                <span>Strategic Thinking</span>
+                                <span>Systems Thinking</span>
                                 <span className="text-white/10">•</span>
-                                <span>Calm Authority</span>
+                                <span>Operational Clarity</span>
                                 <span className="text-white/10">•</span>
-                                <span>Business-First</span>
+                                <span>Revenue-First</span>
                             </p>
                         </div>
                     </motion.div>
@@ -122,10 +122,10 @@ export function HeroSection({ onContactClick }: HeroSectionProps) {
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
                         <button onClick={onContactClick} className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg rounded-full bg-accent text-white font-medium shadow-[0_0_25px_rgba(37,99,235,0.4)] hover:shadow-[0_0_40px_rgba(37,99,235,0.6)] transition-shadow duration-500 border border-accent/20">
-                            Explore How We Can Help
+                            Assess Your System
                         </button>
                         <button onClick={scrollToCaseStudy} className="w-full sm:w-auto h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg rounded-full border border-white/10 text-foreground font-medium hover:bg-white/5 transition-colors">
-                            View Case Studies
+                            View the Architecture
                         </button>
                     </motion.div>
                 </motion.div>

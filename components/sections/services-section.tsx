@@ -7,28 +7,28 @@ import { Palette, Terminal, MonitorSmartphone, MousePointerClick } from "lucide-
 
 const services = [
     {
-        title: "Strategic Positioning",
+        title: "Demand Qualification Systems",
         icon: Palette,
-        description: "We clarify exactly what you sell and who it's for. Then we build a visual system that signals authority before you even speak.",
-        tags: ["Brand Logic", "Messaging Strategy", "Visual Identity"]
+        description: "We don't just 'design websites'. We build specific user flows that filter out low-value inquiries and qualify high-intent buyers before they ever speak to you.",
+        tags: ["Logic Mapping", "Funnel Strategy", "buyer Psychology"]
     },
     {
-        title: "High-Trust Interface Design",
+        title: "Trust Infrastructure",
         icon: MousePointerClick,
-        description: "Reducing decision friction. We design 'calm' interfaces that guide high-value prospects to book a consultation without hesitation.",
-        tags: ["UX Systems", "Conversion Design", "Accessibility"]
+        description: "In high-stakes services, trust is the currency. We engineer interfaces that signal authority, competence, and reliability in milliseconds.",
+        tags: ["Authority Markers", "Social Proof Systems", "Visual Credibility"]
     },
     {
-        title: "Conversion Infrastructure",
+        title: "Revenue Architecture",
         icon: Terminal,
-        description: "Zero-compromise engineering. Your site will load instantly, rank for key intent terms, and capture leads while you sleep.",
-        tags: ["Next.js", "SEO Architecture", "Performance"]
+        description: "Performance is revenue. We build blazing-fast, SEO-optimized systems that ensure no lead is lost to latency or technical failure.",
+        tags: ["Latency Elimination", "Conversion SEO", "Scalable Tech"]
     },
     {
-        title: "Adaptive Growth Systems",
+        title: "Scalable Operations",
         icon: MonitorSmartphone,
-        description: "Built to scale. Easily add case studies, articles, and new service lines without breaking the design or needing a developer.",
-        tags: ["Scalable CMS", "Mobile First", "Fluid Layouts"]
+        description: "A system you can own. We deliver robust CMS structures that allow your team to publish insights and case studies without developer dependency.",
+        tags: ["Headless CMS", "Content Operations", "Mobile Systems"]
     }
 ];
 
@@ -49,8 +49,8 @@ export function ServicesSection() {
                     className="mb-20 md:mb-32 max-w-2xl"
                 >
                     <h2 className="text-4xl md:text-6xl font-heading font-semibold text-foreground mb-6 tracking-tight">
-                        Capabilities & <br />
-                        <span className="text-foreground-muted">Technical Expertise</span>
+                        Operational <br />
+                        <span className="text-foreground-muted">Capabilities</span>
                     </h2>
                     <p className="text-lg text-foreground-muted leading-relaxed">
                         I bridge the gap between &quot;good design&quot; and &quot;serious engineering.&quot; Every project is a bespoke build, optimized for commercial performance.

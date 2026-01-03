@@ -127,9 +127,9 @@ export function AboutSection() {
                             </h3>
                             <ul className="space-y-4">
                                 {[
-                                    "Firms losing high-value leads due to outdated positioning",
-                                    "Experts whose digital presence contradicts their real-world reputation",
-                                    "Teams tired of cosmetic redesigns that fail to move business metrics"
+                                    "Founders who measure digital ROI, not just aesthetics.",
+                                    "Firms losing market share to tech-savvy competitors.",
+                                    "Operators who value systems, clarity, and precision."
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-foreground-muted">
                                         <div className="mt-1 p-0.5 rounded-full bg-accent/20 text-accent">
@@ -141,7 +141,7 @@ export function AboutSection() {
                             </ul>
                         </motion.div>
 
-                        {/* Who This Is Not For - Muted/Standard */}
+                        {/* Who This Is Not For - Disqualification Logic */}
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -151,13 +151,13 @@ export function AboutSection() {
                         >
                             <h3 className="text-2xl font-heading font-semibold text-foreground-muted mb-6 flex items-center gap-3">
                                 <div className="w-2 h-8 bg-foreground-subtle rounded-full" />
-                                Who This Is Not For
+                                Who This Is NOT For
                             </h3>
                             <ul className="space-y-4">
                                 {[
-                                    "Quick 1-week template builds",
-                                    "Lowest-bidder price shopping",
-                                    "Design-by-committee environments"
+                                    "Those seeking a 'quick 1-week website'.",
+                                    "Price shoppers optimizing for lowest cost.",
+                                    "Teams that view digital as 'marketing' rather than operations."
                                 ].map((item, i) => (
                                     <li key={i} className="flex items-start gap-3 text-foreground-subtle">
                                         <div className="mt-1 p-0.5 rounded-full bg-white/5 text-foreground-subtle">
