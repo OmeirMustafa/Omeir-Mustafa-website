@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Omeir Mustafa — Personal Website
 
-## Getting Started
+This repository contains the source code for my personal website.
 
-First, run the development server:
+The site serves as a professional showcase of my work in designing and building
+digital systems for service-based and B2B businesses, with a focus on:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Operational clarity
+- Lead qualification systems
+- Conversion-oriented architecture
+- Scalable, maintainable frontend structure
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This website is intentionally minimal and performance-focused.
+Every component and layout decision is made to support clarity,
+credibility, and long-term maintainability rather than visual novelty.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The site includes:
+- Core positioning and service narrative
+- Selected case studies (conceptual and practical)
+- Optimized layout for all screen sizes
+- Clean, production-ready frontend structure
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- Modern frontend framework
+- Component-based architecture
+- Responsive design system
+- Optimized asset loading
+- Deployed on a global edge network
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design Philosophy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This is not a marketing-heavy or animation-driven site.
 
-## Deploy on Vercel
+The goal is to:
+- Communicate expertise clearly
+- Reduce cognitive load for visitors
+- Allow the work itself to speak
+- Remain adaptable as projects and case studies evolve
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Development Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Codebase is intentionally kept lean
+- Unused components and assets are removed
+- Structure prioritizes readability and future extension
+- Built with long-term use and iteration in mind
+
+## License
+
+Private project. All rights reserved.
