@@ -4,6 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
 import { Check, Layout, Sparkles, X, Zap } from "lucide-react";
+import Image from "next/image";
 
 export function AboutSection() {
     const traits = [
@@ -55,6 +56,27 @@ export function AboutSection() {
                                 </p>
                             </div>
                             <div className="flex flex-col justify-end">
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5 }}
+                                    className="mb-8 flex items-center gap-4"
+                                >
+                                    <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                                        <Image
+                                            src="/omeir-profile.jpg"
+                                            alt="Omeir Mustafa - Strategic Web Consultant"
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 768px) 64px, 80px"
+                                        />
+                                    </div>
+                                    <div>
+                                        <h4 className="text-lg font-heading font-medium text-foreground">Omeir Mustafa</h4>
+                                        <p className="text-sm text-foreground-muted">Strategic Web Consultant</p>
+                                    </div>
+                                </motion.div>
                                 <p className="text-xl md:text-2xl font-medium text-foreground border-l-2 border-accent pl-6 py-2">
                                     &quot;I don&apos;t just write code. I engineer clarity, trust, and revenue opportunity.&quot;
                                 </p>
