@@ -17,7 +17,7 @@ export function Cursor() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
-    const springConfig = { damping: 50, stiffness: 800, mass: 0.1 };
+    const springConfig = { damping: 35, stiffness: 1000, mass: 0.1 };
     const cursorX = useSpring(mouseX, springConfig);
     const cursorY = useSpring(mouseY, springConfig);
 
