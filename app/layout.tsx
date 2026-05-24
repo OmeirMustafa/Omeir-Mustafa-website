@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Cursor } from "@/components/ui/cursor";
+import { ModalProvider } from "@/components/providers/modal-provider";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -137,8 +138,10 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Cursor />
-        {children}
+        <ModalProvider>
+          <Cursor />
+          {children}
+        </ModalProvider>
       </body>
     </html>
   );

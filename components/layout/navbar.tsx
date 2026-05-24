@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useModal } from "@/components/providers/modal-provider";
 
 const navLinks = [
     { name: "About", href: "#about" },
@@ -13,10 +14,6 @@ const navLinks = [
     { name: "Selected Work", href: "#work" },
     { name: "Principles", href: "#principles" },
 ];
-
-interface NavbarProps {
-    onContactClick: () => void;
-}
 
 // Individual NavLink component with micro-animations
 function NavLink({
@@ -37,7 +34,7 @@ function NavLink({
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             className={cn(
-                "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-300",
+                "relative px-4 py-1.5 text-sm font-medium rounded-full focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none transition-colors duration-300",
                 activeSection === link.href
                     ? "text-white font-semibold"
                     : "text-zinc-400 hover:text-white"
@@ -65,7 +62,8 @@ function NavLink({
     );
 }
 
-export function Navbar({ onContactClick }: NavbarProps) {
+export function Navbar() {
+    const { openModal } = useModal();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeSection, setActiveSection] = useState("");
@@ -127,7 +125,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
                         window.scrollTo({ top: 0, behavior: "smooth" });
                         setActiveSection("");
                     }}
-                    className="text-sm font-semibold tracking-tight text-white hover:text-zinc-200 transition-colors duration-300 whitespace-nowrap px-2"
+                    className="text-sm font-semibold tracking-tight text-white hover:text-zinc-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none transition-colors duration-300 whitespace-nowrap px-2 rounded-lg"
                 >
                     Omeir Mustafa <span className="text-zinc-500 font-normal ml-2">/ AI Architect</span>
                 </Link>
@@ -146,8 +144,8 @@ export function Navbar({ onContactClick }: NavbarProps) {
 
                 {/* Contact Button */}
                 <button
-                    onClick={onContactClick}
-                    className="hidden md:inline-flex items-center justify-center h-8 px-4 rounded-full bg-white text-black text-xs font-semibold hover:bg-zinc-200 transition-all duration-300 border border-white/10"
+                    onClick={openModal}
+                    className="hidden md:inline-flex items-center justify-center h-8 px-4 rounded-full bg-white text-black text-xs font-semibold hover:bg-zinc-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 border border-white/10"
                 >
                     Contact
                 </button>
@@ -216,7 +214,7 @@ export function Navbar({ onContactClick }: NavbarProps) {
                                 className="mt-8 pt-8 border-t border-white/5"
                             >
                                 <button
-                                    onClick={() => { setIsOpen(false); onContactClick(); }}
+                                    onClick={() => { setIsOpen(false); openModal(); }}
                                     className="w-full h-12 rounded-full bg-white text-black font-semibold text-sm hover:bg-zinc-200 transition-colors"
                                 >
                                     Contact

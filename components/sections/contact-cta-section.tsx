@@ -3,12 +3,10 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
+import { useModal } from "@/components/providers/modal-provider";
 
-interface ContactCTASectionProps {
-    onContactClick: () => void;
-}
-
-export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
+export function ContactCTASection() {
+    const { openModal } = useModal();
     return (
         <Section id="contact-cta" className="bg-black relative overflow-hidden py-24 md:py-32">
             {/* Seamless Top Divider Line */}
@@ -42,8 +40,8 @@ export function ContactCTASection({ onContactClick }: ContactCTASectionProps) {
                         className="w-full sm:w-auto px-4"
                     >
                         <button 
-                            onClick={onContactClick} 
-                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full bg-white text-black hover:bg-zinc-200 transition-all duration-300 border border-white/10"
+                            onClick={openModal} 
+                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full bg-white text-black hover:bg-zinc-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 border border-white/10"
                         >
                             Initiate Alignment
                         </button>

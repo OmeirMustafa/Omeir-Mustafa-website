@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { ArrowRight, Cpu, Network, Layers } from "lucide-react";
-import { MouseEvent, useState, useEffect } from "react";
+import { MouseEvent, useState, useEffect, useRef } from "react";
 
 interface CaseStudy {
     id: string;
@@ -178,8 +178,27 @@ function SynapseVisual() {
 // 3. Aether Visual Mockup: Real-time event logging partition simulator
 function AetherVisual() {
     const [events, setEvents] = useState<string[]>([]);
+    const [isVisible, setIsVisible] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            { threshold: 0.1 }
+        );
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
         const timer = setInterval(() => {
             const logs = [
                 `TOPIC:tx-ingest | ID:${Math.floor(1000 + Math.random() * 9000)} | VOL:482.4 | SUCCESS`,
@@ -189,10 +208,10 @@ function AetherVisual() {
             setEvents(prev => [logs[Math.floor(Math.random() * logs.length)], ...prev.slice(0, 3)]);
         }, 1200);
         return () => clearInterval(timer);
-    }, []);
+    }, [isVisible]);
 
     return (
-        <div className="absolute inset-0 bg-black flex flex-col p-6 font-mono text-[10px] text-zinc-500 overflow-hidden select-none">
+        <div ref={containerRef} className="absolute inset-0 bg-black flex flex-col p-6 font-mono text-[10px] text-zinc-500 overflow-hidden select-none">
             <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-4">
                 <span className="flex items-center gap-1.5 text-white">
                     <Layers size={12} />

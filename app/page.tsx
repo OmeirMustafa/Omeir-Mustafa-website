@@ -1,50 +1,36 @@
-"use client";
-
-import { useState } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { ContactModal } from "@/components/contact-modal";
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
+import { ServicesSection } from "@/components/sections/services-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 import { CaseStudySection } from "@/components/sections/case-study-section";
+import { ProcessSection } from "@/components/sections/process-section";
 import { CredentialsSection } from "@/components/sections/credentials-section";
 import { PrinciplesSection } from "@/components/sections/principles-section";
+import { ClientExperienceSection } from "@/components/sections/client-experience-section";
 import { ContactCTASection } from "@/components/sections/contact-cta-section";
 
 export default function Home() {
-  const [isContactOpen, setIsContactOpen] = useState(false);
-
-  // Handler for Nav and Hero: Scrolls to the bottom Contact Section
-  const scrollToContact = () => {
-    const contactSection = document.querySelector("#contact-cta");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
-  // Handler for Contact CTA Section: Opens the Smart Modal
-  const openContactModal = () => setIsContactOpen(true);
-  const closeContactModal = () => setIsContactOpen(false);
-
   return (
     <>
-      <Navbar onContactClick={scrollToContact} />
+      <Navbar />
 
-      <HeroSection onContactClick={scrollToContact} />
+      <HeroSection />
 
       <main id="main-content" role="main" className="bg-black">
         <AboutSection />
+        <ServicesSection />
         <SkillsSection />
         <CaseStudySection />
+        <ProcessSection />
         <CredentialsSection />
         <PrinciplesSection />
-        <ContactCTASection onContactClick={openContactModal} />
+        <ClientExperienceSection />
+        <ContactCTASection />
       </main>
 
       <Footer />
-
-      <ContactModal isOpen={isContactOpen} onClose={closeContactModal} />
     </>
   );
 }
