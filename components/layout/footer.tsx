@@ -12,7 +12,7 @@ const socialLinks = [
     },
     {
         name: "GitHub",
-        href: "https://github.com/omeirmustafa",
+        href: "https://github.com/OmeirMustafa",
         ariaLabel: "Visit Omeir Mustafa on GitHub",
     },
 ];

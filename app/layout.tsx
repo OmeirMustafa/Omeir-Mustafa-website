@@ -105,7 +105,7 @@ function JsonLd() {
       "Intelligent Agents"
     ],
     "sameAs": [
-      "https://github.com/omeirmustafa",
+      "https://github.com/OmeirMustafa",
       "https://linkedin.com/in/omeirmustafa"
     ]
   };
