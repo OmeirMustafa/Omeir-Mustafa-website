@@ -1,0 +1,7 @@
+# Robots.txt for Omeir Mustafa Website
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://omeirmustafa.com/sitemap.xml
