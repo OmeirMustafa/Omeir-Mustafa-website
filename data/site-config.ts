@@ -1,0 +1,70 @@
+import type { SiteConfig } from '@/types';
+
+export const siteConfig: SiteConfig = {
+  name: 'Omeir Mustafa',
+  title: 'Omeir Mustafa | AI Creator, Educator & Builder',
+  description:
+    'I build AI-powered systems, teach automation workflows, and create tools that help creators and developers leverage artificial intelligence. Exploring Claude, ChatGPT, Cursor, n8n, MCP, and the future of autonomous agents.',
+  url: 'https://omeirmustafa.com',
+  email: 'omeirmustafa.work@gmail.com',
+  keywords: [
+    'AI Automation',
+    'AI Agents',
+    'Claude',
+    'ChatGPT',
+    'Gemini',
+    'Cursor',
+    'n8n',
+    'MCP',
+    'AI Workflows',
+    'AI Tools',
+    'Prompt Engineering',
+    'AI Education',
+    'AI Creator',
+    'Next.js',
+    'TypeScript',
+    'Autonomous Agents',
+    'LLM',
+    'AI Builder',
+    'AI Systems',
+    'Omeir Mustafa',
+  ],
+  socials: [
+    {
+      name: 'LinkedIn',
+      url: 'https://linkedin.com/in/omeirmustafa',
+      ariaLabel: 'Follow Omeir Mustafa on LinkedIn',
+    },
+    {
+      name: 'GitHub',
+      url: 'https://github.com/OmeirMustafa',
+      ariaLabel: 'View Omeir Mustafa on GitHub',
+    },
+    {
+      name: 'Instagram',
+      url: 'https://instagram.com/omeirmustafa',
+      ariaLabel: 'Follow Omeir Mustafa on Instagram',
+    },
+    {
+      name: 'YouTube',
+      url: 'https://youtube.com/@omeirmustafa',
+      ariaLabel: 'Subscribe to Omeir Mustafa on YouTube',
+    },
+    {
+      name: 'Twitter',
+      url: 'https://x.com/omeirmustafa',
+      ariaLabel: 'Follow Omeir Mustafa on X (Twitter)',
+    },
+  ],
+  navigation: [
+    { name: 'Home', href: '/' },
+    { name: 'Content', href: '/content' },
+    { name: 'AI Tools', href: '/tools' },
+    { name: 'Workflows', href: '/workflows' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Newsletter', href: '/newsletter' },
+    { name: 'Projects', href: '/projects' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
+  ],
+};

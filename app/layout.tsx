@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Cursor } from "@/components/ui/cursor";
 import { ModalProvider } from "@/components/providers/modal-provider";
+import { SearchProvider } from "@/components/search/search-provider";
+import { siteConfig } from "@/data/site-config";
 
 const geistSans = Geist({
   variable: "--font-sans",
@@ -15,24 +17,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
 });
-
-// Site configuration - ELITE POSITIONING
-const siteConfig = {
-  name: "Omeir Mustafa",
-  title: "Omeir Mustafa | Senior AI Engineer & Product Architect",
-  description: "I design and engineer production-grade AI applications and high-performance scalable systems. Focused on autonomous agents, deep systems architecture, and luxury web experiences.",
-  url: "https://omeir-mustafa.vercel.app/",
-  email: "omeirmustafa.work@gmail.com",
-  keywords: [
-    "AI Engineer",
-    "Product Architect",
-    "Full-Stack Engineer",
-    "Autonomous Agents developer",
-    "Systems Architect",
-    "Next.js Developer",
-    "SaaS Engineer",
-  ],
-};
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -93,21 +77,41 @@ export const viewport: Viewport = {
 function JsonLd() {
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Omeir Mustafa",
-    "url": "https://omeir-mustafa.vercel.app/",
-    "email": "omeirmustafa.work@gmail.com",
-    "jobTitle": "Senior AI Engineer & Product Architect",
-    "knowsAbout": [
-      "Artificial Intelligence",
-      "Software Architecture",
-      "Full-Stack Web Development",
-      "Systems Engineering",
-      "Intelligent Agents"
-    ],
-    "sameAs": [
-      "https://github.com/OmeirMustafa",
-      "https://linkedin.com/in/omeirmustafa"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": `${siteConfig.url}#person`,
+        "name": siteConfig.name,
+        "url": siteConfig.url,
+        "email": siteConfig.email,
+        "jobTitle": "AI Creator & Product Architect",
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "AI Workflows",
+          "Automation",
+          "Software Architecture",
+          "LLMs",
+          "Intelligent Agents"
+        ],
+        "sameAs": siteConfig.socials.map(s => s.url)
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${siteConfig.url}#website`,
+        "url": siteConfig.url,
+        "name": siteConfig.title,
+        "publisher": {
+          "@id": `${siteConfig.url}#person`
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": `${siteConfig.url}search?q={search_term_string}`
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
     ]
   };
 
@@ -138,10 +142,12 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <ModalProvider>
-          <Cursor />
-          {children}
-        </ModalProvider>
+        <SearchProvider>
+          <ModalProvider>
+            <Cursor />
+            {children}
+          </ModalProvider>
+        </SearchProvider>
       </body>
     </html>
   );

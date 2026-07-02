@@ -3,17 +3,9 @@
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
-import { useModal } from "@/components/providers/modal-provider";
+import Link from "next/link";
 
 export function HeroSection() {
-    const { openModal } = useModal();
-    const scrollToCaseStudy = () => {
-        const caseStudy = document.querySelector("#work");
-        if (caseStudy) {
-            caseStudy.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
     // Staggered Text Variants
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -58,7 +50,7 @@ export function HeroSection() {
                 />
                 {/* Radial Mask to keep grid faint and center-focused */}
                 <div 
-                    className="absolute inset-0 bg-radial from-transparent via-black/50 to-black"
+                    className="absolute inset-0"
                     style={{
                         background: "radial-gradient(circle at center, transparent 20%, #000000 80%)"
                     }}
@@ -75,14 +67,14 @@ export function HeroSection() {
                     animate="visible"
                     className="max-w-4xl mx-auto text-center flex flex-col items-center"
                 >
-                    {/* Tiny Seniority Tag */}
+                    {/* Status Tag */}
                     <motion.div
                         variants={itemVariants}
                         className="mb-8 px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm"
                     >
                         <p className="text-[10px] font-bold tracking-widest uppercase text-zinc-500 flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
-                            <span>AI Infra & Product Systems</span>
+                            <span>AI Educator & Systems Builder</span>
                         </p>
                     </motion.div>
 
@@ -90,13 +82,13 @@ export function HeroSection() {
                     <div className="mb-6">
                         <h1 className="font-sans font-bold text-white leading-[1.08] tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
                             <motion.span variants={itemVariants} className="block mb-2">
-                                Designing and engineering
+                                Building AI Systems.
                             </motion.span>
                             <motion.span 
                                 variants={itemVariants} 
                                 className="block text-zinc-400"
                             >
-                                production-grade AI systems.
+                                Teaching the Future of Work.
                             </motion.span>
                         </h1>
                     </div>
@@ -106,7 +98,7 @@ export function HeroSection() {
                         variants={itemVariants}
                         className="text-base sm:text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed font-normal px-4"
                     >
-                        Full-stack architect focused on intelligent agents, low-latency LLM orchestration, and hyper-scalable modern web experiences. Bridging technical rigor with premium commercial design.
+                        Exploring AI agents, automation workflows, and the tools reshaping how we build software. Helping developers and creators harness the power of AI.
                     </motion.p>
 
                     {/* Action controls */}
@@ -114,18 +106,24 @@ export function HeroSection() {
                         variants={itemVariants}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4"
                     >
-                        <button 
-                            onClick={openModal} 
-                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full bg-white text-black hover:bg-zinc-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 border border-white/10"
+                        <Link 
+                            href="/resources" 
+                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full bg-white text-black hover:bg-zinc-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 border border-white/10 inline-flex items-center justify-center"
                         >
-                            Initiate Alignment
-                        </button>
-                        <button 
-                            onClick={scrollToCaseStudy} 
-                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full border border-white/10 text-white hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300"
+                            Explore AI Resources
+                        </Link>
+                        <Link 
+                            href="/content" 
+                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full border border-white/10 text-white hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 inline-flex items-center justify-center"
                         >
-                            Explore Architecture
-                        </button>
+                            Watch Latest Content
+                        </Link>
+                        <Link 
+                            href="/contact" 
+                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full border border-white/5 text-zinc-400 hover:text-white hover:border-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 inline-flex items-center justify-center"
+                        >
+                            Work With Me
+                        </Link>
                     </motion.div>
                 </motion.div>
             </Container>

@@ -1,14 +1,46 @@
 "use client";
 
+import Link from "next/link";
 import { Container } from "@/components/ui/container";
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { NewsletterForm } from "@/components/ui/newsletter-form";
+
+const footerLinks = {
+    platform: [
+        { name: "AI Tools", href: "/tools" },
+        { name: "Workflows", href: "/workflows" },
+        { name: "Resources", href: "/resources" },
+        { name: "Newsletter", href: "/newsletter" },
+    ],
+    content: [
+        { name: "Latest Content", href: "/content" },
+        { name: "Projects", href: "/projects" },
+        { name: "About", href: "/about" },
+        { name: "Contact", href: "/contact" },
+    ],
+};
 
 const socialLinks = [
     {
+        name: "YouTube",
+        href: "https://youtube.com/@omeirmustafa",
+        ariaLabel: "Watch Omeir Mustafa on YouTube",
+    },
+    {
+        name: "Instagram",
+        href: "https://instagram.com/omeirmustafa",
+        ariaLabel: "Follow Omeir Mustafa on Instagram",
+    },
+    {
         name: "LinkedIn",
         href: "https://linkedin.com/in/omeirmustafa",
-        ariaLabel: "Visit Omeir Mustafa on LinkedIn",
+        ariaLabel: "Connect with Omeir Mustafa on LinkedIn",
+    },
+    {
+        name: "Twitter / X",
+        href: "https://x.com/omeirmustafa",
+        ariaLabel: "Follow Omeir Mustafa on X",
     },
     {
         name: "GitHub",
@@ -74,22 +106,62 @@ export function Footer() {
             </motion.div>
 
             <Container className="relative z-10">
-                <div className="flex flex-col md:flex-row items-start justify-between gap-12 mb-16">
-                    {/* Brand Block */}
-                    <div className="max-w-md">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 mb-16">
+                    {/* Brand Block + Newsletter */}
+                    <div className="lg:col-span-5">
                         <span className="text-xl font-bold text-white tracking-tight block mb-4">
                             Omeir Mustafa
                         </span>
                         <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-                            Designing and engineering production-grade AI applications, autonomous agents, and high-performance system architectures.
+                            Building AI systems, teaching the future of work. Sharing insights on AI automation, agents, workflows, and the tools shaping our industry.
                         </p>
+                        <div className="mb-6">
+                            <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block mb-3">Join the Newsletter</span>
+                            <NewsletterForm variant="inline" placeholder="Your email" buttonText="Join" />
+                        </div>
                         <div className="h-px w-12 bg-white/10" />
                     </div>
 
-                    {/* Navigation Block */}
-                    <nav aria-label="Social media links" className="flex flex-col gap-4">
-                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Connect</span>
-                        <ul className="space-y-2">
+                    {/* Platform Links */}
+                    <nav aria-label="Platform links" className="lg:col-span-2 lg:col-start-7">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block mb-4">Platform</span>
+                        <ul className="space-y-2.5">
+                            {footerLinks.platform.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm text-zinc-400 hover:text-white transition-colors flex items-center gap-1 group"
+                                    >
+                                        {link.name}
+                                        <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    {/* Content Links */}
+                    <nav aria-label="Content links" className="lg:col-span-2">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block mb-4">Explore</span>
+                        <ul className="space-y-2.5">
+                            {footerLinks.content.map((link) => (
+                                <li key={link.name}>
+                                    <Link
+                                        href={link.href}
+                                        className="text-sm text-zinc-400 hover:text-white transition-colors flex items-center gap-1 group"
+                                    >
+                                        {link.name}
+                                        <span className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200">→</span>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    {/* Social Links */}
+                    <nav aria-label="Social media links" className="lg:col-span-2">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block mb-4">Connect</span>
+                        <ul className="space-y-2.5">
                             {socialLinks.map((link) => (
                                 <li key={link.name}>
                                     <a
@@ -116,9 +188,6 @@ export function Footer() {
                     <div className="flex items-center gap-6">
                         <span className="text-[9px] uppercase tracking-widest text-zinc-600">
                             Dhaka, Bangladesh
-                        </span>
-                        <span className="text-[9px] uppercase tracking-widest text-zinc-600">
-                            Time: {new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Dhaka' })}
                         </span>
                     </div>
                 </div>

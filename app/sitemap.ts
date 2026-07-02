@@ -1,14 +1,47 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
+import { siteConfig } from '@/data/site-config';
+import { getAllTools, getAllWorkflows, getAllResources, getAllContent, getAllProjects } from '@/lib/content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://omeir-mustafa.vercel.app";
+    const baseUrl = siteConfig.url;
 
-    return [
-        {
-            url: baseUrl,
-            lastModified: new Date(),
-            changeFrequency: "monthly",
-            priority: 1.0,
-        },
-    ];
+    const tools = getAllTools().map((tool) => ({
+        url: `${baseUrl}/tools/${tool.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+    }));
+
+    const workflows = getAllWorkflows().map((workflow) => ({
+        url: `${baseUrl}/workflows/${workflow.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+    }));
+    
+    const projects = getAllProjects().map((project) => ({
+        url: `${baseUrl}/projects/${project.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+    }));
+
+    const routes = [
+        '',
+        '/content',
+        '/tools',
+        '/workflows',
+        '/resources',
+        '/newsletter',
+        '/projects',
+        '/about',
+        '/contact',
+    ].map((route) => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: route === '' ? 'weekly' as const : 'monthly' as const,
+        priority: route === '' ? 1 : 0.9,
+    }));
+
+    return [...routes, ...tools, ...workflows, ...projects];
 }

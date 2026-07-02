@@ -135,6 +135,22 @@ export function AboutSection() {
                             </motion.div>
                         ))}
                     </div>
+                    
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.3, duration: 0.5 }}
+                        className="mt-16 flex justify-center"
+                    >
+                        <a 
+                            href="/about"
+                            className="group inline-flex items-center gap-2 text-sm font-semibold text-zinc-400 hover:text-white transition-colors"
+                        >
+                            Learn More About My Work
+                            <ArrowUpRight size={14} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+                        </a>
+                    </motion.div>
 
                 </div>
             </Container>
