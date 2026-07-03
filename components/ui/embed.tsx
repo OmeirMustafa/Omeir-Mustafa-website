@@ -19,7 +19,7 @@ export function Embed({ src, title, aspectRatio = '16/9', className, thumbnail, 
   return (
     <div 
       className={cn(
-        "relative w-full overflow-hidden rounded-2xl bg-zinc-950 border border-white/5",
+        "relative w-full overflow-hidden rounded-2xl bg-muted border border-border",
         className
       )}
       style={{ aspectRatio }}
@@ -35,7 +35,7 @@ export function Embed({ src, title, aspectRatio = '16/9', className, thumbnail, 
             alt={title}
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors duration-300" />
+          <div className="absolute inset-0 bg-background/40 group-hover:bg-background/30 transition-colors duration-300" />
           <div className="relative w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <Play size={24} className="text-white ml-1" fill="white" />
           </div>

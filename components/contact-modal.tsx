@@ -4,6 +4,8 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, ExternalLink, Copy, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useScrollLock } from "@/hooks/useScrollLock";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface ContactModalProps {
     isOpen: boolean;
@@ -15,17 +17,18 @@ const EMAIL = "omeirmustafa.work@gmail.com";
 export function ContactModal({ isOpen, onClose }: ContactModalProps) {
     const [copied, setCopied] = React.useState(false);
 
+    useScrollLock(isOpen);
+    useFocusTrap<HTMLDivElement>(isOpen);
+
     React.useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
         };
         if (isOpen) {
             document.addEventListener("keydown", handleEscape);
-            document.body.style.overflow = "hidden";
         }
         return () => {
             document.removeEventListener("keydown", handleEscape);
-            document.body.style.overflow = "unset";
         };
     }, [isOpen, onClose]);
 
@@ -72,7 +75,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         onClick={onClose}
-                        className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-md"
+                        className="fixed inset-0 z-[60] bg-background/80 backdrop-blur-md"
                     />
 
                     {/* Modal Container */}
@@ -96,9 +99,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             }}
                             className={cn(
                                 "relative w-full max-w-md pointer-events-auto",
-                                "bg-zinc-950/90 backdrop-blur-2xl border border-white/5",
+                                "bg-muted/90 backdrop-blur-2xl border border-border",
                                 "rounded-3xl overflow-hidden shadow-2xl shadow-black/80"
                             )}
+                            role="dialog"
+                            aria-modal="true"
+                            aria-labelledby="contact-modal-title"
                         >
                             {/* Ambient Glow */}
                             <div className="absolute top-0 right-0 w-[250px] h-[250px] bg-white/[0.015] blur-[80px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
@@ -106,7 +112,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             {/* Close Button */}
                             <button
                                 onClick={onClose}
-                                className="absolute right-4 top-4 p-2 rounded-full text-zinc-500 hover:text-white hover:bg-white/5 transition-all duration-200 z-20"
+                                className="absolute right-4 top-4 p-2 rounded-full text-muted-foreground hover:text-white hover:bg-white/5 transition-all duration-200 z-20"
                                 aria-label="Close modal"
                             >
                                 <X size={18} />
@@ -115,13 +121,13 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                             <div className="p-8 md:p-10 relative z-10">
                                 {/* Header */}
                                 <div className="text-center mb-8">
-                                    <div className="w-12 h-12 mx-auto bg-white/5 rounded-2xl flex items-center justify-center mb-4 border border-white/10 text-white">
+                                    <div className="w-12 h-12 mx-auto bg-white/5 rounded-2xl flex items-center justify-center mb-4 border border-border-hover text-white">
                                         <Mail size={20} strokeWidth={1.5} />
                                     </div>
-                                    <h2 className="text-xl font-semibold text-white mb-2 tracking-tight">
+                                    <h2 id="contact-modal-title" className="text-xl font-semibold text-white mb-2 tracking-tight">
                                         Initiate Alignment
                                     </h2>
-                                    <p className="text-sm text-zinc-400">
+                                    <p className="text-sm text-foreground-muted">
                                         Let&apos;s build serious AI-powered experiences together.
                                     </p>
                                 </div>
@@ -135,12 +141,12 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                             "p-4.5 flex items-center justify-center gap-3",
                                             copied
                                                 ? "bg-white text-black border-white"
-                                                : "bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/[0.07]"
+                                                : "bg-white/5 border-border hover:border-white/20 hover:bg-white/[0.07]"
                                         )}
                                     >
                                         <div className={cn(
                                             "w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300",
-                                            copied ? "bg-black/10 text-black" : "bg-white/5 text-zinc-400 group-hover:bg-white/10 group-hover:text-white"
+                                            copied ? "bg-background/10 text-black" : "bg-white/5 text-foreground-muted group-hover:bg-white/10 group-hover:text-white"
                                         )}>
                                             {copied ? <Check size={16} /> : <Copy size={16} />}
                                         </div>
@@ -167,7 +173,7 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                 {/* Divider */}
                                 <div className="relative flex items-center gap-4 py-2 mb-6">
                                     <div className="h-px flex-1 bg-white/5" />
-                                    <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-mono">or launch application</span>
+                                    <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono">or launch application</span>
                                     <div className="h-px flex-1 bg-white/5" />
                                 </div>
 
@@ -179,10 +185,10 @@ export function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                             href={option.href}
                                             target={option.external ? "_blank" : undefined}
                                             rel={option.external ? "noopener noreferrer" : undefined}
-                                            className="flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-white/[0.015] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-colors group text-center"
+                                            className="flex flex-col items-center justify-center gap-2 p-4 rounded-2xl bg-white/[0.015] border border-border hover:bg-white/[0.04] hover:border-border-hover transition-colors group text-center"
                                         >
-                                            <option.icon size={18} className="text-zinc-500 group-hover:text-white transition-colors" />
-                                            <span className="text-xs font-semibold text-zinc-400 group-hover:text-white transition-colors">
+                                            <option.icon size={18} className="text-muted-foreground group-hover:text-white transition-colors" />
+                                            <span className="text-xs font-semibold text-foreground-muted group-hover:text-white transition-colors">
                                                 {option.label}
                                             </span>
                                         </a>

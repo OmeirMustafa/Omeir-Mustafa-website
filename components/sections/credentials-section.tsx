@@ -1,8 +1,5 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { motion } from "framer-motion";
 
 const metrics = [
     {
@@ -29,23 +26,19 @@ const metrics = [
 
 export function CredentialsSection() {
     return (
-        <Section id="credentials" className="bg-black relative overflow-hidden py-20 md:py-24">
+        <Section id="credentials" className="bg-background relative overflow-hidden py-20 md:py-24">
             {/* Seamless Top Divider Line */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
 
             <Container>
                 <div className="relative z-10">
-                    <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 block mb-12 text-center">/ Verified Benchmarks</span>
+                    <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground block mb-12 text-center">/ Verified Benchmarks</span>
                     
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {metrics.map((m, index) => (
-                            <motion.div
+                            <div
                                 key={m.label}
-                                initial={{ opacity: 0, y: 15 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.08, duration: 0.5 }}
-                                className="p-6 rounded-3xl bg-zinc-950/20 border border-white/5 flex flex-col justify-between min-h-[170px]"
+                                className="p-6 rounded-3xl bg-muted/20 border border-border flex flex-col justify-between min-h-[170px]"
                             >
                                 <div>
                                     <span className="text-3xl sm:text-4xl font-bold font-mono text-white block mb-2 tracking-tighter">
@@ -55,10 +48,10 @@ export function CredentialsSection() {
                                         {m.label}
                                     </span>
                                 </div>
-                                <p className="text-[11px] text-zinc-500 font-mono leading-relaxed">
+                                <p className="text-[11px] text-muted-foreground font-mono leading-relaxed">
                                     {m.desc}
                                 </p>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>

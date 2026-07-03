@@ -26,8 +26,8 @@ export default function ToolsPage() {
     const tools = getAllTools();
 
     return (
-        <main className="bg-black min-h-screen pt-24">
-            <Section heading="AI Tools Library" headingMuted="Curated Stack" description="The exact AI tools, models, and frameworks I use to build systems and automate workflows.">
+        <main className="bg-background min-h-screen pt-24">
+            <Section h1 heading="AI Tools Library" headingMuted="Curated Stack" description="The exact AI tools, models, and frameworks I use to build systems and automate workflows.">
                 <Container>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {tools.map((tool) => {
@@ -37,13 +37,13 @@ export default function ToolsPage() {
                                 <Link
                                     key={tool.slug}
                                     href={`/tools/${tool.slug}`}
-                                    className="group block p-6 md:p-8 rounded-3xl bg-zinc-950/20 border border-white/5 hover:border-white/10 transition-all duration-500 relative overflow-hidden h-full flex flex-col"
+                                    className="group block p-6 md:p-8 rounded-3xl bg-muted/20 border border-border hover:border-border-hover transition-all duration-500 relative overflow-hidden h-full flex flex-col"
                                 >
                                     <div className="absolute inset-0 bg-gradient-to-br from-white/[0.015] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                     
                                     <div className="relative z-10 flex flex-col h-full">
                                         <div className="flex items-start justify-between mb-6">
-                                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-105 transition-transform duration-300">
+                                            <div className="w-12 h-12 rounded-xl bg-white/5 border border-border-hover flex items-center justify-center text-white group-hover:scale-105 transition-transform duration-300">
                                                 <Icon size={22} strokeWidth={1.5} />
                                             </div>
                                             <Badge variant="pricing">{tool.pricing}</Badge>
@@ -53,13 +53,13 @@ export default function ToolsPage() {
                                             {tool.name}
                                         </h3>
                                         
-                                        <p className="text-sm text-zinc-400 leading-relaxed mb-6 line-clamp-2">
+                                        <p className="text-sm text-foreground-muted leading-relaxed mb-6 line-clamp-2">
                                             {tool.shortDescription}
                                         </p>
 
-                                        <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+                                        <div className="mt-auto pt-6 border-t border-border flex items-center justify-between">
                                             <Rating value={tool.rating} size={14} />
-                                            <span className="text-xs font-mono font-medium px-2 py-1 rounded bg-white/5 text-zinc-400">
+                                            <span className="text-xs font-mono font-medium px-2 py-1 rounded bg-white/5 text-foreground-muted">
                                                 {tool.category.replace('-', ' ')}
                                             </span>
                                         </div>

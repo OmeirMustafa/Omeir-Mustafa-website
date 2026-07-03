@@ -38,7 +38,7 @@ export const tools: AITool[] = [
       'Complex multi-step reasoning tasks',
     ],
     alternatives: ['chatgpt', 'gemini', 'perplexity'],
-    affiliateUrl: 'https://placeholder.affiliate/claude',
+
     websiteUrl: 'https://claude.ai',
     tags: ['AI', 'LLM', 'agents', 'coding', 'MCP', 'reasoning'],
     featured: true,
@@ -82,7 +82,7 @@ export const tools: AITool[] = [
       'General-purpose business automation',
     ],
     alternatives: ['claude', 'gemini', 'perplexity'],
-    affiliateUrl: 'https://placeholder.affiliate/chatgpt',
+
     websiteUrl: 'https://chat.openai.com',
     tags: ['AI', 'LLM', 'GPT', 'plugins', 'multimodal', 'image-generation'],
     featured: true,
@@ -125,7 +125,7 @@ export const tools: AITool[] = [
       'Cross-modal search and retrieval',
     ],
     alternatives: ['claude', 'chatgpt', 'perplexity'],
-    affiliateUrl: 'https://placeholder.affiliate/gemini',
+
     websiteUrl: 'https://gemini.google.com',
     tags: ['AI', 'LLM', 'multimodal', 'Google', 'long-context'],
     featured: false,
@@ -168,7 +168,7 @@ export const tools: AITool[] = [
       'Debugging and code review assistance',
     ],
     alternatives: ['github-copilot', 'bolt', 'v0'],
-    affiliateUrl: 'https://placeholder.affiliate/cursor',
+
     websiteUrl: 'https://cursor.com',
     tags: ['coding', 'AI', 'IDE', 'developer-tools', 'pair-programming'],
     featured: true,
@@ -212,7 +212,7 @@ export const tools: AITool[] = [
       'AI agent orchestration with LLM chains',
     ],
     alternatives: ['chatgpt', 'cursor'],
-    affiliateUrl: 'https://placeholder.affiliate/n8n',
+
     websiteUrl: 'https://n8n.io',
     tags: ['automation', 'workflows', 'no-code', 'open-source', 'integrations', 'AI'],
     featured: true,
@@ -256,7 +256,7 @@ export const tools: AITool[] = [
       'Generating component libraries quickly',
     ],
     alternatives: ['bolt', 'cursor'],
-    affiliateUrl: 'https://placeholder.affiliate/v0',
+
     websiteUrl: 'https://v0.dev',
     tags: ['design', 'UI', 'React', 'Tailwind', 'prototyping', 'code-generation'],
     featured: false,
@@ -298,7 +298,7 @@ export const tools: AITool[] = [
       'Hackathon and side project scaffolding',
     ],
     alternatives: ['cursor', 'v0', 'github-copilot'],
-    affiliateUrl: 'https://placeholder.affiliate/bolt',
+
     websiteUrl: 'https://bolt.new',
     tags: ['coding', 'AI', 'browser-IDE', 'full-stack', 'prototyping'],
     featured: false,
@@ -340,7 +340,7 @@ export const tools: AITool[] = [
       'Fact-checking and verification workflows',
     ],
     alternatives: ['claude', 'chatgpt', 'gemini'],
-    affiliateUrl: 'https://placeholder.affiliate/perplexity',
+
     websiteUrl: 'https://perplexity.ai',
     tags: ['AI', 'research', 'search', 'citations', 'knowledge'],
     featured: false,
@@ -382,7 +382,7 @@ export const tools: AITool[] = [
       'Product mockup visualization',
     ],
     alternatives: ['v0', 'chatgpt'],
-    affiliateUrl: 'https://placeholder.affiliate/midjourney',
+
     websiteUrl: 'https://midjourney.com',
     tags: ['AI', 'image-generation', 'design', 'creative', 'visual-content'],
     featured: false,
@@ -424,7 +424,7 @@ export const tools: AITool[] = [
       'Code documentation and test generation',
     ],
     alternatives: ['cursor', 'bolt', 'v0'],
-    affiliateUrl: 'https://placeholder.affiliate/github-copilot',
+
     websiteUrl: 'https://github.com/features/copilot',
     tags: ['coding', 'AI', 'GitHub', 'autocomplete', 'developer-tools'],
     featured: false,

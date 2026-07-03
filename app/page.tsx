@@ -1,5 +1,3 @@
-import { Navbar } from "@/components/layout/navbar";
-import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { ContactCTASection } from "@/components/sections/contact-cta-section";
@@ -11,22 +9,15 @@ import { NewsletterSection } from "@/components/sections/newsletter-section";
 
 export default function Home() {
   return (
-    <>
-      <Navbar />
-
+    <div className="bg-background">
       <HeroSection />
-
-      <main id="main-content" role="main" className="bg-black">
-        <TrustBar />
-        <FeaturedContentSection />
-        <ToolsPreviewSection />
-        <WorkflowsPreviewSection />
-        <NewsletterSection />
-        <AboutSection />
-        <ContactCTASection />
-      </main>
-
-      <Footer />
-    </>
+      <TrustBar />
+      <FeaturedContentSection />
+      <ToolsPreviewSection />
+      <WorkflowsPreviewSection />
+      <NewsletterSection />
+      <AboutSection />
+      <ContactCTASection />
+    </div>
   );
 }

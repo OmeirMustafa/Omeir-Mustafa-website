@@ -15,7 +15,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'FastAPI', 'pgvector', 'OpenAI API', 'Redis', 'AWS'],
     featured: true,
     impact:
-      'Reduced internal support document search latency by 82% and increased agent operational efficiency by 3x.',
+      'Delivered a high-performance vector search architecture capable of sub-second semantic retrieval across enterprise document stores.',
     context:
       'Enterprise clients had multi-terabyte unindexed knowledge bases with zero semantic correlation.',
     constraints: [
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     technologies: ['React', 'Node.js', 'TypeScript', 'WebSockets', 'Docker', 'Prisma'],
     featured: true,
     impact:
-      'Facilitated over 14M+ agent execution states with 99.99% system uptime since deployment.',
+      'Architected an event-driven system to guarantee exactly-once state execution and reliable handovers for multi-agent workflows.',
     context:
       'Development teams lacked tooling to coordinate complex async LLM chains with persistent state.',
     constraints: [
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     technologies: ['Next.js', 'Go', 'Apache Kafka', 'AWS Suite', 'Docker', 'GraphQL'],
     featured: true,
     impact:
-      'Ingested 1.2B+ events with zero transactional losses, reducing infrastructure server costs by 42%.',
+      'Engineered a resilient event-driven pipeline designed for ACID transactional consistency and high-throughput data processing.',
     context:
       'Legacy transactional architecture failed during peak events, causing database lag and event losses.',
     constraints: [

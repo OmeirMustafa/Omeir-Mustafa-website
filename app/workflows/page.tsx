@@ -21,15 +21,15 @@ export default function WorkflowsPage() {
     const workflows = getAllWorkflows();
 
     return (
-        <main className="bg-black min-h-screen pt-24">
-            <Section heading="Workflow Library" headingMuted="Automate Everything" description="Production-ready automation workflows and AI agent pipelines designed to save you hours every week.">
+        <main className="bg-background min-h-screen pt-24">
+            <Section h1 heading="Workflow Library" headingMuted="Automate Everything" description="Production-ready automation workflows and AI agent pipelines designed to save you hours every week.">
                 <Container>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {workflows.map((workflow) => (
                             <Link
                                 key={workflow.slug}
                                 href={`/workflows/${workflow.slug}`}
-                                className="group block p-6 md:p-8 rounded-3xl bg-zinc-950/20 border border-white/5 hover:border-white/10 transition-all duration-500 relative overflow-hidden h-full flex flex-col"
+                                className="group block p-6 md:p-8 rounded-3xl bg-muted/20 border border-border hover:border-border-hover transition-all duration-500 relative overflow-hidden h-full flex flex-col"
                             >
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.015] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 
@@ -49,14 +49,14 @@ export default function WorkflowsPage() {
                                         {workflow.name}
                                     </h3>
                                     
-                                    <p className="text-sm text-zinc-400 leading-relaxed mb-8">
+                                    <p className="text-sm text-foreground-muted leading-relaxed mb-8">
                                         {workflow.shortDescription}
                                     </p>
 
-                                    <div className="mt-auto pt-5 border-t border-white/5 flex items-center justify-between">
+                                    <div className="mt-auto pt-5 border-t border-border flex items-center justify-between">
                                         <div className="flex items-center gap-2">
-                                            <Zap size={14} className="text-zinc-500" />
-                                            <span className="text-xs font-mono text-zinc-400">
+                                            <Zap size={14} className="text-muted-foreground" />
+                                            <span className="text-xs font-mono text-foreground-muted">
                                                 Saves <span className="text-white font-semibold">{workflow.timeSaved}</span>
                                             </span>
                                         </div>

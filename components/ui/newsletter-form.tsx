@@ -35,15 +35,29 @@ export function NewsletterForm({
       return;
     }
 
-    setStatus('loading');
-    
-    // Simulate API call - replace with actual newsletter integration
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setStatus('success');
-    setEmail('');
-    
-    setTimeout(() => setStatus('idle'), 4000);
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      
+      const data = await res.json();
+      
+      if (!res.ok) {
+        setStatus('error');
+        setErrorMessage(data.error || 'Failed to subscribe');
+        return;
+      }
+      
+      setStatus('success');
+      setEmail('');
+      
+      setTimeout(() => setStatus('idle'), 4000);
+    } catch (err) {
+      setStatus('error');
+      setErrorMessage('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -68,8 +82,8 @@ export function NewsletterForm({
           required
           aria-label="Email address"
           className={cn(
-            "w-full h-12 px-5 text-sm bg-white/5 border rounded-full text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/20 focus:bg-white/[0.07] transition-all duration-300",
-            status === 'error' ? "border-red-500/50" : "border-white/10"
+            "w-full h-12 px-5 text-sm bg-white/5 border rounded-full text-white placeholder:text-muted-foreground focus:outline-none focus:border-white/20 focus:bg-white/[0.07] transition-all duration-300",
+            status === 'error' ? "border-red-500/50" : "border-border-hover"
           )}
         />
       </div>

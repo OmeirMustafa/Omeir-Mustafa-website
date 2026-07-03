@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Clock, Gauge, Zap, CheckCircle2, ArrowUpRight, Play, Download } from "lucide-react";
 import Link from "next/link";
 import { Embed } from "@/components/ui/embed";
+import { siteConfig } from "@/data/site-config";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -52,7 +53,37 @@ export default async function WorkflowPage({ params }: Props) {
     const toolsUsed = getRelatedTools(workflow.tools);
 
     return (
-        <main className="bg-black min-h-screen pt-32 pb-24">
+        <main className="bg-background min-h-screen pt-32 pb-24">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@graph": [
+                            {
+                                "@type": "BreadcrumbList",
+                                "itemListElement": [
+                                    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteConfig.url },
+                                    { "@type": "ListItem", "position": 2, "name": "Workflows", "item": `${siteConfig.url}workflows` },
+                                    { "@type": "ListItem", "position": 3, "name": workflow.name }
+                                ]
+                            },
+                            {
+                                "@type": "HowTo",
+                                "name": workflow.name,
+                                "description": workflow.description,
+                                "estimatedCost": { "@type": "MonetaryAmount", "currency": "USD", "value": "0" },
+                                "step": workflow.steps.map((step, idx) => ({
+                                    "@type": "HowToStep",
+                                    "position": idx + 1,
+                                    "name": step.title,
+                                    "text": step.description
+                                }))
+                            }
+                        ]
+                    })
+                }}
+            />
             <Container size="md">
                 <Breadcrumbs 
                     items={[
@@ -70,7 +101,7 @@ export default async function WorkflowPage({ params }: Props) {
                             {workflow.difficulty}
                         </Badge>
                         <Badge variant="default">
-                            <Clock size={12} className="mr-1.5 text-zinc-400" />
+                            <Clock size={12} className="mr-1.5 text-foreground-muted" />
                             {workflow.estimatedTime} setup
                         </Badge>
                         <Badge variant="pricing" className="border-emerald-500/30 text-emerald-400 bg-emerald-500/10">
@@ -83,18 +114,18 @@ export default async function WorkflowPage({ params }: Props) {
                         {workflow.name}
                     </h1>
                     
-                    <p className="text-lg md:text-xl text-zinc-400 leading-relaxed max-w-3xl mb-10">
+                    <p className="text-lg md:text-xl text-foreground-muted leading-relaxed max-w-3xl mb-10">
                         {workflow.description}
                     </p>
 
                     {/* Tools Stack */}
-                    <div className="flex flex-wrap items-center gap-4 py-6 border-y border-white/5">
-                        <span className="text-xs text-zinc-500 font-mono uppercase tracking-widest mr-2">Tech Stack</span>
+                    <div className="flex flex-wrap items-center gap-4 py-6 border-y border-border">
+                        <span className="text-xs text-muted-foreground font-mono uppercase tracking-widest mr-2">Tech Stack</span>
                         {toolsUsed.map(tool => (
                             <Link 
                                 key={tool.slug} 
                                 href={`/tools/${tool.slug}`}
-                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-white/10 hover:bg-zinc-800 transition-colors"
+                                className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-border-hover hover:bg-zinc-800 transition-colors"
                             >
                                 <span className="text-sm font-medium text-white">{tool.name}</span>
                             </Link>
@@ -118,12 +149,12 @@ export default async function WorkflowPage({ params }: Props) {
                         <div className="space-y-8">
                             {workflow.steps.map((step, idx) => (
                                 <div key={idx} className="flex gap-6">
-                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white font-mono font-bold">
+                                    <div className="flex-shrink-0 w-10 h-10 rounded-full bg-white/5 border border-border-hover flex items-center justify-center text-white font-mono font-bold">
                                         {idx + 1}
                                     </div>
                                     <div className="pt-2">
                                         <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                                        <p className="text-zinc-400 leading-relaxed">{step.description}</p>
+                                        <p className="text-foreground-muted leading-relaxed">{step.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -134,7 +165,7 @@ export default async function WorkflowPage({ params }: Props) {
                     {workflow.prompt && (
                         <section>
                             <h2 className="text-2xl font-bold text-white mb-6">Core Prompt / Code</h2>
-                            <div className="p-6 md:p-8 rounded-3xl bg-zinc-950 border border-white/10">
+                            <div className="p-6 md:p-8 rounded-3xl bg-muted border border-border-hover">
                                 <pre className="font-mono text-sm text-zinc-300 whitespace-pre-wrap leading-relaxed">
                                     {workflow.prompt}
                                 </pre>
@@ -144,9 +175,9 @@ export default async function WorkflowPage({ params }: Props) {
 
                     {/* Call to Action */}
                     {workflow.downloadUrl && (
-                        <section className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-white/10 text-center">
+                        <section className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-zinc-900 to-black border border-border-hover text-center">
                             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to implement?</h2>
-                            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
+                            <p className="text-foreground-muted mb-8 max-w-xl mx-auto">
                                 Download the complete blueprint, templates, and exact configuration files to set this up in minutes.
                             </p>
                             <a 

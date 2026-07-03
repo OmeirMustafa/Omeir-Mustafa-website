@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
   }
 
-  nav, footer, .cursor, .search-overlay {
+  nav, footer, .search-overlay {
     display: none !important;
   }
 

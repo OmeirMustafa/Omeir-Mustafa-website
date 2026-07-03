@@ -13,9 +13,10 @@ interface SectionProps extends React.HTMLAttributes<HTMLElement> {
   heading?: string;
   headingMuted?: string;
   description?: string;
+  h1?: boolean;
 }
 
-export function Section({ id, children, className, as: Component = "section", label, heading, headingMuted, description, ...props }: SectionProps) {
+export function Section({ id, children, className, as: Component = "section", label, heading, headingMuted, description, h1, ...props }: SectionProps) {
   return (
     <Component
       id={id}
@@ -31,16 +32,22 @@ export function Section({ id, children, className, as: Component = "section", la
           className="mb-16 md:mb-20"
         >
           {label && (
-            <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 block mb-6">/ {label}</span>
+            <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground block mb-6">/ {label}</span>
           )}
-          {heading && (
+          {heading && h1 && (
+            <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+              {heading}
+              {headingMuted && (<><br /><span className="text-muted-foreground">{headingMuted}</span></>)}
+            </h1>
+          )}
+          {heading && !h1 && (
             <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-[1.1] mb-6">
               {heading}
-              {headingMuted && (<><br /><span className="text-zinc-500">{headingMuted}</span></>)}
+              {headingMuted && (<><br /><span className="text-muted-foreground">{headingMuted}</span></>)}
             </h2>
           )}
           {description && (
-            <p className="text-base text-zinc-400 leading-relaxed max-w-2xl">{description}</p>
+            <p className="text-base text-foreground-muted leading-relaxed max-w-2xl">{description}</p>
           )}
         </motion.div>
       )}

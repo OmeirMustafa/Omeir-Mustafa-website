@@ -29,7 +29,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <nav aria-label="Breadcrumb" className="mb-8">
-        <ol className="flex items-center gap-1.5 text-xs font-mono text-zinc-500">
+        <ol className="flex items-center gap-1.5 text-xs font-mono text-muted-foreground">
           {items.map((item, index) => (
             <li key={index} className="flex items-center gap-1.5">
               {index > 0 && <ChevronRight size={12} className="text-zinc-700" />}
@@ -41,7 +41,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                   {item.label}
                 </Link>
               ) : (
-                <span className="text-zinc-400">{item.label}</span>
+                <span className="text-foreground-muted">{item.label}</span>
               )}
             </li>
           ))}

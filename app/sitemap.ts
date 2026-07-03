@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { siteConfig } from '@/data/site-config';
-import { getAllTools, getAllWorkflows, getAllResources, getAllContent, getAllProjects } from '@/lib/content';
+import { getAllTools, getAllWorkflows, getAllResources, getAllContent } from '@/lib/content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = siteConfig.url;
@@ -19,12 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }));
     
-    const projects = getAllProjects().map((project) => ({
-        url: `${baseUrl}/projects/${project.slug}`,
-        lastModified: new Date(),
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }));
+
 
     const routes = [
         '',
@@ -43,5 +38,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: route === '' ? 1 : 0.9,
     }));
 
-    return [...routes, ...tools, ...workflows, ...projects];
+    return [...routes, ...tools, ...workflows];
 }

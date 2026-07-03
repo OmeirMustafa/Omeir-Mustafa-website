@@ -4,6 +4,8 @@ import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { buttonStyles } from "@/components/ui/button";
+import { SectionDivider } from "@/components/ui/section-divider";
 
 export function HeroSection() {
     // Staggered Text Variants
@@ -34,7 +36,7 @@ export function HeroSection() {
         <Section
             id="hero"
             as="header"
-            className="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-black"
+            className="relative min-h-[95vh] flex items-center justify-center overflow-hidden bg-background"
         >
             {/* Cinematic Background Elements: Subtle CAD Line Grid & Fade-out Gradient */}
             <div className="absolute inset-0 pointer-events-none select-none z-0">
@@ -70,9 +72,9 @@ export function HeroSection() {
                     {/* Status Tag */}
                     <motion.div
                         variants={itemVariants}
-                        className="mb-8 px-3 py-1 rounded-full border border-white/5 bg-white/[0.02] backdrop-blur-sm"
+                        className="mb-8 px-3 py-1 rounded-full border border-border bg-white/[0.02] backdrop-blur-sm"
                     >
-                        <p className="text-[10px] font-bold tracking-widest uppercase text-zinc-500 flex items-center gap-2">
+                        <p className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-white/40"></span>
                             <span>AI Educator & Systems Builder</span>
                         </p>
@@ -86,7 +88,7 @@ export function HeroSection() {
                             </motion.span>
                             <motion.span 
                                 variants={itemVariants} 
-                                className="block text-zinc-400"
+                                className="block text-foreground-muted"
                             >
                                 Teaching the Future of Work.
                             </motion.span>
@@ -96,7 +98,7 @@ export function HeroSection() {
                     {/* Support copy */}
                     <motion.p
                         variants={itemVariants}
-                        className="text-base sm:text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto leading-relaxed font-normal px-4"
+                        className="text-base sm:text-lg md:text-xl text-foreground-muted mb-10 max-w-2xl mx-auto leading-relaxed font-normal px-4"
                     >
                         Exploring AI agents, automation workflows, and the tools reshaping how we build software. Helping developers and creators harness the power of AI.
                     </motion.p>
@@ -107,29 +109,16 @@ export function HeroSection() {
                         className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto px-4"
                     >
                         <Link 
-                            href="/resources" 
-                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full bg-white text-black hover:bg-zinc-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 border border-white/10 inline-flex items-center justify-center"
+                            href="/newsletter" 
+                            className={buttonStyles({ variant: "primary", className: "w-full sm:w-auto min-w-[200px]" })}
                         >
-                            Explore AI Resources
-                        </Link>
-                        <Link 
-                            href="/content" 
-                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full border border-white/10 text-white hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 inline-flex items-center justify-center"
-                        >
-                            Watch Latest Content
-                        </Link>
-                        <Link 
-                            href="/contact" 
-                            className="w-full sm:w-auto h-12 px-8 text-sm font-semibold rounded-full border border-white/5 text-zinc-400 hover:text-white hover:border-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none transition-all duration-300 inline-flex items-center justify-center"
-                        >
-                            Work With Me
+                            Join the Newsletter
                         </Link>
                     </motion.div>
                 </motion.div>
             </Container>
 
-            {/* Seamless Bottom Divider Line */}
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            <SectionDivider />
         </Section>
     );
 }

@@ -43,7 +43,7 @@ export const workflows: Workflow[] = [
     ],
     prompt:
       'You are an expert client success manager. Given the following client intake data: {{formData}}, generate: 1) A warm, professional welcome email (3 paragraphs max), 2) A structured project brief with sections for Objectives, Scope, Timeline, and Deliverables. Use a confident but approachable tone.',
-    downloadUrl: 'https://placeholder.download/n8n-onboarding-template.json',
+
     videoUrl: 'https://youtube.com/@omeirmustafa',
     tags: ['automation', 'n8n', 'Claude', 'onboarding', 'client-management', 'AI'],
     featured: true,
@@ -135,7 +135,7 @@ export const workflows: Workflow[] = [
     ],
     prompt:
       'You are an expert research analyst. Your goal is to thoroughly research: {{researchQuery}}. Use the available tools to search the web, read relevant pages, and gather data. For each finding, note the source URL and your confidence level (high/medium/low). When you have sufficient information, compile a structured report with: Executive Summary, Key Findings (with sources), Analysis, and Recommendations.',
-    downloadUrl: 'https://placeholder.download/mcp-research-agent-starter.zip',
+
     videoUrl: 'https://youtube.com/@omeirmustafa',
     tags: ['agents', 'MCP', 'Claude', 'research', 'autonomous', 'advanced', 'TypeScript'],
     featured: true,

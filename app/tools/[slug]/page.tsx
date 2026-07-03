@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Rating } from "@/components/ui/rating";
 import { Bot, Code, Workflow, Sparkles, Zap, BrainCircuit, Palette, Search, ArrowUpRight, CheckCircle2, XCircle } from "lucide-react";
 import Link from "next/link";
+import { siteConfig } from "@/data/site-config";
 
 interface Props {
     params: Promise<{ slug: string }>;
@@ -56,7 +57,43 @@ export default async function ToolPage({ params }: Props) {
     const Icon = categoryIcons[tool.category] || Search;
 
     return (
-        <main className="bg-black min-h-screen pt-32 pb-24">
+        <main className="bg-background min-h-screen pt-32 pb-24">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@graph": [
+                            {
+                                "@type": "BreadcrumbList",
+                                "itemListElement": [
+                                    { "@type": "ListItem", "position": 1, "name": "Home", "item": siteConfig.url },
+                                    { "@type": "ListItem", "position": 2, "name": "Tools", "item": `${siteConfig.url}tools` },
+                                    { "@type": "ListItem", "position": 3, "name": tool.name }
+                                ]
+                            },
+                            {
+                                "@type": "SoftwareApplication",
+                                "name": tool.name,
+                                "applicationCategory": tool.category,
+                                "operatingSystem": "Web",
+                                "offers": {
+                                    "@type": "Offer",
+                                    "price": "0",
+                                    "priceCurrency": "USD"
+                                },
+                                "aggregateRating": {
+                                    "@type": "AggregateRating",
+                                    "ratingValue": tool.rating.toString(),
+                                    "bestRating": "10",
+                                    "worstRating": "1",
+                                    "ratingCount": "1"
+                                }
+                            }
+                        ]
+                    })
+                }}
+            />
             <Container size="md">
                 <Breadcrumbs 
                     items={[
@@ -68,14 +105,14 @@ export default async function ToolPage({ params }: Props) {
 
                 {/* Header */}
                 <div className="flex flex-col md:flex-row md:items-start gap-8 mb-16">
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white flex-shrink-0">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-white/5 border border-border-hover flex items-center justify-center text-white flex-shrink-0">
                         <Icon size={40} strokeWidth={1.5} />
                     </div>
                     
                     <div className="flex-1">
                         <div className="flex flex-wrap items-center gap-3 mb-4">
                             <Badge variant="pricing">{tool.pricing}</Badge>
-                            <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
+                            <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">
                                 {tool.category.replace('-', ' ')}
                             </span>
                         </div>
@@ -84,18 +121,18 @@ export default async function ToolPage({ params }: Props) {
                             {tool.name}
                         </h1>
                         
-                        <p className="text-lg md:text-xl text-zinc-400 leading-relaxed mb-6">
+                        <p className="text-lg md:text-xl text-foreground-muted leading-relaxed mb-6">
                             {tool.description}
                         </p>
 
-                        <div className="flex flex-wrap items-center gap-6 border-y border-white/5 py-4">
+                        <div className="flex flex-wrap items-center gap-6 border-y border-border py-4">
                             <div>
-                                <span className="text-xs text-zinc-500 font-mono uppercase tracking-widest block mb-1">My Rating</span>
+                                <span className="text-xs text-muted-foreground font-mono uppercase tracking-widest block mb-1">My Rating</span>
                                 <Rating value={tool.rating} size={16} />
                             </div>
                             <div className="w-px h-8 bg-white/5" />
                             <div>
-                                <span className="text-xs text-zinc-500 font-mono uppercase tracking-widest block mb-1">Pricing</span>
+                                <span className="text-xs text-muted-foreground font-mono uppercase tracking-widest block mb-1">Pricing</span>
                                 <span className="text-sm font-semibold text-white">{tool.pricingDetails || "Varies"}</span>
                             </div>
                             <div className="w-px h-8 bg-white/5" />
@@ -117,8 +154,8 @@ export default async function ToolPage({ params }: Props) {
                     <div className="space-y-12">
                         <section>
                             <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-                                <span className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center">
-                                    <Sparkles size={16} className="text-zinc-400" />
+                                <span className="w-8 h-8 rounded-lg bg-white/5 border border-border-hover flex items-center justify-center">
+                                    <Sparkles size={16} className="text-foreground-muted" />
                                 </span>
                                 Core Use Cases
                             </h2>
@@ -134,7 +171,7 @@ export default async function ToolPage({ params }: Props) {
                         
                         {tool.tags.length > 0 && (
                             <section>
-                                <h3 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">Tags</h3>
+                                <h3 className="text-sm font-mono text-muted-foreground uppercase tracking-widest mb-4">Tags</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {tool.tags.map(tag => (
                                         <Badge key={tag} variant="outline">{tag}</Badge>
@@ -146,7 +183,7 @@ export default async function ToolPage({ params }: Props) {
 
                     {/* Right Column: Pros & Cons */}
                     <div className="space-y-8">
-                        <div className="p-6 md:p-8 rounded-3xl bg-zinc-950/40 border border-white/5">
+                        <div className="p-6 md:p-8 rounded-3xl bg-muted/40 border border-border">
                             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                                 <CheckCircle2 size={18} className="text-emerald-500" />
                                 What I Love
@@ -161,7 +198,7 @@ export default async function ToolPage({ params }: Props) {
                             </ul>
                         </div>
 
-                        <div className="p-6 md:p-8 rounded-3xl bg-zinc-950/40 border border-white/5">
+                        <div className="p-6 md:p-8 rounded-3xl bg-muted/40 border border-border">
                             <h3 className="text-lg font-bold text-white mb-6 flex items-center gap-2">
                                 <XCircle size={18} className="text-rose-500" />
                                 Limitations

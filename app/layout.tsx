@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Cursor } from "@/components/ui/cursor";
 import { ModalProvider } from "@/components/providers/modal-provider";
 import { SearchProvider } from "@/components/search/search-provider";
 import { siteConfig } from "@/data/site-config";
-
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 const geistSans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
@@ -25,9 +25,6 @@ export const metadata: Metadata = {
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
   metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -102,14 +99,6 @@ function JsonLd() {
         "name": siteConfig.title,
         "publisher": {
           "@id": `${siteConfig.url}#person`
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": `${siteConfig.url}search?q={search_term_string}`
-          },
-          "query-input": "required name=search_term_string"
         }
       }
     ]
@@ -132,6 +121,7 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       <head>
         <JsonLd />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans bg-background text-foreground`}
@@ -144,8 +134,11 @@ export default function RootLayout({
         </a>
         <SearchProvider>
           <ModalProvider>
-            <Cursor />
-            {children}
+            <Navbar />
+            <main id="main-content" role="main" className="flex-1">
+              {children}
+            </main>
+            <Footer />
           </ModalProvider>
         </SearchProvider>
       </body>

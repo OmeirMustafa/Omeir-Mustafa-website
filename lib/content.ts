@@ -163,7 +163,7 @@ export function searchAll(query: string): SearchResult[] {
       results.push({
         title: item.title,
         description: item.description ?? '',
-        url: `/content/${item.slug}`,
+        url: item.externalUrl,
         type: 'content',
       });
     }

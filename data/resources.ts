@@ -13,7 +13,7 @@ export const resources: Resource[] = [
       'Master prompt engineering with 40+ pages of techniques, templates, and real-world examples.',
     type: 'guide',
     pricing: 'free',
-    downloadUrl: 'https://placeholder.download/prompt-engineering-guide.pdf',
+
     tags: ['prompts', 'AI', 'Claude', 'ChatGPT', 'guide', 'free'],
     featured: true,
     icon: 'book-open',
@@ -31,7 +31,7 @@ export const resources: Resource[] = [
       '15 ready-to-import n8n workflow templates for common automation use cases.',
     type: 'automation',
     pricing: 'free',
-    downloadUrl: 'https://placeholder.download/n8n-starter-templates.zip',
+
     tags: ['n8n', 'automation', 'templates', 'workflows', 'free'],
     featured: true,
     icon: 'workflow',
@@ -50,7 +50,7 @@ export const resources: Resource[] = [
     type: 'notion-system',
     pricing: 'paid',
     price: '$19',
-    downloadUrl: 'https://placeholder.download/notion-ai-dashboard',
+
     tags: ['Notion', 'productivity', 'AI', 'dashboard', 'organization', 'paid'],
     featured: true,
     icon: 'layout-dashboard',
@@ -69,7 +69,7 @@ export const resources: Resource[] = [
     type: 'prompt-pack',
     pricing: 'paid',
     price: '$9',
-    downloadUrl: 'https://placeholder.download/claude-dev-prompts',
+
     tags: ['Claude', 'prompts', 'coding', 'developer-tools', 'paid'],
     featured: false,
     icon: 'terminal',
@@ -87,7 +87,7 @@ export const resources: Resource[] = [
       'Practical ChatGPT playbook for automating everyday business tasks — no coding required.',
     type: 'guide',
     pricing: 'free',
-    downloadUrl: 'https://placeholder.download/chatgpt-business-playbook.pdf',
+
     tags: ['ChatGPT', 'business', 'automation', 'guide', 'no-code', 'free'],
     featured: false,
     icon: 'briefcase',

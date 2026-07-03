@@ -27,7 +27,7 @@ export function Rating({ value, max = 5, size = 14, className, showValue = true 
         />
       ))}
       {showValue && (
-        <span className="ml-1.5 text-xs font-mono text-zinc-400">
+        <span className="ml-1.5 text-xs font-mono text-foreground-muted">
           {value.toFixed(1)}
         </span>
       )}

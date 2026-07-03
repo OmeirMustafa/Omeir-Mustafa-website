@@ -15,8 +15,8 @@ export default function ProjectsPage() {
     const projects = getAllProjects();
 
     return (
-        <main className="bg-black min-h-screen pt-24">
-            <Section heading="Selected Work" headingMuted="Case Studies" description="A showcase of AI integrations, systems architecture, and modern web applications built for production.">
+        <main className="bg-background min-h-screen pt-24">
+            <Section h1 heading="Selected Work" headingMuted="Case Studies" description="A showcase of AI integrations, systems architecture, and modern web applications built for production.">
                 <Container>
                     <div className="space-y-12 md:space-y-24">
                         {projects.map((project, index) => (
@@ -26,22 +26,22 @@ export default function ProjectsPage() {
                             >
                                 {/* Image / Visual Side */}
                                 <div className="w-full md:w-1/2">
-                                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-zinc-950 border border-white/5 group">
+                                    <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-muted border border-border group">
                                         <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none z-10" />
                                         
                                         {/* Abstract geometric fallback if no image */}
-                                        <div className="absolute inset-0 flex items-center justify-center bg-zinc-950">
+                                        <div className="absolute inset-0 flex items-center justify-center bg-muted">
                                             <LayoutGrid size={64} className="text-white/5 group-hover:scale-110 transition-transform duration-700" />
                                         </div>
 
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                                        <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                                     </div>
                                 </div>
 
                                 {/* Content Side */}
                                 <div className="w-full md:w-1/2 space-y-6">
                                     <div className="flex items-center gap-3">
-                                        <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">{project.category}</span>
+                                        <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">{project.category}</span>
                                         {project.featured && (
                                             <Badge variant="outline" className="border-white/20 text-white">Featured</Badge>
                                         )}
@@ -51,22 +51,22 @@ export default function ProjectsPage() {
                                         {project.name}
                                     </h2>
                                     
-                                    <p className="text-lg text-zinc-400 leading-relaxed">
+                                    <p className="text-lg text-foreground-muted leading-relaxed">
                                         {project.description}
                                     </p>
 
                                     {/* Stats / Context */}
                                     {(project.context || project.impact) && (
-                                        <div className="grid grid-cols-2 gap-4 py-6 border-y border-white/5">
+                                        <div className="grid grid-cols-2 gap-4 py-6 border-y border-border">
                                             {project.context && (
                                                 <div>
-                                                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-1">Context</span>
+                                                    <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground block mb-1">Context</span>
                                                     <span className="text-sm text-zinc-300 font-medium">{project.context}</span>
                                                 </div>
                                             )}
                                             {project.impact && (
                                                 <div>
-                                                    <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block mb-1">Impact</span>
+                                                    <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground block mb-1">Impact</span>
                                                     <span className="text-sm text-white font-semibold">{project.impact}</span>
                                                 </div>
                                             )}
@@ -95,7 +95,7 @@ export default function ProjectsPage() {
                                                 href={project.githubUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 h-10 px-5 border border-white/10 text-white text-sm font-semibold rounded-full hover:bg-white/5 transition-colors"
+                                                className="inline-flex items-center gap-2 h-10 px-5 border border-border-hover text-white text-sm font-semibold rounded-full hover:bg-white/5 transition-colors"
                                             >
                                                 <Github size={16} /> Source Code
                                             </a>

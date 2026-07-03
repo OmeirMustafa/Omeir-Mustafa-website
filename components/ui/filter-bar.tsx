@@ -21,13 +21,13 @@ export function FilterBar({ filters, activeFilter, onFilterChange, className }: 
             "relative px-4 py-2 text-xs font-medium rounded-full transition-colors duration-300 min-h-[36px]",
             activeFilter === filter
               ? "text-white"
-              : "text-zinc-400 hover:text-white bg-transparent border border-white/5 hover:border-white/10"
+              : "text-foreground-muted hover:text-white bg-transparent border border-border hover:border-border-hover"
           )}
         >
           {activeFilter === filter && (
             <motion.span
               layoutId="activeFilter"
-              className="absolute inset-0 bg-white/[0.08] border border-white/10 rounded-full"
+              className="absolute inset-0 bg-white/[0.08] border border-border-hover rounded-full"
               transition={{ type: "spring", stiffness: 380, damping: 30 }}
             />
           )}

@@ -1,8 +1,6 @@
-"use client";
 
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { motion } from "framer-motion";
 import { Palette, Terminal, MonitorSmartphone, MousePointerClick } from "lucide-react";
 
 const services = [
@@ -34,7 +32,7 @@ const services = [
 
 export function ServicesSection() {
     return (
-        <Section id="services" className="bg-black relative overflow-hidden py-24 md:py-32">
+        <Section id="services" className="bg-background relative overflow-hidden py-24 md:py-32">
             {/* Seamless Section Divider */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
             
@@ -42,39 +40,31 @@ export function ServicesSection() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-white/[0.01] blur-[120px] rounded-full pointer-events-none" />
 
             <Container className="relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                <div
                     className="mb-20 md:mb-32 max-w-2xl"
                 >
-                    <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 block mb-6">/ Service Suite</span>
+                    <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground block mb-6">/ Service Suite</span>
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
                         Operational <br />
-                        <span className="text-zinc-500">Capabilities</span>
+                        <span className="text-muted-foreground">Capabilities</span>
                     </h2>
-                    <p className="text-base text-zinc-400 leading-relaxed">
+                    <p className="text-base text-foreground-muted leading-relaxed">
                         I bridge the gap between high-fidelity conversion-focused user interfaces and rigorous back-end systems engineering. Every deployment is custom-optimized for speed and business conversion.
                     </p>
-                </motion.div>
+                </div>
 
                 {/* Holographic Bento Grid */}
                 <div className="grid md:grid-cols-2 gap-6">
                     {services.map((service, index) => (
-                        <motion.div
+                        <div
                             key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className="group relative p-8 md:p-10 rounded-3xl bg-zinc-950/20 border border-white/5 hover:border-white/10 transition-colors duration-500 overflow-hidden flex flex-col h-full"
+                            className="group relative p-8 md:p-10 rounded-3xl bg-muted/20 border border-border hover:border-border-hover transition-colors duration-500 overflow-hidden flex flex-col h-full"
                         >
                             {/* Hover Gradient Reveal */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/[0.015] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                             {/* Icon */}
-                            <div className="relative z-10 w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-105 group-hover:bg-white/10 group-hover:text-white transition-all duration-300 border border-white/10 text-white">
+                            <div className="relative z-10 w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-105 group-hover:bg-white/10 group-hover:text-white transition-all duration-300 border border-border-hover text-white">
                                 <service.icon size={20} strokeWidth={1.5} />
                             </div>
 
@@ -83,20 +73,20 @@ export function ServicesSection() {
                                 <h3 className="text-xl font-bold text-white mb-3 group-hover:text-zinc-200 transition-colors tracking-tight">
                                     {service.title}
                                 </h3>
-                                <p className="text-zinc-400 text-sm leading-relaxed mb-8">
+                                <p className="text-foreground-muted text-sm leading-relaxed mb-8">
                                     {service.description}
                                 </p>
 
                                 {/* Tags - Pushed to bottom */}
                                 <div className="flex flex-wrap gap-2 mt-auto">
                                     {service.tags.map(tag => (
-                                        <span key={tag} className="text-[10px] font-mono font-medium px-3 py-1 rounded-lg bg-white/5 text-zinc-400 border border-white/5 group-hover:border-white/10 group-hover:text-zinc-300 transition-colors">
+                                        <span key={tag} className="text-[10px] font-mono font-medium px-3 py-1 rounded-lg bg-white/5 text-foreground-muted border border-border group-hover:border-border-hover group-hover:text-zinc-300 transition-colors">
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
                 </div>
             </Container>

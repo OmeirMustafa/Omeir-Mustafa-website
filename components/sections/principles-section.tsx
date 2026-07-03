@@ -1,8 +1,5 @@
-"use client";
-
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { motion } from "framer-motion";
 
 const principles = [
     {
@@ -24,37 +21,29 @@ const principles = [
 
 export function PrinciplesSection() {
     return (
-        <Section id="principles" className="bg-black relative overflow-hidden py-24 md:py-32">
+        <Section id="principles" className="bg-background relative overflow-hidden py-24 md:py-32">
             {/* Seamless Top Divider Line */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
             
             <Container>
                 <div className="relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                    <div
                         className="mb-20 max-w-2xl"
                     >
-                        <span className="text-xs font-mono uppercase tracking-widest text-zinc-500 block mb-6">/ Systems Thinking</span>
+                        <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground block mb-6">/ Systems Thinking</span>
                         <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-none mb-6">
                             Engineering Philosophy
                         </h2>
-                        <p className="text-base text-zinc-400 leading-relaxed">
+                        <p className="text-base text-foreground-muted leading-relaxed">
                             Robust systems are not built by chance. They are designed under strict constraints and clear parameters to guarantee production reliability and elite user experiences.
                         </p>
-                    </motion.div>
+                    </div>
 
                     {/* Editorial Layout: Alternating columns or clean row list */}
-                    <div className="grid md:grid-cols-3 gap-12 md:gap-8 pt-8 border-t border-white/5">
+                    <div className="grid md:grid-cols-3 gap-12 md:gap-8 pt-8 border-t border-border">
                         {principles.map((p, index) => (
-                            <motion.div
+                            <div
                                 key={p.num}
-                                initial={{ opacity: 0, y: 15 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.1, duration: 0.5 }}
                                 className="flex flex-col justify-between min-h-[180px] group"
                             >
                                 <div>
@@ -64,11 +53,11 @@ export function PrinciplesSection() {
                                     <h3 className="text-lg font-bold text-white mb-3 tracking-tight">
                                         {p.title}
                                     </h3>
-                                    <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                                    <p className="text-foreground-muted text-xs sm:text-sm leading-relaxed">
                                         {p.description}
                                     </p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
