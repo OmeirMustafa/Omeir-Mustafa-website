@@ -47,13 +47,8 @@ export const siteConfig: SiteConfig = {
     },
     {
       name: 'YouTube',
-      url: 'https://youtube.com/@omeirmustafa',
+      url: 'https://www.youtube.com/@TechSphere_96',
       ariaLabel: 'Subscribe to Omeir Mustafa on YouTube',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://x.com/omeirmustafa',
-      ariaLabel: 'Follow Omeir Mustafa on X (Twitter)',
     },
   ],
   navigation: [

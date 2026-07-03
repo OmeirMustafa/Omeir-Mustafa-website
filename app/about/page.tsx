@@ -54,8 +54,8 @@ export default function AboutPage() {
                                         <a href="https://linkedin.com/in/omeirmustafa" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-white uppercase tracking-wider hover:text-zinc-300 flex items-center gap-1">
                                             LinkedIn <ArrowUpRight size={12} />
                                         </a>
-                                        <a href="https://x.com/omeirmustafa" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-white uppercase tracking-wider hover:text-zinc-300 flex items-center gap-1">
-                                            Twitter <ArrowUpRight size={12} />
+                                        <a href="https://www.youtube.com/@TechSphere_96" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-white uppercase tracking-wider hover:text-zinc-300 flex items-center gap-1">
+                                            YouTube <ArrowUpRight size={12} />
                                         </a>
                                     </div>
                                 </div>
